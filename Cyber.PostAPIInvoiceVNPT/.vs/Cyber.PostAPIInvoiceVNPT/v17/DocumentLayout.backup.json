@@ -1,0 +1,121 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|d:\\duan\\omada\\sm\\cyber.postapiinvoicevnpt\\cyber.postapiinvoicevnpt\\sys.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|solutionrelative:cyber.postapiinvoicevnpt\\sys.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|Cyber.PostAPIInvoiceVNPT||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\cyber.postapiinvoicevnpt\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|solutionrelative:cyber.postapiinvoicevnpt\\form1.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\cyber.postapiinvoicevnpt\\objinvoice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}",
+      "RelativeMoniker": "D:0:0:{1927CEA0-454E-4153-894C-87FBF6D68BFC}|Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj|solutionrelative:cyber.postapiinvoicevnpt\\objinvoice.vb||{2C015C70-C72C-11D0-88C3-00A0C9110049}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c478b6ac-54a8-3bd5-bc46-494f58b422c9}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{7d1a5679-04f2-3f4a-851f-855baa54731c}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:254354193:0:{71f361cc-493f-47c0-923f-f2570b6f8618}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.vb",
+              "DocumentMoniker": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Form1.vb",
+              "RelativeDocumentMoniker": "Cyber.PostAPIInvoiceVNPT\\Form1.vb",
+              "ToolTip": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Form1.vb",
+              "RelativeToolTip": "Cyber.PostAPIInvoiceVNPT\\Form1.vb",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKIAAABpAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-07-28T09:01:50.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cyber.PostAPIInvoiceVNPT",
+              "DocumentMoniker": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj",
+              "RelativeDocumentMoniker": "Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj",
+              "ToolTip": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj",
+              "RelativeToolTip": "Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT.vbproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-07-28T09:01:43.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Sys.vb",
+              "DocumentMoniker": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Sys.vb",
+              "RelativeDocumentMoniker": "Cyber.PostAPIInvoiceVNPT\\Sys.vb",
+              "ToolTip": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\Sys.vb*",
+              "RelativeToolTip": "Cyber.PostAPIInvoiceVNPT\\Sys.vb*",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAAC8AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-07-27T10:32:33.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ObjInvoice.vb",
+              "DocumentMoniker": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\ObjInvoice.vb",
+              "RelativeDocumentMoniker": "Cyber.PostAPIInvoiceVNPT\\ObjInvoice.vb",
+              "ToolTip": "D:\\DuAn\\Omada\\SM\\Cyber.PostAPIInvoiceVNPT\\Cyber.PostAPIInvoiceVNPT\\ObjInvoice.vb",
+              "RelativeToolTip": "Cyber.PostAPIInvoiceVNPT\\ObjInvoice.vb",
+              "ViewState": "AgIAACcAAAAAAAAAAAAUwD4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003361|",
+              "WhenOpened": "2026-07-28T07:38:34.748Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 249,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

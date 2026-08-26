@@ -1,0 +1,55 @@
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbprojResolveAssemblyReference.cache
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Form1.resources
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Resources.resources
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbproj.GenerateResource.Cache
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.xml
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.pdb
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\Cyber.InvoiceVNPT_canthoFord.pdb
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\Cyber.InvoiceVNPT_canthoFord.xml
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\Cyber.InvoiceVNPT_canthoFord.dll.config
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\InvoiceVNPT_CanThoFord\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.dll
+E:\Lamviec\lamviec\CyberSoft\CyberAppGolden_R2\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.dll.config
+D:\9.0\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.xml
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Form1.resources
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Resources.resources
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbproj.GenerateResource.Cache
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.xml
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.pdb
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.pdb
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.xml
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbprojResolveAssemblyReference.cache
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.dll.config
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.dll
+C:\Users\Dao Chi Minh\Desktop\Ford_Can_tho\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbprojResolveAssemblyReference.cache
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Form1.resources
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Resources.resources
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbproj.GenerateResource.Cache
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.xml
+D:\9.0\Ford_Can_tho\Sm_huyen\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbprojResolveAssemblyReference.cache
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Form1.resources
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Resources.resources
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbproj.GenerateResource.Cache
+D:\9.0\Honda_Can_Tho\Cyber.InvoiceVNPT_canthoFord.dll.config
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.xml
+D:\9.0\Honda_Can_Tho\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Honda_Can_Tho\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Honda_Can_Tho\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Honda_Can_Tho\Cyber.InvoiceVNPT_canthoFord.xml
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbprojResolveAssemblyReference.cache
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Form1.resources
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.Resources.resources
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.vbproj.GenerateResource.Cache
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.xml
+D:\9.0\Vien_Dau_Khi\Sm\Cyber.InvoiceVNPT_canthoFord\Cyber.InvoiceVNPT_canthoFord\obj\x86\Debug\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Vien_Dau_Khi\Cyber.InvoiceVNPT_canthoFord.dll.config
+D:\9.0\Vien_Dau_Khi\Cyber.InvoiceVNPT_canthoFord.dll
+D:\9.0\Vien_Dau_Khi\Cyber.InvoiceVNPT_canthoFord.pdb
+D:\9.0\Vien_Dau_Khi\Cyber.InvoiceVNPT_canthoFord.xml

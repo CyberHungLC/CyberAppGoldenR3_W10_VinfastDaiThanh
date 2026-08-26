@@ -1,0 +1,11 @@
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.vbproj.AssemblyReference.cache
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.Form1.resources
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.Resources.resources
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.vbproj.GenerateResource.cache
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.vbproj.CoreCompileInputs.cache
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.Po.56ECD246.Up2Date
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.dll
+D:\DuAn\Omada\SM\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.pdb
+D:\DuAn\Omada\Cyber.PostAPIInvoiceVNPT.dll.config
+D:\DuAn\Omada\Cyber.PostAPIInvoiceVNPT.dll
+D:\DuAn\Omada\Cyber.PostAPIInvoiceVNPT.pdb
