@@ -60,7 +60,6 @@ Public Class supportInvoiceVNPT
                                                              ds.Tables(7),'
                                                              ds.Tables(8), ds.Tables(9), ds.Tables(10))
         Dim json As String = JsonConvert.SerializeObject(objVat)
-
         Dim header As New Dictionary(Of String, String)
 
         Dim result As String = V_GenToken(ds.Tables(0).Rows(0)("UrlLogin").ToString(), ds.Tables(0).Rows(0)("User_name").ToString(), ds.Tables(0).Rows(0)("password").ToString())
@@ -80,7 +79,6 @@ Public Class supportInvoiceVNPT
             'MsgBox(response + err)
             Return ReadDataFromJson(response)
         End If
-
         MsgBox(response + err)
 
         Return Nothing

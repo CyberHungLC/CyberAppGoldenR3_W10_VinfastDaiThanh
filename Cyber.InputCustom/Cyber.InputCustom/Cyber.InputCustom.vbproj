@@ -99,12 +99,9 @@
       <HintPath>..\..\..\..\Cyber.Loading.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Cyber.PostAPIInvoiceViettel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Cyber.PostAPIInvoiceVNPT, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\Cyber.PostAPIInvoiceViettel.dll</HintPath>
-    </Reference>
-    <Reference Include="Cyber.PostAPIInvoiceVNPT">
-      <HintPath>..\..\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\Debug\Cyber.PostAPIInvoiceVNPT.dll</HintPath>
+      <HintPath>..\..\..\Cyber.PostAPIInvoiceVNPT.dll</HintPath>
     </Reference>
     <Reference Include="Cyber.Print">
       <HintPath>..\..\..\..\Cyber.Print.dll</HintPath>

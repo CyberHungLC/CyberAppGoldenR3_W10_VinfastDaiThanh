@@ -11,6 +11,9 @@ Public Class HDS
     Dim M_DsData, M_DsHead, M_DsLookUp As DataSet
 #End Region
 #Region "Khai bao bien Paramater----------------------"
+    Dim M_HT_TT, M_Ma_Thue, M_Ma_Vendor_Invoice As String
+    Dim M_Ky_Hieu_Invoice As String = ""
+
 #End Region
 #Region "Khai bao bien Dll"
     Dim CyberInput As New Cyber.Input.Sys
@@ -35,7 +38,7 @@ Public Class HDS
     Dim Dv_DetailCv As New DataView
     Dim Dv_DetailCvTmp As New DataView
 
-    Dim M_Ma_TT, M_HT_TT, M_Ma_Thue As String
+    Dim M_Ma_TT As String
     Dim _Para_So_RO As String = ""
 #End Region
     Private Sub HDS_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -349,11 +352,14 @@ Public Class HDS
         '----------------------------------------------------------------------------------------------------------
         AddHandler TxtTien_HD.Leave, AddressOf L_Tien_Hd
         'Tạo hóa đơn nháp
-        AddHandler CmdTao_HD_Nhap.Click, AddressOf V_Tao_HD_Nhap
-        'Phát hành hóa đơn
-        AddHandler CmdPH_HoaDon.Click, AddressOf V_PH_HDDT
-        'Xem hóa đơn
-        AddHandler CmdXem_HoaDon.Click, AddressOf V_View_HDDT
+        AddHandler CmdTaoHD.Click, AddressOf V_Tao_Invoice
+        ''Phát hành hóa đơn
+        'AddHandler CmdPH_HoaDon.Click, AddressOf V_PH_HDDT
+        ''Xem hóa đơn
+        'AddHandler CmdXem_HoaDon.Click, AddressOf V_View_HDDT
+
+        '-- Hóa đơn điện tử
+        'AddHandler CmdTaoHD.Click, AddressOf V_Tao_Invoice
     End Sub
     Private Sub V_AddHandler_Detail()
         If Not EditSo_Luong.Column Is Nothing Then AddHandler EditSo_Luong.EditColumn.Leave, AddressOf L_Tinh_Toan
@@ -2243,123 +2249,6 @@ Public Class HDS
         Return strPrintName_Return
     End Function
 
-#Region "Hóa đơn điện tử"
-    Private Sub V_Tao_HD_Nhap(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-
-        'Kiểm tra quyền
-        Dim _Loai As String = "T"
-        If Not V_ChkRightsHDDT(_Loai) Then Exit Sub
-
-        'Tạo hóa đơn nháp
-        If MsgBox("Bạn chắc chắn muốn tạo hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
-
-        Dim _postapi As New Cyber.PostAPIInvoiceViettel.Sys
-        Dim _Dt As Date = TxtNgay_Ct.Value
-
-        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceTAO", _Loai & "#" & _Dt.ToString("yyyyMMdd") & "###" & M_Stt_Rec.Trim & "##" & M_Ma_CT.Trim & "###" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim)
-        If DsData.Tables(0).Rows(0)("Status").ToString.Trim.ToUpper <> "Y" Then
-            MsgBox(DsData.Tables(0).Rows(0)("Note").ToString.Trim, MsgBoxStyle.Critical, osysvar("M_Cyber_Ver"))
-            Return
-        End If
-
-        Dim Repones As New Cyber.PostAPIInvoiceViettel.InvoiceViettelRespone
-        Dim strError As String = ""
-        If _postapi.V_PostDataToInvoiceViettel(AppConn, osysvar, M_Stt_Rec, M_Ma_Dvcs, M_User_Name, DsData, strError, Repones) = False Then
-            MsgBox(strError + Repones.description, MsgBoxStyle.Critical, osysvar("M_CYBER_VER"))
-            Return
-        End If
-
-        'Thực thi cập nhật dữ liệu vào bảng khi kết quả FPT trả về thành công
-        Dim invoiceNo As String = "" 'Repones.result("invoiceNo").ToString
-
-        Dim So_HoaDon As String = "" 'invoiceNo.Substring(6).ToString()
-        Dim Serri_HoaDon As String = "" 'invoiceNo.Substring(0, 6).ToString()
-        Dim MauSo_HoaDon As String = "" 'Repones.result("transactionID").ToString()
-        Dim Ma_Tra_Cuu As String = "" 'Repones.result("reservationCode").ToString()
-
-        'Viet thu tuc Update lai du lieu
-        Dim DsData_l As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIInvoice_UPDATE", So_HoaDon & "#" & Serri_HoaDon & "#" & MauSo_HoaDon & "#" & _Loai & "#" & Ma_Tra_Cuu & "#" & _Dt.ToString("yyyyMMdd") & "#" & M_Ma_CT.Trim & "#" & M_Stt_Rec.Trim & "##" & _Dt.ToString("yyyyMMdd") & "###" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim)
-        MsgBox("Đã tạo hóa đơn điện tử nháp xong!", MsgBoxStyle.Information, osysvar("M_CYBER_VER"))
-    End Sub
-    Private Sub V_PH_HDDT(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-
-        'Kiểm tra quyền
-        Dim _Loai As String = "P"
-        If Not V_ChkRightsHDDT(_Loai) Then Exit Sub
-
-        'Phát hành hóa đơn
-        If MsgBox("Bạn chắc chắn muốn phát hành hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
-
-        Dim _postapi As New Cyber.PostAPIInvoiceViettel.Sys
-        Dim _Dt As Date = TxtNgay_Ct.Value
-        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceTAO", _Loai & "#" & _Dt.ToString("yyyyMMdd") & "###" & M_Stt_Rec.Trim & "##" & M_Ma_CT.Trim & "###" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim)
-
-        If DsData.Tables(0).Rows(0)("Status").ToString.Trim.ToUpper <> "Y" Then
-            MsgBox(DsData.Tables(0).Rows(0)("Note").ToString.Trim, MsgBoxStyle.Critical, osysvar("M_Cyber_Ver"))
-            Return
-        End If
-
-        Dim Repones As New Cyber.PostAPIInvoiceViettel.InvoiceViettelRespone
-        Dim strError As String = ""
-        If _postapi.V_PostDataToInvoiceViettel(AppConn, osysvar, M_Stt_Rec, M_Ma_Dvcs, M_User_Name, DsData, strError, Repones) = False Then
-            MsgBox(strError + Repones.description, MsgBoxStyle.Critical, osysvar("M_CYBER_VER"))
-            Return
-        End If
-
-        'thực thi cập nhật dữ liệu vào bảng khi kết quả FPT trả về thành công
-        Dim invoiceNo As String = Repones.result("invoiceNo").ToString
-
-        Dim So_HoaDon As String = invoiceNo.Substring(6).ToString()
-        Dim Serri_HoaDon As String = invoiceNo.Substring(0, 6).ToString()
-        Dim MauSo_HoaDon As String = Repones.result("transactionID").ToString()
-        Dim Ma_Tra_Cuu As String = Repones.result("reservationCode").ToString()
-
-        'Viet thu tuc Update lai du lieu        
-        Dim DsData_l As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIInvoice_UPDATE", So_HoaDon & "#" & Serri_HoaDon & "#" & MauSo_HoaDon & "#" & _Loai & "#" & Ma_Tra_Cuu & "#" & _Dt.ToString("yyyyMMdd") & "#" & M_Ma_CT.Trim & "#" & M_Stt_Rec.Trim & "##" & _Dt.ToString("yyyyMMdd") & "###" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim)
-
-        MsgBox("Đã thực hiện phát hành hóa đơn điện tử xong!", MsgBoxStyle.Information, osysvar("M_CYBER_VER"))
-
-        TxtSo_HDDT.Text = Strings.Right("00000000" & So_HoaDon, 8)
-        TxtSo_Seri.Text = Serri_HoaDon
-        TxtSo_seriHD.Text = Serri_HoaDon
-        Txtma_tra_cuu.Text = Ma_Tra_Cuu
-        TxtMau_VATHD.Text = MauSo_HoaDon
-        TxtnoteHDDT.Text = "Hóa đơn điện tử số (" + Strings.Right("00000000" & So_HoaDon, 8) + ") mã tra cứu (" + Ma_Tra_Cuu + ") phát hành trên hệ thống"
-    End Sub
-    Private Sub V_View_HDDT(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-
-        Dim _Loai As String = "X"
-        Dim _postapi As New Cyber.PostAPIInvoiceViettel.Sys
-        Dim _Dt As Date = TxtNgay_Ct.Value
-
-        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceTAO", _Loai & "#" & _Dt.ToString("yyyyMMdd") & "###" & M_Stt_Rec.Trim & "##" & M_Ma_CT.Trim & "###" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim)
-        If DsData.Tables(0).Rows(0)("Status").ToString.Trim.ToUpper <> "Y" Then
-            MsgBox(DsData.Tables(0).Rows(0)("Note").ToString.Trim, MsgBoxStyle.Critical, osysvar("M_Cyber_Ver"))
-            Return
-        End If
-
-        Dim Repones As New Cyber.PostAPIInvoiceViettel.InvoiceViettelRespone
-        Dim strError As String = ""
-        If _postapi.V_ViewInvoiceViettel(AppConn, osysvar, M_Stt_Rec, M_Ma_Dvcs, M_User_Name, DsData, strError, Repones) = False Then
-            MsgBox(strError + Repones.description, MsgBoxStyle.Critical, osysvar("M_CYBER_VER"))
-            Return
-        End If
-    End Sub
-    Private Function V_ChkRightsHDDT(ByRef _Loai As String) As Boolean
-        Dim _Return As Boolean = True
-        Dim _StrPara As String = M_Ma_CT.Trim & "#" & M_Stt_Rec.Trim & "#" & _Loai & "#" & TxtMa_Dvcs.Text.Trim & "#" & M_User_Name.Trim
-        Dim _DsRight As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_Chk_HDDT", _StrPara)
-        If Not CyberSupport.V_MsgChk(_DsRight.Tables(0), SysVar, M_LAN) Then
-            _DsRight.Dispose()
-            _Return = False
-        End If
-        Return _Return
-    End Function
-#End Region
-
     Private Sub V_Xe_Ra(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ''If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
         If TxtMa_Xe.Text.Trim.Replace("#", "").Trim = "" Then Exit Sub
@@ -2367,7 +2256,181 @@ Public Class HDS
         Dim _Process As Process = CyberSmlib.V_CallRun("Cyber.Input.dll", Me.Para, strAddParar)
         If Not _Process Is Nothing Then ProccessList.Add(_Process)
     End Sub
+
+#Region "Hóa đơn điện tử"
+    Private Function V_ChkHDDT(ByVal _loai As String) As Boolean
+        Dim _result As Boolean = True
+        'Check phân quyền
+        Dim dsCheck As New DataSet
+        dsCheck = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_Chk_HDDT ", M_Ma_CT.Trim + "#" + M_Stt_Rec.Trim + "#T#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+        If dsCheck.Tables(0).Rows(0).Item("Msg").ToString.Trim = "Y" Then
+            MsgBox(dsCheck.Tables(0).Rows(0).Item("Note").ToString.Trim, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, osysvar("M_Cyber_Ver"))
+            If dsCheck.Tables(0).Rows(0).Item("Status").ToString.Trim = "N" Then
+                dsCheck.Dispose()
+                _result = False
+            End If
+        End If
+        Return _result
+    End Function
+    Private Sub V_GetAPI(ByVal _ky_hieu_vendor As String, ByVal _loai_hd As String)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+
+        Dim _postapi As New Cyber.PostAPIInvoiceVNPT.supportInvoiceVNPT
+        Dim dtvb As Date = TxtNgay_Ct.Value
+
+        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceTAO", _loai_hd & "#" + dtvb.ToString("yyyyMMdd") + "###" + M_Stt_Rec.Trim + "##" + M_Ma_CT.Trim + "#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+
+        Dim nCount As Integer = DsData.Tables.Count
+        If Not CyberSupport.V_MsgChk(DsData.Tables(nCount - 1), osysvar, M_LAN) Then
+            DsData.Dispose()
+            Exit Sub
+        End If
+
+        Dim _dsReturn As DataSet = _postapi.V_TaoHoaDon(DsData)
+        If _dsReturn Is Nothing Or _dsReturn.Tables.Count = 0 Then
+            MsgBox("Tạo lỗi")
+            Return
+        End If
+
+
+        Dim dts As New List(Of DataTable)
+        Dim names As New List(Of String)
+
+        For Each dtReturn As DataTable In _dsReturn.Tables
+            dts.Add(dtReturn.Copy())
+            names.Add(dtReturn.TableName)
+        Next
+
+        ''===============thực thi cập nhật dữ liệu vào bảng khi kết quả trả về thành công
+        Dim So_hoadon As String = ""
+        Dim Serri_hoadon As String = ""
+        Dim mauso_hoadon As String = ""
+        Dim note_HDDT As String = ""
+        '--================== Viet thu tuc Update lai du lieu
+        Dim dt As Date = TxtNgay_Ct.Value
+
+        Dim _strXMLResponse As String = CyberSmodb.V_ConvertDataToXML(names.ToArray(), dts.ToArray())
+
+        Dim DsData_l As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIInvoice_UPDATE_VNPT", _loai_hd & "#" & M_Ma_CT & "#" & M_Stt_Rec & "#" & dt.ToString("yyyyMMdd") & "#" & CyberSmodb.GetvalueFromCombox(CbbMa_TTCP_H) & "#" & _strXMLResponse & "#" & M_Ma_Dvcs & "#" & M_User_Name)
+
+        Dim _nCount As Integer = DsData_l.Tables.Count
+
+        If _nCount < 1 Then Exit Sub
+
+        If Not CyberSupport.V_MsgChk(DsData_l.Tables(_nCount - 1), osysvar, M_LAN) Then
+            DsData_l.Dispose()
+            Exit Sub
+        End If
+
+        If _nCount > 1 Then
+            If DsData_l.Tables(0).Rows.Count > 0 Then
+                So_hoadon = DsData_l.Tables(0).Rows(0).Item("So_HDDT")
+                Serri_hoadon = DsData_l.Tables(0).Rows(0).Item("So_SeriHD")
+                mauso_hoadon = DsData_l.Tables(0).Rows(0).Item("Mau_VATHD")
+                note_HDDT = DsData_l.Tables(0).Rows(0).Item("NoteHDDT")
+            End If
+        End If
+
+        txtSo_ct.Text = So_hoadon
+        TxtSo_HDDT.Text = So_hoadon
+        TxtSo_seriHD.Text = Serri_hoadon
+        TxtMau_VATHD.Text = mauso_hoadon
+        TxtnoteHDDT.Text = note_HDDT
+        'End If
+    End Sub
+    Private Sub V_Tao_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("T") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn tạo hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+
+        V_GetAPI(M_Ky_Hieu_Invoice, "T")
+    End Sub
+    Private Sub V_PhatHanh_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("P") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn tạo & phát hành hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+
+        V_GetAPI(M_Ky_Hieu_Invoice, "P")
+    End Sub
+    Private Sub V_Update_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("U") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn update hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+        V_GetAPI(M_Ky_Hieu_Invoice, "U")
+    End Sub
+    Private Sub V_Huy_HD(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If M_Stt_Rec.Trim = "" Then Exit Sub
+        If M_Mode <> "X" Then Exit Sub
+        If Not ChkRightsVoucher("C") Then Exit Sub
+
+        M_Stt_RecOld = M_Stt_Rec
+        M_Stt_Rec = CyberSmlib.V_Get_Stt_Rec(M_Ma_CT, AppConn)
+
+        Dim Frm As Cyber.From.FrmCopy
+        Frm = New FrmCopy
+        Frm.Para = M_Para
+        Frm.Lan = M_LAN
+        Frm.Sysvar = osysvar
+        Frm.DrDmct = Me.DrDmct
+        Frm.So_CT = ""
+        Frm.Ngay_CT = Now.Date
+        Frm.Ngay_LCT = Now.Date
+        Frm.SysApp = AppConn
+        Frm.Ma_Dvcs = TxtMa_Dvcs.Text
+        Frm.Stt_Rec = M_Stt_Rec
+        Frm.ShowDialog()
+
+        If Not Frm.Ok_Copy Then
+            M_Stt_Rec = M_Stt_RecOld
+            Exit Sub
+        End If
+
+        Dim _Ngay_Ct_Copy As Date = Frm.TxtNgay_Ct.Value
+        Dim _Ngay_LCt_Copy As Date = Frm.TxtNgay_LCt.Value
+        Dim _So_Ct_Copy As String = Frm.txtSo_ct.Text
+        Dim _Ma_Quyen_Copy As String = Frm.TxtMa_Quyen.Text
+
+        Dim DsTmp As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_GetHuyHDC", M_Stt_RecOld & "#" & M_Stt_Rec & "#" & M_Ma_CT & "#" & TxtMa_Dvcs.Text & "#" & M_User_Name)
+        If DsTmp.Tables(1).Rows.Count < 1 Then Exit Sub
+
+        Dt_DetailTmp.Clear()
+        Dt_DetailTmp.AcceptChanges()
+
+        CyberSmodb.SetNotNullTable(DsTmp.Tables(0))
+        CyberSmodb.SetNotNullTable(DsTmp.Tables(1))
+
+        For i = 0 To DsTmp.Tables(0).Rows.Count - 1
+            Dt_DetailTmp.ImportRow(DsTmp.Tables(0).Rows(i))
+        Next
+        Dt_DetailTmp.AcceptChanges()
+        TxtStt_Rec.Text = M_Stt_Rec
+        TxtNgay_Ct.Value = _Ngay_Ct_Copy
+        TxtNgay_LCt.Value = _Ngay_LCt_Copy
+        TxtMa_Quyen.Text = _Ma_Quyen_Copy.Trim
+        txtSo_ct.Text = _So_Ct_Copy.Trim
+        M_Mode = "M"
+        CyberMe.V_SetEnabled(Me, M_Mode, Dt_Master)
+        V_Setstatus()
+
+        TxtNgay_CtHD.Value = TxtNgay_Ct.Value
+        TxtnoteHDDT.Text = ""
+        TxtMau_VATHD.Text = ""
+        TxtSo_seriHD.Text = ""
+        TxtSo_HDDT.Text = ""
+        Txtma_tra_cuu.Text = ""
+        TxtEmailHDDT.Text = ""
+        txtSo_ct.Text = DsTmp.Tables(1).Rows(0).Item("So_Ct_Huy") + "H"
+        TxtStt_Rec_Huy.Text = DsTmp.Tables(1).Rows(0).Item("Stt_Rec_Huy")
+        TxtSo_Ct_Huy.Text = DsTmp.Tables(1).Rows(0).Item("So_Ct_Huy")
+        TxtNgay_Ct_Huy.Value = DsTmp.Tables(1).Rows(0).Item("Ngay_Ct_Huy")
+        UpdateList()
+    End Sub
+#End Region
+
+
 End Class
 Public Class SetPrint0
     Declare Auto Function SetDefaultPrinter Lib "winspool.drv" (ByVal pszPrinter As String) As Boolean
 End Class
+
+
