@@ -14,7 +14,7 @@
     <AssemblyName>Cyber.ReportsCustom</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
   </PropertyGroup>
@@ -158,6 +158,12 @@
     <Compile Include="GL\GLSO1_NTK.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RO\BCRO_012.designer.vb">
+      <DependentUpon>BCRO_012.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RO\BCRO_012.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RO\BCDV_001.designer.vb">
       <DependentUpon>BCDV_001.vb</DependentUpon>
     </Compile>
@@ -260,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\GLSO1_NTK.resx">
       <DependentUpon>GLSO1_NTK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RO\BCRO_012.resx">
+      <DependentUpon>BCRO_012.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RO\BCDV_001.resx">
       <DependentUpon>BCDV_001.vb</DependentUpon>

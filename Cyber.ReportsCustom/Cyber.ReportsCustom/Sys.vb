@@ -37,6 +37,9 @@ Public Class Sys
             Case "CP_ARSO1_NTK".Trim.ToUpper, "CP_ARSO1T_NTK".ToUpper.Trim
                 _Return = New ARSO1T_NTK
 
+            Case "CP_BCRO_012".Trim.ToUpper
+                _Return = New BCRO_012
+
             Case Else
                 _Return = Nothing
         End Select

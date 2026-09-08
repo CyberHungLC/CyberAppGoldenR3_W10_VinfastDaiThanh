@@ -143,6 +143,18 @@
     <Compile Include="GL\DMTS.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HR\DMHS.Designer.vb">
+      <DependentUpon>DMHS.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HR\DMHS.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HR\FrmDmHs.designer.vb">
+      <DependentUpon>FrmDmHs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HR\FrmDmHs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RO\DmCV_DMS.designer.vb">
       <DependentUpon>DmCV_DMS.vb</DependentUpon>
     </Compile>
@@ -189,6 +201,12 @@
     <EmbeddedResource Include="GL\DMTS.resx">
       <DependentUpon>DMTS.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HR\DMHS.resx">
+      <DependentUpon>DMHS.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HR\FrmDmHs.resx">
+      <DependentUpon>FrmDmHs.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\licenses.licx" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -217,9 +235,7 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HR\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

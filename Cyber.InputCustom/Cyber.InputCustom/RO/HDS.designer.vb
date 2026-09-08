@@ -156,7 +156,7 @@ Partial Class HDS
         Me.Label35 = New System.Windows.Forms.Label()
         Me.TxtDiem_Luy_Ke = New ClsTextBox.txtTien_NT()
         Me.TxtDiem_Ro = New ClsTextBox.txtTien_NT()
-        Me.CmdXem_HoaDon = New DevExpress.XtraEditors.SimpleButton()
+        Me.CmdTai_PDF = New DevExpress.XtraEditors.SimpleButton()
         Me.CmdPH_HoaDon = New DevExpress.XtraEditors.SimpleButton()
         Me.CmdTaoHD = New DevExpress.XtraEditors.SimpleButton()
         Me.CmdXe_Ra = New System.Windows.Forms.Button()
@@ -165,6 +165,7 @@ Partial Class HDS
         Me.LbSoHdHuy = New System.Windows.Forms.Label()
         Me.TxtNgay_Ct_Huy = New ClsTextBox.txtDate()
         Me.TxtSo_Ct_Huy = New System.Windows.Forms.TextBox()
+        Me.CmdUpdate_HoaDon = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1419,7 +1420,7 @@ Partial Class HDS
         Me.TabCv.Location = New System.Drawing.Point(4, 22)
         Me.TabCv.Name = "TabCv"
         Me.TabCv.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCv.Size = New System.Drawing.Size(1089, 166)
+        Me.TabCv.Size = New System.Drawing.Size(1089, 153)
         Me.TabCv.TabIndex = 1
         Me.TabCv.Text = "Công việc"
         Me.TabCv.UseVisualStyleBackColor = True
@@ -1434,7 +1435,7 @@ Partial Class HDS
         Me.DetailCv.MainView = Me.DetailGRVCv
         Me.DetailCv.Name = "DetailCv"
         Me.DetailCv.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4})
-        Me.DetailCv.Size = New System.Drawing.Size(1083, 160)
+        Me.DetailCv.Size = New System.Drawing.Size(1083, 147)
         Me.DetailCv.TabIndex = 0
         Me.DetailCv.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DetailGRVCv})
         '
@@ -2253,38 +2254,36 @@ Partial Class HDS
         Me.TxtDiem_Ro.Text = "0"
         Me.TxtDiem_Ro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'CmdXem_HoaDon
+        'CmdTai_PDF
         '
-        Me.CmdXem_HoaDon.Appearance.ForeColor = System.Drawing.Color.Navy
-        Me.CmdXem_HoaDon.Appearance.Options.UseForeColor = True
-        Me.CmdXem_HoaDon.Image = CType(resources.GetObject("CmdXem_HoaDon.Image"), System.Drawing.Image)
-        Me.CmdXem_HoaDon.Location = New System.Drawing.Point(965, 305)
-        Me.CmdXem_HoaDon.Name = "CmdXem_HoaDon"
-        Me.CmdXem_HoaDon.Size = New System.Drawing.Size(133, 28)
-        Me.CmdXem_HoaDon.TabIndex = 7238
-        Me.CmdXem_HoaDon.Text = "Xem hóa đơn"
-        Me.CmdXem_HoaDon.Visible = False
+        Me.CmdTai_PDF.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdTai_PDF.Appearance.Options.UseForeColor = True
+        Me.CmdTai_PDF.Image = CType(resources.GetObject("CmdTai_PDF.Image"), System.Drawing.Image)
+        Me.CmdTai_PDF.Location = New System.Drawing.Point(497, 273)
+        Me.CmdTai_PDF.Name = "CmdTai_PDF"
+        Me.CmdTai_PDF.Size = New System.Drawing.Size(130, 28)
+        Me.CmdTai_PDF.TabIndex = 7238
+        Me.CmdTai_PDF.Text = "Xem hóa đơn"
         '
         'CmdPH_HoaDon
         '
         Me.CmdPH_HoaDon.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.CmdPH_HoaDon.Appearance.Options.UseForeColor = True
         Me.CmdPH_HoaDon.Image = CType(resources.GetObject("CmdPH_HoaDon.Image"), System.Drawing.Image)
-        Me.CmdPH_HoaDon.Location = New System.Drawing.Point(966, 304)
+        Me.CmdPH_HoaDon.Location = New System.Drawing.Point(228, 273)
         Me.CmdPH_HoaDon.Name = "CmdPH_HoaDon"
-        Me.CmdPH_HoaDon.Size = New System.Drawing.Size(133, 28)
+        Me.CmdPH_HoaDon.Size = New System.Drawing.Size(130, 28)
         Me.CmdPH_HoaDon.TabIndex = 7237
         Me.CmdPH_HoaDon.Text = "Tạo và phát hành HĐ"
-        Me.CmdPH_HoaDon.Visible = False
         '
         'CmdTaoHD
         '
         Me.CmdTaoHD.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.CmdTaoHD.Appearance.Options.UseForeColor = True
         Me.CmdTaoHD.Image = CType(resources.GetObject("CmdTaoHD.Image"), System.Drawing.Image)
-        Me.CmdTaoHD.Location = New System.Drawing.Point(96, 273)
+        Me.CmdTaoHD.Location = New System.Drawing.Point(95, 273)
         Me.CmdTaoHD.Name = "CmdTaoHD"
-        Me.CmdTaoHD.Size = New System.Drawing.Size(133, 28)
+        Me.CmdTaoHD.Size = New System.Drawing.Size(130, 28)
         Me.CmdTaoHD.TabIndex = 7236
         Me.CmdTaoHD.Text = "Tạo HĐ nháp"
         '
@@ -2382,18 +2381,30 @@ Partial Class HDS
         Me.TxtSo_Ct_Huy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.TxtSo_Ct_Huy.Visible = False
         '
+        'CmdUpdate_HoaDon
+        '
+        Me.CmdUpdate_HoaDon.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdUpdate_HoaDon.Appearance.Options.UseForeColor = True
+        Me.CmdUpdate_HoaDon.Image = Global.Cyber.InputCustom.My.Resources.Resources.addfooter_16x16
+        Me.CmdUpdate_HoaDon.Location = New System.Drawing.Point(361, 273)
+        Me.CmdUpdate_HoaDon.Name = "CmdUpdate_HoaDon"
+        Me.CmdUpdate_HoaDon.Size = New System.Drawing.Size(133, 28)
+        Me.CmdUpdate_HoaDon.TabIndex = 7246
+        Me.CmdUpdate_HoaDon.Text = "Update hoá đơn"
+        '
         'HDS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1102, 631)
+        Me.Controls.Add(Me.CmdUpdate_HoaDon)
         Me.Controls.Add(Me.Label47)
         Me.Controls.Add(Me.LbSoHdHuy)
         Me.Controls.Add(Me.TxtNgay_Ct_Huy)
         Me.Controls.Add(Me.TxtSo_Ct_Huy)
         Me.Controls.Add(Me.TxtStt_Rec_Huy)
         Me.Controls.Add(Me.CmdXe_Ra)
-        Me.Controls.Add(Me.CmdXem_HoaDon)
+        Me.Controls.Add(Me.CmdTai_PDF)
         Me.Controls.Add(Me.CmdPH_HoaDon)
         Me.Controls.Add(Me.CmdTaoHD)
         Me.Controls.Add(Me.Label34)
@@ -2662,13 +2673,14 @@ Partial Class HDS
         Me.Controls.SetChildIndex(Me.Label34, 0)
         Me.Controls.SetChildIndex(Me.CmdTaoHD, 0)
         Me.Controls.SetChildIndex(Me.CmdPH_HoaDon, 0)
-        Me.Controls.SetChildIndex(Me.CmdXem_HoaDon, 0)
+        Me.Controls.SetChildIndex(Me.CmdTai_PDF, 0)
         Me.Controls.SetChildIndex(Me.CmdXe_Ra, 0)
         Me.Controls.SetChildIndex(Me.TxtStt_Rec_Huy, 0)
         Me.Controls.SetChildIndex(Me.TxtSo_Ct_Huy, 0)
         Me.Controls.SetChildIndex(Me.TxtNgay_Ct_Huy, 0)
         Me.Controls.SetChildIndex(Me.LbSoHdHuy, 0)
         Me.Controls.SetChildIndex(Me.Label47, 0)
+        Me.Controls.SetChildIndex(Me.CmdUpdate_HoaDon, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2826,7 +2838,7 @@ Partial Class HDS
     Friend WithEvents Label35 As System.Windows.Forms.Label
     Friend WithEvents TxtDiem_Luy_Ke As ClsTextBox.txtTien_NT
     Friend WithEvents TxtDiem_Ro As ClsTextBox.txtTien_NT
-    Friend WithEvents CmdXem_HoaDon As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CmdTai_PDF As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents CmdPH_HoaDon As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents CmdXe_Ra As Button
     Friend WithEvents TxtStt_Rec_Huy As TextBox
@@ -2835,4 +2847,5 @@ Partial Class HDS
     Friend WithEvents TxtNgay_Ct_Huy As ClsTextBox.txtDate
     Friend WithEvents TxtSo_Ct_Huy As TextBox
     Friend WithEvents CmdTaoHD As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CmdUpdate_HoaDon As DevExpress.XtraEditors.SimpleButton
 End Class

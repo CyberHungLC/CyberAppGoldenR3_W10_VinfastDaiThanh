@@ -63,6 +63,23 @@ Public Class InvoiceVat
     Public Property DSLPhi As List(Of FeeInfo)
 End Class
 
+Public Class InvoiceTraCuuPDF
+    <JsonProperty("type")>
+    Public Property type As String
+
+    <JsonProperty("key")>
+    Public Property key As String
+
+End Class
+Public Class InvoiceUpdateHD
+    <JsonProperty("type")>
+    Public Property type As String
+
+    <JsonProperty("key")>
+    Public Property key As String
+
+End Class
+
 Public Class ExtensionInfo
 
     <JsonProperty("name")>

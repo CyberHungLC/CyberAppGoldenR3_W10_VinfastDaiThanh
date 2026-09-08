@@ -123,3 +123,5 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.ListGroupCustom.dll
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.ListGroupCustom.pdb
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.ListGroupCustom.xml
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.DMHS.resources
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.FrmDmHs.resources

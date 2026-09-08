@@ -80,3 +80,4 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.PostAPIInvoiceVNPT.dll
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.PostAPIInvoiceVNPT.pdb
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.PostAPIInvoiceVNPT.xml
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.PostAPIInvoiceVNPT\Cyber.PostAPIInvoiceVNPT\obj\x86\Debug\Cyber.PostAPIInvoiceVNPT.vbproj.AssemblyReference.cache

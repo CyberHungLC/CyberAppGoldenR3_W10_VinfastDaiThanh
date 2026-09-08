@@ -51,8 +51,6 @@
             Exit Sub
         End If
         dsChekUpdate.Dispose()
-
-
         '---------------------------------------------------------------------------------------------------------
         If Not CyberLoading.IsShowWaitFrom Then CyberLoading.V_ShowWailtForm(M_LAN)
         tbMaster.AcceptChanges()
@@ -64,21 +62,22 @@
         DsTmp.Dispose()
         CyberSmodb.SQLTbToTb(tbMaster, DtDmGia2)
         '---------------------------------------------------------------------------------------------------------       
-        Dim strXML As String = ""
-        strXML = CyberSmodb.V_ConvertDataToXML({"DmGia2"}, {DtDmGia2})
-        Dim dsChekUpdateGia2 As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_ROUpdateDmGia2", strXML + "#" + dt.ToString("yyyyMMdd") + "#" + M_Ma_Dvcs + "#" + M_User_Name)
-        If Not CyberSupport.V_MsgChk(dsChekUpdateGia2.Tables(0), Me.Sysvar, M_LAN) Then
-            dsChekUpdateGia2.Dispose()
-            Exit Sub
-        End If
+        'Dim strXML As String = ""
+        'strXML = CyberSmodb.V_ConvertDataToXML({"DmGia2"}, {DtDmGia2})
+        'Dim dsChekUpdateGia2 As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_ROUpdateDmGia2", strXML + "#" + dt.ToString("yyyyMMdd") + "#" + M_Ma_Dvcs + "#" + M_User_Name)
+        'If Not CyberSupport.V_MsgChk(dsChekUpdateGia2.Tables(0), Me.Sysvar, M_LAN) Then
+        '    dsChekUpdateGia2.Dispose()
+        '    Exit Sub
+        'End If
         '---------------------------------------------------------------------------------------------------------       
-        'Dim smKey As String = " [Ngay_Ban] = N'" + dt.ToString("yyyyMMdd") + "' AND Ma_Dvcs = N'" + M_Ma_Dvcs + "'"
-        ''CyberSmodb.V_CyberBulkSaveToSQL(AppConn, Me.Sysvar, M_User_Name, tbMaster, "DmGia2", "S", smKey)
-        'CyberSmodb.V_CyberBulkSaveToSQL(AppConn, Me.Sysvar, M_User_Name, DtDmGia2, "DmGia2", "S", smKey)
+        Dim smKey As String = " [Ngay_Ban] = N'" + dt.ToString("yyyyMMdd") + "' AND Ma_Dvcs = N'" + M_Ma_Dvcs + "'"
+        'CyberSmodb.V_CyberBulkSaveToSQL(AppConn, Me.Sysvar, M_User_Name, tbMaster, "DmGia2", "S", smKey)
+        CyberSmodb.V_CyberBulkSaveToSQL(AppConn, Me.Sysvar, M_User_Name, DtDmGia2, "DmGia2", "S", smKey)
         CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_UpdateDmVtAndDmGia2", "2#S##" & M_Ma_Dvcs & "#" & M_User_Name)
+
         If CyberLoading.IsShowWaitFrom Then CyberLoading.V_CloseWailtForm()
         '----------------------------------------------------------------------------       
-        MsgBox(dsChekUpdateGia2.Tables(0).Rows(0).Item("Note"), MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, Sysvar("M_CYBER_VER"))
+        'MsgBox(dsChekUpdateGia2.Tables(0).Rows(0).Item("Note"), MsgBoxStyle.Critical + MsgBoxStyle.OkOnly, Sysvar("M_CYBER_VER"))
 
         CyberSmlib.FlushMemorySave()
         Me.Close()

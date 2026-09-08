@@ -7,6 +7,7 @@ Imports System.Globalization
 Imports System.Reflection
 Imports System.Collections.Concurrent
 Imports System.Text
+Imports Newtonsoft.Json.Linq
 
 Public Class supportInvoiceVNPT
     Dim _Error As New Dictionary(Of String, String)
@@ -83,6 +84,166 @@ Public Class supportInvoiceVNPT
 
         Return Nothing
     End Function
+
+#Region "Update Hoa Don - HUNGLC"
+    Public Function V_UpdateHoaDon(ByVal ds As DataSet) As DataSet
+        Try
+            ' 1. Lấy thông tin API
+            Dim dtAPI As DataTable = ds.Tables(0)
+
+            Dim urlLogin As String = dtAPI.Rows(0).Item("UrlLogin").ToString()
+            Dim username As String = dtAPI.Rows(0).Item("User_name").ToString()
+            Dim password As String = dtAPI.Rows(0).Item("password").ToString()
+
+            ' 2. Lấy token
+            Dim tokenResult As String = V_GenToken(urlLogin, username, password)
+            If String.IsNullOrEmpty(tokenResult) Then
+                MsgBox("Không lấy được token VNPT.")
+                Return Nothing
+            End If
+            Dim arrToken() As String = tokenResult.Split("#"c)
+            Dim accessToken As String = arrToken(0)
+            Dim clientId As String = arrToken(1)
+
+            ' 3. Header
+            Dim header As New Dictionary(Of String, String)
+            header.Add("authorization", accessToken)
+            header.Add("client-id", clientId)
+            header.Add("content-type", "application/json")
+
+            ' 4. Request JSON
+
+            Dim objUpdateHD As InvoiceUpdateHD = BinddingObjInvoiceUpdateHD(ds.Tables(0), ds.Tables(1))
+            Dim jsonReq As String = JsonConvert.SerializeObject(objUpdateHD)
+            ' 5. Call API
+            Dim strResp As String = ""
+            Dim strErr As String = ""
+            If Not V_CallApi(ds.Tables(0).Rows(0)("URLPost").ToString(), Method.POST, header, jsonReq, strResp, strErr) Then
+                MsgBox("Lỗi tra cứu: " & strErr)
+                Return Nothing
+            End If
+
+            ' 6. Convert response thành DataSet
+            Dim resultDs As DataSet = ReadDataFromJson(strResp)
+            Return resultDs
+
+        Catch ex As Exception
+            MsgBox("Lỗi tra cứu hóa đơn VNPT: " & ex.Message)
+            Return Nothing
+        End Try
+    End Function
+
+#End Region
+
+#Region "Tai PDF - HUNGLC"
+    Public Function V_TaiPDFHoaDon(ByVal ds As DataSet, ByRef filePath As String) As Boolean
+        Try
+            '==================================================
+            ' 1. Lấy thông tin API từ SQL
+            '==================================================
+            Dim dtAPI As DataTable = ds.Tables(0)
+
+            Dim urlLogin As String = dtAPI.Rows(0).Item("UrlLogin").ToString()
+            Dim username As String = dtAPI.Rows(0).Item("User_name").ToString()
+            Dim password As String = dtAPI.Rows(0).Item("password").ToString()
+            '==================================================
+            ' 2. LẤY TOKEN
+            '==================================================
+            Dim _strToken As String = V_GenToken(urlLogin, username, password)
+
+            If String.IsNullOrEmpty(_strToken) Then
+                MsgBox("Không lấy được token VNPT.")
+                Return False
+            End If
+
+            Dim _arrToken() As String = _strToken.Split("#"c)
+
+            If _arrToken.Length < 2 Then
+                MsgBox("Token VNPT không đúng định dạng.")
+                Return False
+            End If
+
+            Dim _accessToken As String = _arrToken(0)
+            Dim _clientId As String = _arrToken(1)
+            '==================================================
+            ' 3. Header
+            '==================================================
+            Dim _header As New Dictionary(Of String, String)
+
+            _header.Add("authorization", _accessToken)
+            _header.Add("client-id", _clientId)
+            _header.Add("content-type", "application/json")
+            '==================================================
+            ' 4. Tạo JSON Request
+            '==================================================
+            Dim objPDF As InvoiceTraCuuPDF = BinddingObjInvoiceDownPDF(ds.Tables(0), ds.Tables(1))
+            Dim _jsonRequest As String = JsonConvert.SerializeObject(objPDF)
+            '==================================================
+            ' 5. Gọi API tải PDF
+            '==================================================
+            Dim _strResponse As String = ""
+            Dim _strErr As String = ""
+
+            If Not V_CallApi(ds.Tables(0).Rows(0)("URLPost").ToString(), Method.POST, _header, _jsonRequest, _strResponse, _strErr) Then
+                MsgBox("Lỗi tải PDF: " & _strErr)
+                Return False
+            End If
+
+            ' 6. Đọc response và lưu PDF
+            '==================================================
+            Dim dir As String = Path.GetDirectoryName(filePath)
+            If Not Directory.Exists(dir) Then
+                Directory.CreateDirectory(dir)
+            End If
+
+            If _strResponse.StartsWith("{") Then
+                ' Trường hợp JSON chứa base64
+                Dim dicObjResponse As Dictionary(Of String, Object) = JsonConvert.DeserializeObject(Of Dictionary(Of String, Object))(_strResponse)
+                If dicObjResponse.ContainsKey("data") Then
+                    Dim pdfBase64 As String = dicObjResponse("data").ToString()
+                    If Not String.IsNullOrEmpty(pdfBase64) Then
+                        Dim pdfBytes As Byte() = Convert.FromBase64String(pdfBase64)
+                        File.WriteAllBytes(filePath, pdfBytes)
+                        ' Hỏi người dùng có muốn mở file không
+                        Dim result As DialogResult = MsgBox("Tải PDF thành công. Bạn có muốn mở file ngay không?", MsgBoxStyle.YesNo)
+                        If result = DialogResult.Yes Then
+                            Process.Start(filePath)
+                        End If
+
+                        Return True
+                    End If
+                End If
+            ElseIf _strResponse.StartsWith("%PDF") OrElse _strResponse.StartsWith("JVBER") Then
+                ' Trường hợp trả thẳng PDF
+                Dim pdfBytes As Byte() = Encoding.UTF8.GetBytes(_strResponse)
+                File.WriteAllBytes(filePath, pdfBytes)
+                ' Hỏi người dùng có muốn mở file không
+                Dim result As DialogResult = MsgBox("Tải PDF thành công. Bạn có muốn mở file ngay không?", MsgBoxStyle.YesNo)
+                If result = DialogResult.Yes Then
+                    Process.Start(filePath)
+                End If
+                Return True
+            Else
+                ' Trường hợp trả về base64 ngoài JSON
+                Dim pdfBytes As Byte() = Convert.FromBase64String(_strResponse)
+                File.WriteAllBytes(filePath, pdfBytes)
+                ' Hỏi người dùng có muốn mở file không
+                Dim result As DialogResult = MsgBox("Tải PDF thành công. Bạn có muốn mở file ngay không?", MsgBoxStyle.YesNo)
+                If result = DialogResult.Yes Then
+                    Process.Start(filePath)
+                End If
+                Return True
+            End If
+
+        Catch ex As Exception
+            MsgBox("Lỗi tải PDF VNPT: " & ex.Message)
+            Return False
+        End Try
+    End Function
+#End Region
+
+
+
     Public Function ReadDataFromJson(ByVal jsonString As String,
                          Optional ByVal mode As XmlReadMode = XmlReadMode.Auto) As DataSet
         jsonString = jsonString.Trim()
@@ -288,6 +449,21 @@ Public Class supportInvoiceVNPT
         objReturn.HDons.Add(invoiceVat)
         Return objReturn
     End Function
+    Private Function BinddingObjInvoiceDownPDF(ByVal dtAPI As DataTable, ByVal dtRequest As DataTable) As InvoiceTraCuuPDF
+        Dim invoicePDF As New InvoiceTraCuuPDF
+        If dtRequest.Rows.Count > 0 Then
+            Bindings(invoicePDF, dtRequest.Rows(0))
+        End If
+        Return invoicePDF
+    End Function
+    Private Function BinddingObjInvoiceUpdateHD(ByVal dtAPI As DataTable, ByVal dtRequest As DataTable) As InvoiceUpdateHD
+        Dim invoiceUpdateHD As New invoiceUpdateHD
+        If dtRequest.Rows.Count > 0 Then
+            Bindings(invoiceUpdateHD, dtRequest.Rows(0))
+        End If
+        Return invoiceUpdateHD
+    End Function
+
 
 
     Private ReadOnly PropertyCache As New ConcurrentDictionary(Of Type, Dictionary(Of String, PropertyInfo))()
