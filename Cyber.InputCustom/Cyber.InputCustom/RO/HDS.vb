@@ -2114,9 +2114,9 @@ Public Class HDS
         End If
 
         'TxtNgay_CtHD.ReadOnly = True
-        TxtnoteHDDT.ReadOnly = True
-        TxtMau_VATHD.ReadOnly = True
-        TxtSo_seriHD.ReadOnly = True
+        'TxtnoteHDDT.ReadOnly = True
+        'TxtMau_VATHD.ReadOnly = True
+        'TxtSo_seriHD.ReadOnly = True
         'TxtSo_HDDT.ReadOnly = True
         Txtma_tra_cuu.ReadOnly = True
         'TxtEmailHDDT.ReadOnly = True
