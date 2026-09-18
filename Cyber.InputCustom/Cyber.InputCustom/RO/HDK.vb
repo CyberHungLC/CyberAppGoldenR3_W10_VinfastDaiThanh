@@ -579,6 +579,9 @@
         '--Sk
         AddHandler TxtMa_BH.CyberValiting, AddressOf V_Ma_Bh
         AddHandler TxtMa_BH.CyberLeave, AddressOf L_Ma_Bh
+        '--Sk
+        AddHandler TxtMa_Doi.CyberValiting, AddressOf V_Ma_Doi
+        AddHandler TxtMa_Doi.CyberLeave, AddressOf L_Ma_Doi
         '--LhSc
         AddHandler TxtMa_LHSC.CyberValiting, AddressOf V_Ma_LhSC
         AddHandler TxtMa_LHSC.CyberLeave, AddressOf L_Ma_LhSC
@@ -1239,6 +1242,24 @@
         Else
             TxtMa_BH.Text = ""
             Txtten_BH.Text = ""
+        End If
+    End Sub
+
+#End Region
+#Region "Valid --- Ma_Doi"
+    Private Sub V_Ma_Doi(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
+        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        sender.V_LookUp(M_LAN, M_Para, osysvar, AppConn, DsLookup, "Ma_Doi", "DMDOIXE", "1=1", "1=1")
+    End Sub
+    Private Sub L_Ma_Doi(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)
+        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        DrReturn = sender.GetRowsSelectData(True)
+        If Not DrReturn Is Nothing Then
+            TxtMa_Doi.Text = DrReturn.Item("Ma_Doi")
+            TxtTen_Doi.Text = DrReturn.Item("Ten_Doi")
+        Else
+            TxtMa_Doi.Text = ""
+            TxtTen_Doi.Text = ""
         End If
     End Sub
 

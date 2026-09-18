@@ -256,6 +256,9 @@ Partial Class HDK
         Me.TxtSo_May2 = New System.Windows.Forms.TextBox()
         Me.Label40 = New System.Windows.Forms.Label()
         Me.CmdImport_Mau = New System.Windows.Forms.Button()
+        Me.TxtMa_Doi = New Cyber.SmLists.TxtLookup()
+        Me.TxtTen_Doi = New System.Windows.Forms.TextBox()
+        Me.Label55 = New System.Windows.Forms.Label()
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -281,6 +284,7 @@ Partial Class HDK
         CType(Me.TxtMa_HD_H.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMa_Bp_H.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtThe_Vip.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtMa_Doi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CmdEdit
@@ -2146,7 +2150,7 @@ Partial Class HDK
         Me.Label43.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label43.AutoSize = True
         Me.Label43.ForeColor = System.Drawing.Color.Navy
-        Me.Label43.Location = New System.Drawing.Point(689, 200)
+        Me.Label43.Location = New System.Drawing.Point(690, 223)
         Me.Label43.Margin = New System.Windows.Forms.Padding(0)
         Me.Label43.Name = "Label43"
         Me.Label43.Size = New System.Drawing.Size(47, 14)
@@ -2198,7 +2202,7 @@ Partial Class HDK
         Me.Label10.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label10.AutoSize = True
         Me.Label10.ForeColor = System.Drawing.Color.Navy
-        Me.Label10.Location = New System.Drawing.Point(689, 155)
+        Me.Label10.Location = New System.Drawing.Point(690, 178)
         Me.Label10.Margin = New System.Windows.Forms.Padding(0)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(44, 14)
@@ -2211,7 +2215,7 @@ Partial Class HDK
         Me.Txtten_BH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Txtten_BH.BackColor = System.Drawing.Color.White
         Me.Txtten_BH.ForeColor = System.Drawing.Color.Navy
-        Me.Txtten_BH.Location = New System.Drawing.Point(852, 148)
+        Me.Txtten_BH.Location = New System.Drawing.Point(853, 171)
         Me.Txtten_BH.Name = "Txtten_BH"
         Me.Txtten_BH.ReadOnly = True
         Me.Txtten_BH.Size = New System.Drawing.Size(227, 22)
@@ -2224,7 +2228,7 @@ Partial Class HDK
         Me.TxtTen_LHKH.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtTen_LHKH.BackColor = System.Drawing.Color.White
         Me.TxtTen_LHKH.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTen_LHKH.Location = New System.Drawing.Point(852, 196)
+        Me.TxtTen_LHKH.Location = New System.Drawing.Point(853, 219)
         Me.TxtTen_LHKH.Name = "TxtTen_LHKH"
         Me.TxtTen_LHKH.ReadOnly = True
         Me.TxtTen_LHKH.Size = New System.Drawing.Size(227, 22)
@@ -2237,7 +2241,7 @@ Partial Class HDK
         Me.Label51.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label51.AutoSize = True
         Me.Label51.ForeColor = System.Drawing.Color.Navy
-        Me.Label51.Location = New System.Drawing.Point(689, 177)
+        Me.Label51.Location = New System.Drawing.Point(690, 200)
         Me.Label51.Margin = New System.Windows.Forms.Padding(0)
         Me.Label51.Name = "Label51"
         Me.Label51.Size = New System.Drawing.Size(46, 14)
@@ -2250,7 +2254,7 @@ Partial Class HDK
         Me.TxtTen_LHSC.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtTen_LHSC.BackColor = System.Drawing.Color.White
         Me.TxtTen_LHSC.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTen_LHSC.Location = New System.Drawing.Point(852, 173)
+        Me.TxtTen_LHSC.Location = New System.Drawing.Point(853, 196)
         Me.TxtTen_LHSC.Name = "TxtTen_LHSC"
         Me.TxtTen_LHSC.ReadOnly = True
         Me.TxtTen_LHSC.Size = New System.Drawing.Size(227, 22)
@@ -2503,7 +2507,7 @@ Partial Class HDK
         Me.TxtMa_BH.Dv_Master = Nothing
         Me.TxtMa_BH.FilterClient = ""
         Me.TxtMa_BH.FilterSQL = ""
-        Me.TxtMa_BH.Location = New System.Drawing.Point(746, 148)
+        Me.TxtMa_BH.Location = New System.Drawing.Point(747, 171)
         Me.TxtMa_BH.Name = "TxtMa_BH"
         Me.TxtMa_BH.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMa_BH.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
@@ -2524,7 +2528,7 @@ Partial Class HDK
         Me.TxtMa_LHSC.Dv_Master = Nothing
         Me.TxtMa_LHSC.FilterClient = ""
         Me.TxtMa_LHSC.FilterSQL = ""
-        Me.TxtMa_LHSC.Location = New System.Drawing.Point(746, 173)
+        Me.TxtMa_LHSC.Location = New System.Drawing.Point(747, 196)
         Me.TxtMa_LHSC.Name = "TxtMa_LHSC"
         Me.TxtMa_LHSC.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMa_LHSC.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
@@ -2545,7 +2549,7 @@ Partial Class HDK
         Me.TxtMa_LHKH.Dv_Master = Nothing
         Me.TxtMa_LHKH.FilterClient = ""
         Me.TxtMa_LHKH.FilterSQL = ""
-        Me.TxtMa_LHKH.Location = New System.Drawing.Point(746, 196)
+        Me.TxtMa_LHKH.Location = New System.Drawing.Point(747, 219)
         Me.TxtMa_LHKH.Name = "TxtMa_LHKH"
         Me.TxtMa_LHKH.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtMa_LHKH.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
@@ -3571,7 +3575,7 @@ Partial Class HDK
         Me.Label54.AutoSize = True
         Me.Label54.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label54.ForeColor = System.Drawing.Color.Navy
-        Me.Label54.Location = New System.Drawing.Point(854, 128)
+        Me.Label54.Location = New System.Drawing.Point(855, 151)
         Me.Label54.Margin = New System.Windows.Forms.Padding(0)
         Me.Label54.Name = "Label54"
         Me.Label54.Size = New System.Drawing.Size(37, 15)
@@ -3584,7 +3588,7 @@ Partial Class HDK
         Me.TxtDai_Ly.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtDai_Ly.BackColor = System.Drawing.Color.White
         Me.TxtDai_Ly.ForeColor = System.Drawing.Color.Navy
-        Me.TxtDai_Ly.Location = New System.Drawing.Point(908, 125)
+        Me.TxtDai_Ly.Location = New System.Drawing.Point(909, 148)
         Me.TxtDai_Ly.Name = "TxtDai_Ly"
         Me.TxtDai_Ly.Size = New System.Drawing.Size(171, 22)
         Me.TxtDai_Ly.TabIndex = 2116
@@ -3596,7 +3600,7 @@ Partial Class HDK
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.Navy
-        Me.Label3.Location = New System.Drawing.Point(689, 129)
+        Me.Label3.Location = New System.Drawing.Point(690, 152)
         Me.Label3.Margin = New System.Windows.Forms.Padding(0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(48, 15)
@@ -3609,7 +3613,7 @@ Partial Class HDK
         Me.TxtXuat_Xu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtXuat_Xu.BackColor = System.Drawing.Color.White
         Me.TxtXuat_Xu.ForeColor = System.Drawing.Color.Navy
-        Me.TxtXuat_Xu.Location = New System.Drawing.Point(746, 125)
+        Me.TxtXuat_Xu.Location = New System.Drawing.Point(747, 148)
         Me.TxtXuat_Xu.Name = "TxtXuat_Xu"
         Me.TxtXuat_Xu.Size = New System.Drawing.Size(105, 22)
         Me.TxtXuat_Xu.TabIndex = 2118
@@ -3655,7 +3659,7 @@ Partial Class HDK
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.Color.Blue
-        Me.Label13.Location = New System.Drawing.Point(915, 224)
+        Me.Label13.Location = New System.Drawing.Point(916, 247)
         Me.Label13.Margin = New System.Windows.Forms.Padding(0)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(48, 15)
@@ -3669,7 +3673,7 @@ Partial Class HDK
         Me.Label39.AutoSize = True
         Me.Label39.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label39.ForeColor = System.Drawing.Color.Blue
-        Me.Label39.Location = New System.Drawing.Point(689, 224)
+        Me.Label39.Location = New System.Drawing.Point(690, 247)
         Me.Label39.Margin = New System.Windows.Forms.Padding(0)
         Me.Label39.Name = "Label39"
         Me.Label39.Size = New System.Drawing.Size(53, 15)
@@ -3686,7 +3690,7 @@ Partial Class HDK
         Me.TxtDiem_Luy_Ke.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.TxtDiem_Luy_Ke.ForeColor = System.Drawing.Color.Blue
         Me.TxtDiem_Luy_Ke.InputMask = "### ### ### ###"
-        Me.TxtDiem_Luy_Ke.Location = New System.Drawing.Point(967, 221)
+        Me.TxtDiem_Luy_Ke.Location = New System.Drawing.Point(968, 244)
         Me.TxtDiem_Luy_Ke.MaxWholeDigits = 11
         Me.TxtDiem_Luy_Ke.Name = "TxtDiem_Luy_Ke"
         Me.TxtDiem_Luy_Ke.RangeMax = 1.7976931348623157E+308R
@@ -3707,7 +3711,7 @@ Partial Class HDK
         Me.TxtDiem_Ro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
         Me.TxtDiem_Ro.ForeColor = System.Drawing.Color.Blue
         Me.TxtDiem_Ro.InputMask = "### ### ### ###"
-        Me.TxtDiem_Ro.Location = New System.Drawing.Point(746, 220)
+        Me.TxtDiem_Ro.Location = New System.Drawing.Point(747, 243)
         Me.TxtDiem_Ro.MaxWholeDigits = 11
         Me.TxtDiem_Ro.Name = "TxtDiem_Ro"
         Me.TxtDiem_Ro.RangeMax = 1.7976931348623157E+308R
@@ -3726,7 +3730,7 @@ Partial Class HDK
         Me.ChkNonVAT.CheckAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.ChkNonVAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ChkNonVAT.ForeColor = System.Drawing.Color.Navy
-        Me.ChkNonVAT.Location = New System.Drawing.Point(976, 248)
+        Me.ChkNonVAT.Location = New System.Drawing.Point(1241, 245)
         Me.ChkNonVAT.Name = "ChkNonVAT"
         Me.ChkNonVAT.Size = New System.Drawing.Size(105, 17)
         Me.ChkNonVAT.TabIndex = 2133
@@ -3754,7 +3758,7 @@ Partial Class HDK
         'CmbTra_cuu
         '
         Me.CmbTra_cuu.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.CmbTra_cuu.Location = New System.Drawing.Point(853, 220)
+        Me.CmbTra_cuu.Location = New System.Drawing.Point(854, 243)
         Me.CmbTra_cuu.Name = "CmbTra_cuu"
         Me.CmbTra_cuu.Size = New System.Drawing.Size(23, 21)
         Me.CmbTra_cuu.TabIndex = 2135
@@ -3812,7 +3816,7 @@ Partial Class HDK
         Me.TxtNgay_Gx.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.TxtNgay_Gx.ForeColor = System.Drawing.Color.Blue
         Me.TxtNgay_Gx.IsAllowResize = False
-        Me.TxtNgay_Gx.Location = New System.Drawing.Point(799, 245)
+        Me.TxtNgay_Gx.Location = New System.Drawing.Point(1141, 242)
         Me.TxtNgay_Gx.Margin = New System.Windows.Forms.Padding(0)
         Me.TxtNgay_Gx.MaskDate = "dd/MM/yyyy HH:mm"
         Me.TxtNgay_Gx.MaxLength = 10
@@ -3820,9 +3824,9 @@ Partial Class HDK
         Me.TxtNgay_Gx.RangeMax = New Date(2079, 6, 5, 0, 0, 0, 0)
         Me.TxtNgay_Gx.RangeMin = New Date(1900, 1, 1, 0, 0, 0, 0)
         Me.TxtNgay_Gx.ShowDayBeforeMonth = False
-        Me.TxtNgay_Gx.Size = New System.Drawing.Size(155, 22)
+        Me.TxtNgay_Gx.Size = New System.Drawing.Size(97, 22)
         Me.TxtNgay_Gx.TabIndex = 7137
-        Me.TxtNgay_Gx.Value = "25/08/2026 11:25"
+        Me.TxtNgay_Gx.Value = "18/09/2026 14:52"
         Me.TxtNgay_Gx.Visible = False
         '
         'CbbVRC
@@ -3830,7 +3834,7 @@ Partial Class HDK
         Me.CbbVRC.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.CbbVRC.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.CbbVRC.Appearance.Options.UseForeColor = True
-        Me.CbbVRC.Location = New System.Drawing.Point(746, 243)
+        Me.CbbVRC.Location = New System.Drawing.Point(1087, 241)
         Me.CbbVRC.Name = "CbbVRC"
         Me.CbbVRC.Size = New System.Drawing.Size(51, 24)
         Me.CbbVRC.TabIndex = 7138
@@ -3898,11 +3902,61 @@ Partial Class HDK
         Me.CmdImport_Mau.Text = "Import lệnh"
         Me.CmdImport_Mau.UseVisualStyleBackColor = True
         '
+        'TxtMa_Doi
+        '
+        Me.TxtMa_Doi._ActilookupPopup = False
+        Me.TxtMa_Doi.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtMa_Doi.CyberActilookupPopup = True
+        Me.TxtMa_Doi.Dv_ListDetail = Nothing
+        Me.TxtMa_Doi.Dv_Master = Nothing
+        Me.TxtMa_Doi.FilterClient = ""
+        Me.TxtMa_Doi.FilterSQL = ""
+        Me.TxtMa_Doi.Location = New System.Drawing.Point(746, 124)
+        Me.TxtMa_Doi.Name = "TxtMa_Doi"
+        Me.TxtMa_Doi.Properties.Appearance.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtMa_Doi.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.TxtMa_Doi.Properties.Appearance.Options.UseFont = True
+        Me.TxtMa_Doi.Properties.Appearance.Options.UseForeColor = True
+        Me.TxtMa_Doi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat
+        Me.TxtMa_Doi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.TxtMa_Doi.Size = New System.Drawing.Size(105, 22)
+        Me.TxtMa_Doi.TabIndex = 100012
+        Me.TxtMa_Doi.Table_Name = ""
+        '
+        'TxtTen_Doi
+        '
+        Me.TxtTen_Doi.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtTen_Doi.BackColor = System.Drawing.Color.White
+        Me.TxtTen_Doi.ForeColor = System.Drawing.Color.Navy
+        Me.TxtTen_Doi.Location = New System.Drawing.Point(852, 124)
+        Me.TxtTen_Doi.Name = "TxtTen_Doi"
+        Me.TxtTen_Doi.ReadOnly = True
+        Me.TxtTen_Doi.Size = New System.Drawing.Size(227, 22)
+        Me.TxtTen_Doi.TabIndex = 100013
+        Me.TxtTen_Doi.TabStop = False
+        Me.TxtTen_Doi.Tag = ""
+        '
+        'Label55
+        '
+        Me.Label55.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label55.AutoSize = True
+        Me.Label55.ForeColor = System.Drawing.Color.Navy
+        Me.Label55.Location = New System.Drawing.Point(689, 128)
+        Me.Label55.Margin = New System.Windows.Forms.Padding(0)
+        Me.Label55.Name = "Label55"
+        Me.Label55.Size = New System.Drawing.Size(41, 14)
+        Me.Label55.TabIndex = 100014
+        Me.Label55.Tag = "insurrance"
+        Me.Label55.Text = "Đội xe"
+        '
         'HDK
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1353, 742)
+        Me.Controls.Add(Me.TxtMa_Doi)
+        Me.Controls.Add(Me.TxtTen_Doi)
+        Me.Controls.Add(Me.Label55)
         Me.Controls.Add(Me.CmdImport_Mau)
         Me.Controls.Add(Me.TxtSo_May2)
         Me.Controls.Add(Me.Label40)
@@ -4353,6 +4407,9 @@ Partial Class HDK
         Me.Controls.SetChildIndex(Me.Label40, 0)
         Me.Controls.SetChildIndex(Me.TxtSo_May2, 0)
         Me.Controls.SetChildIndex(Me.CmdImport_Mau, 0)
+        Me.Controls.SetChildIndex(Me.Label55, 0)
+        Me.Controls.SetChildIndex(Me.TxtTen_Doi, 0)
+        Me.Controls.SetChildIndex(Me.TxtMa_Doi, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4379,6 +4436,7 @@ Partial Class HDK
         CType(Me.TxtMa_HD_H.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMa_Bp_H.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtThe_Vip.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtMa_Doi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -4619,4 +4677,7 @@ Partial Class HDK
     Friend WithEvents TxtSo_May2 As System.Windows.Forms.TextBox
     Friend WithEvents Label40 As System.Windows.Forms.Label
     Friend WithEvents CmdImport_Mau As Button
+    Friend WithEvents TxtMa_Doi As SmLists.TxtLookup
+    Friend WithEvents TxtTen_Doi As TextBox
+    Friend WithEvents Label55 As Label
 End Class
