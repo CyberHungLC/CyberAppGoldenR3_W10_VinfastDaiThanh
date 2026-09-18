@@ -166,6 +166,8 @@ Partial Class HDS
         Me.TxtNgay_Ct_Huy = New ClsTextBox.txtDate()
         Me.TxtSo_Ct_Huy = New System.Windows.Forms.TextBox()
         Me.CmdUpdate_HoaDon = New DevExpress.XtraEditors.SimpleButton()
+        Me.CbbDelIsVT = New DevExpress.XtraEditors.SimpleButton()
+        Me.cbbDelIsCv = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2304,7 +2306,7 @@ Partial Class HDS
         Me.TxtStt_Rec_Huy.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtStt_Rec_Huy.Font = New System.Drawing.Font("Tahoma", 8.25!)
         Me.TxtStt_Rec_Huy.ForeColor = System.Drawing.Color.Navy
-        Me.TxtStt_Rec_Huy.Location = New System.Drawing.Point(882, 304)
+        Me.TxtStt_Rec_Huy.Location = New System.Drawing.Point(1058, 314)
         Me.TxtStt_Rec_Huy.Name = "TxtStt_Rec_Huy"
         Me.TxtStt_Rec_Huy.ReadOnly = True
         Me.TxtStt_Rec_Huy.Size = New System.Drawing.Size(41, 21)
@@ -2319,7 +2321,7 @@ Partial Class HDS
         Me.Label47.BackColor = System.Drawing.Color.Transparent
         Me.Label47.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Label47.ForeColor = System.Drawing.Color.Blue
-        Me.Label47.Location = New System.Drawing.Point(642, 280)
+        Me.Label47.Location = New System.Drawing.Point(770, 308)
         Me.Label47.Margin = New System.Windows.Forms.Padding(0)
         Me.Label47.Name = "Label47"
         Me.Label47.Size = New System.Drawing.Size(71, 13)
@@ -2334,7 +2336,7 @@ Partial Class HDS
         Me.LbSoHdHuy.BackColor = System.Drawing.Color.Transparent
         Me.LbSoHdHuy.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.LbSoHdHuy.ForeColor = System.Drawing.Color.Blue
-        Me.LbSoHdHuy.Location = New System.Drawing.Point(862, 281)
+        Me.LbSoHdHuy.Location = New System.Drawing.Point(936, 313)
         Me.LbSoHdHuy.Margin = New System.Windows.Forms.Padding(0)
         Me.LbSoHdHuy.Name = "LbSoHdHuy"
         Me.LbSoHdHuy.Size = New System.Drawing.Size(59, 13)
@@ -2350,7 +2352,7 @@ Partial Class HDS
         Me.TxtNgay_Ct_Huy.Font = New System.Drawing.Font("Tahoma", 8.25!)
         Me.TxtNgay_Ct_Huy.ForeColor = System.Drawing.Color.Navy
         Me.TxtNgay_Ct_Huy.isEmpty = True
-        Me.TxtNgay_Ct_Huy.Location = New System.Drawing.Point(730, 278)
+        Me.TxtNgay_Ct_Huy.Location = New System.Drawing.Point(858, 306)
         Me.TxtNgay_Ct_Huy.MaskDate = "dd/MM/yyyy"
         Me.TxtNgay_Ct_Huy.MaxLength = 10
         Me.TxtNgay_Ct_Huy.Name = "TxtNgay_Ct_Huy"
@@ -2358,7 +2360,7 @@ Partial Class HDS
         Me.TxtNgay_Ct_Huy.RangeMin = New Date(1900, 1, 1, 0, 0, 0, 0)
         Me.TxtNgay_Ct_Huy.ReadOnly = True
         Me.TxtNgay_Ct_Huy.ShowDayBeforeMonth = False
-        Me.TxtNgay_Ct_Huy.Size = New System.Drawing.Size(108, 21)
+        Me.TxtNgay_Ct_Huy.Size = New System.Drawing.Size(75, 21)
         Me.TxtNgay_Ct_Huy.TabIndex = 7243
         Me.TxtNgay_Ct_Huy.TabStop = False
         Me.TxtNgay_Ct_Huy.Text = "18/09/2011"
@@ -2372,10 +2374,10 @@ Partial Class HDS
         Me.TxtSo_Ct_Huy.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.TxtSo_Ct_Huy.Font = New System.Drawing.Font("Tahoma", 8.25!)
         Me.TxtSo_Ct_Huy.ForeColor = System.Drawing.Color.Navy
-        Me.TxtSo_Ct_Huy.Location = New System.Drawing.Point(951, 278)
+        Me.TxtSo_Ct_Huy.Location = New System.Drawing.Point(1024, 306)
         Me.TxtSo_Ct_Huy.Name = "TxtSo_Ct_Huy"
         Me.TxtSo_Ct_Huy.ReadOnly = True
-        Me.TxtSo_Ct_Huy.Size = New System.Drawing.Size(147, 21)
+        Me.TxtSo_Ct_Huy.Size = New System.Drawing.Size(75, 21)
         Me.TxtSo_Ct_Huy.TabIndex = 7242
         Me.TxtSo_Ct_Huy.TabStop = False
         Me.TxtSo_Ct_Huy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -2392,11 +2394,43 @@ Partial Class HDS
         Me.CmdUpdate_HoaDon.TabIndex = 7246
         Me.CmdUpdate_HoaDon.Text = "Update hoá đơn"
         '
+        'CbbDelIsVT
+        '
+        Me.CbbDelIsVT.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.CbbDelIsVT.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CbbDelIsVT.Appearance.Options.UseFont = True
+        Me.CbbDelIsVT.AutoSize = True
+        Me.CbbDelIsVT.Cursor = System.Windows.Forms.Cursors.AppStarting
+        Me.CbbDelIsVT.Image = CType(resources.GetObject("CbbDelIsVT.Image"), System.Drawing.Image)
+        Me.CbbDelIsVT.Location = New System.Drawing.Point(946, 278)
+        Me.CbbDelIsVT.Name = "CbbDelIsVT"
+        Me.CbbDelIsVT.Size = New System.Drawing.Size(152, 22)
+        Me.CbbDelIsVT.TabIndex = 7248
+        Me.CbbDelIsVT.TabStop = False
+        Me.CbbDelIsVT.Text = "Lọc vật tư chưa duyệt"
+        '
+        'cbbDelIsCv
+        '
+        Me.cbbDelIsCv.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbbDelIsCv.Appearance.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cbbDelIsCv.Appearance.Options.UseFont = True
+        Me.cbbDelIsCv.AutoSize = True
+        Me.cbbDelIsCv.Cursor = System.Windows.Forms.Cursors.AppStarting
+        Me.cbbDelIsCv.Image = CType(resources.GetObject("cbbDelIsCv.Image"), System.Drawing.Image)
+        Me.cbbDelIsCv.Location = New System.Drawing.Point(766, 278)
+        Me.cbbDelIsCv.Name = "cbbDelIsCv"
+        Me.cbbDelIsCv.Size = New System.Drawing.Size(170, 22)
+        Me.cbbDelIsCv.TabIndex = 7247
+        Me.cbbDelIsCv.TabStop = False
+        Me.cbbDelIsCv.Text = "Lọc công việc chưa duyệt"
+        '
         'HDS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1102, 631)
+        Me.Controls.Add(Me.CbbDelIsVT)
+        Me.Controls.Add(Me.cbbDelIsCv)
         Me.Controls.Add(Me.CmdUpdate_HoaDon)
         Me.Controls.Add(Me.Label47)
         Me.Controls.Add(Me.LbSoHdHuy)
@@ -2681,6 +2715,8 @@ Partial Class HDS
         Me.Controls.SetChildIndex(Me.LbSoHdHuy, 0)
         Me.Controls.SetChildIndex(Me.Label47, 0)
         Me.Controls.SetChildIndex(Me.CmdUpdate_HoaDon, 0)
+        Me.Controls.SetChildIndex(Me.cbbDelIsCv, 0)
+        Me.Controls.SetChildIndex(Me.CbbDelIsVT, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2848,4 +2884,6 @@ Partial Class HDS
     Friend WithEvents TxtSo_Ct_Huy As TextBox
     Friend WithEvents CmdTaoHD As DevExpress.XtraEditors.SimpleButton
     Friend WithEvents CmdUpdate_HoaDon As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CbbDelIsVT As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents cbbDelIsCv As DevExpress.XtraEditors.SimpleButton
 End Class

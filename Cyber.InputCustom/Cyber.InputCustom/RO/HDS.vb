@@ -352,6 +352,11 @@ Public Class HDS
         AddHandler CmdLoc_Ro.Click, AddressOf V_Loc_RO
         '----------------------------------------------------------------------------------------------------------
         AddHandler TxtTien_HD.Leave, AddressOf L_Tien_Hd
+
+        'Clead công việc/ vật tư chưa duyệt
+        AddHandler cbbDelIsCv.Click, AddressOf V_Dele_Cv
+        AddHandler CbbDelIsVT.Click, AddressOf V_Dele_VT
+
         'Tạo hóa đơn nháp
         AddHandler CmdTaoHD.Click, AddressOf V_Tao_Invoice
         ''Phát hành hóa đơn
@@ -889,6 +894,40 @@ Public Class HDS
         'End If
     End Sub
 #End Region
+
+#Region "Dele_Cv"
+    Private Sub V_Dele_Cv(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        V_DelCtCv()
+        UpdateList()
+    End Sub
+    Private Sub V_DelCtCv()
+        For iRow As Integer = Dt_DetailCvTmp.Rows.Count - 1 To 0 Step -1
+            Dt_DetailCvTmp.Rows(iRow).BeginEdit()
+            If Dt_DetailCvTmp.Rows(iRow).Item("IS_CV") = 1 Then
+                Dt_DetailCvTmp.Rows(iRow).Delete()
+                Dt_DetailCvTmp.Rows(iRow).EndEdit()
+                Dt_DetailCvTmp.AcceptChanges()
+            End If
+        Next
+    End Sub
+#End Region
+#Region "Dele_VT"
+    Private Sub V_Dele_VT(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        V_DelCtVT()
+        UpdateList()
+    End Sub
+    Private Sub V_DelCtVT()
+        For iRow As Integer = Dt_DetailTmp.Rows.Count - 1 To 0 Step -1
+            Dt_DetailTmp.Rows(iRow).BeginEdit()
+            If Dt_DetailTmp.Rows(iRow).Item("IS_VT") = 1 Then
+                Dt_DetailTmp.Rows(iRow).Delete()
+                Dt_DetailTmp.Rows(iRow).EndEdit()
+                Dt_DetailTmp.AcceptChanges()
+            End If
+        Next
+    End Sub
+#End Region
+
 #Region "Valid - Detail"
 #Region "Valid - Detail - Core"
     Private Sub UpdateList()
@@ -2118,7 +2157,7 @@ Public Class HDS
         'TxtMau_VATHD.ReadOnly = True
         'TxtSo_seriHD.ReadOnly = True
         'TxtSo_HDDT.ReadOnly = True
-        Txtma_tra_cuu.ReadOnly = True
+        'Txtma_tra_cuu.ReadOnly = True
         'TxtEmailHDDT.ReadOnly = True
         TxtDiem_Luy_Ke.ReadOnly = True
         TxtDiem_Ro.ReadOnly = True

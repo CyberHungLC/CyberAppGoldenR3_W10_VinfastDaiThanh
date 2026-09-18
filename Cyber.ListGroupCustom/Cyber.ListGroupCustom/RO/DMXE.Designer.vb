@@ -87,7 +87,11 @@ Partial Class DMXE
         Me.TxtXuat_Xu = New System.Windows.Forms.TextBox()
         Me.TxtSo_May2 = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
+        Me.TxtMa_Doi = New Cyber.SmLists.TxtLookup()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.TxtTen_Doi = New System.Windows.Forms.TextBox()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtMa_Doi.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ButtExit
@@ -844,10 +848,52 @@ Partial Class DMXE
         Me.Label15.Tag = "Car number"
         Me.Label15.Text = "Số máy 2"
         '
+        'TxtMa_Doi
+        '
+        Me.TxtMa_Doi._ActilookupPopup = False
+        Me.TxtMa_Doi.CyberActilookupPopup = True
+        Me.TxtMa_Doi.Dv_ListDetail = Nothing
+        Me.TxtMa_Doi.Dv_Master = Nothing
+        Me.TxtMa_Doi.FilterClient = ""
+        Me.TxtMa_Doi.FilterSQL = ""
+        Me.TxtMa_Doi.Location = New System.Drawing.Point(385, 47)
+        Me.TxtMa_Doi.Name = "TxtMa_Doi"
+        Me.TxtMa_Doi.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.TxtMa_Doi.Properties.Appearance.Options.UseForeColor = True
+        Me.TxtMa_Doi.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.TxtMa_Doi.Size = New System.Drawing.Size(149, 20)
+        Me.TxtMa_Doi.TabIndex = 2083
+        Me.TxtMa_Doi.Table_Name = ""
+        '
+        'Label16
+        '
+        Me.Label16.Location = New System.Drawing.Point(304, 51)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(75, 15)
+        Me.Label16.TabIndex = 2084
+        Me.Label16.Tag = "Customer code"
+        Me.Label16.Text = "Đội xe"
+        '
+        'TxtTen_Doi
+        '
+        Me.TxtTen_Doi.BackColor = System.Drawing.Color.White
+        Me.TxtTen_Doi.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtTen_Doi.Enabled = False
+        Me.TxtTen_Doi.ForeColor = System.Drawing.Color.Navy
+        Me.TxtTen_Doi.Location = New System.Drawing.Point(540, 50)
+        Me.TxtTen_Doi.Name = "TxtTen_Doi"
+        Me.TxtTen_Doi.ReadOnly = True
+        Me.TxtTen_Doi.Size = New System.Drawing.Size(248, 14)
+        Me.TxtTen_Doi.TabIndex = 2085
+        Me.TxtTen_Doi.TabStop = False
+        '
         'DMXE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(794, 456)
+        Me.Controls.Add(Me.TxtTen_Doi)
+        Me.Controls.Add(Me.TxtMa_Doi)
+        Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TxtSo_May2)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.Label54)
@@ -993,7 +1039,11 @@ Partial Class DMXE
         Me.Controls.SetChildIndex(Me.Label54, 0)
         Me.Controls.SetChildIndex(Me.Label15, 0)
         Me.Controls.SetChildIndex(Me.TxtSo_May2, 0)
+        Me.Controls.SetChildIndex(Me.Label16, 0)
+        Me.Controls.SetChildIndex(Me.TxtMa_Doi, 0)
+        Me.Controls.SetChildIndex(Me.TxtTen_Doi, 0)
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtMa_Doi.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1066,4 +1116,7 @@ Partial Class DMXE
     Friend WithEvents TxtXuat_Xu As System.Windows.Forms.TextBox
     Friend WithEvents TxtSo_May2 As Windows.Forms.TextBox
     Friend WithEvents Label15 As Windows.Forms.Label
+    Friend WithEvents TxtMa_Doi As SmLists.TxtLookup
+    Friend WithEvents Label16 As Windows.Forms.Label
+    Friend WithEvents TxtTen_Doi As Windows.Forms.TextBox
 End Class

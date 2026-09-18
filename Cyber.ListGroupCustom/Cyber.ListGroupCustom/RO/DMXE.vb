@@ -117,6 +117,8 @@
     Protected Overrides Sub V_Load()
         MyBase.V_Load()
         If TxtMa_Kh.Text.Trim <> "" Then If TxtMa_Kh.Text.Trim.Trim = "" Then TxtTen_Kh.Text = "" Else TxtTen_Kh.Text = CyberSmodb.SQLGetvalue(Appconn, "Ten_kh", "Dmkh", "(Ma_kh = N'" + TxtMa_Kh.Text.Trim + "')", CyberSmlib)
+        TxtTen_Doi.Text = CyberSmodb.SQLGetvalue(Appconn, "Ten_Doi", "DMDoiXe", "(Ma_Doi = N'" + TxtMa_Doi.Text.Trim + "')", CyberSmlib)
+
         If Me.Mode = "M" Then TxtMa_Dvcs.Text = M_Ma_Dvcs
         If Me.Mode = "M" Then TxtNgay_mua.Value = Now.Date
     End Sub
@@ -137,6 +139,11 @@
         AddHandler Txtdia_chi.Leave, AddressOf V_Dia_Chi
         AddHandler TxtTen_khvat.Leave, AddressOf V_Ten_khVat
         AddHandler txtdia_chivat.Leave, AddressOf V_Dia_ChiVat
+
+        RemoveHandler TxtMa_Doi.CyberValiting, AddressOf V_Ma_Doi
+        RemoveHandler TxtMa_Doi.CyberLeave, AddressOf L_Ma_Doi
+        AddHandler TxtMa_Doi.CyberValiting, AddressOf V_Ma_Doi
+        AddHandler TxtMa_Doi.CyberLeave, AddressOf L_Ma_Doi
         '------------------------
     End Sub
     Protected Overrides Sub V_GetValueParameter()
@@ -283,6 +290,23 @@
         End If
     End Sub
 #End Region
+#Region "Vali --- DmDoiXe"
+    Private Sub V_Ma_Doi(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        TxtMa_Doi.V_LookUp(M_LAN, M_Para, oSysvar, Appconn, DsLookup, "Ma_Doi", "DmDoiXe", "1=1", "1=1")
+    End Sub
+    Private Sub L_Ma_Doi(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        DrReturn = TxtMa_Doi.GetRowsSelectData(True)
+        If Not DrReturn Is Nothing Then
+            TxtMa_Doi.Text = DrReturn.Item("Ma_Doi")
+            TxtTen_Doi.Text = DrReturn.Item("Ten_Doi")
+        Else
+            TxtMa_Doi.Text = ""
+            TxtTen_Doi.Text = ""
+        End If
+    End Sub
+#End Region
+
+
 #End Region
 #Region "Buuton"
     Protected Overrides Sub V_Save(ByVal sender As Object, ByVal e As System.EventArgs)
