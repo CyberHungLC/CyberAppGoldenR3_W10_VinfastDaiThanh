@@ -26,36 +26,40 @@ Partial Class DMDOIXE
         Me.LabMa_Nh1 = New System.Windows.Forms.Label()
         Me.TxtTen_TTCP = New System.Windows.Forms.TextBox()
         Me.TxtMa_TTCP = New Cyber.SmLists.TxtLookup()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TxtTen_KH = New System.Windows.Forms.TextBox()
+        Me.TxtMa_KH = New Cyber.SmLists.TxtLookup()
         CType(Me.TxtMa_TTCP.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtMa_KH.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ButtExit
         '
         Me.ButtExit.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.ButtExit.Appearance.Options.UseForeColor = True
-        Me.ButtExit.Location = New System.Drawing.Point(371, 75)
+        Me.ButtExit.Location = New System.Drawing.Point(371, 101)
         Me.ButtExit.TabIndex = 13
         '
         'ButtOK
         '
         Me.ButtOK.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.ButtOK.Appearance.Options.UseForeColor = True
-        Me.ButtOK.Location = New System.Drawing.Point(269, 75)
+        Me.ButtOK.Location = New System.Drawing.Point(269, 101)
         Me.ButtOK.TabIndex = 12
         '
         'TxtMa_Dvcs
         '
-        Me.TxtMa_Dvcs.Location = New System.Drawing.Point(163, 81)
+        Me.TxtMa_Dvcs.Location = New System.Drawing.Point(163, 107)
         Me.TxtMa_Dvcs.TabIndex = 11
         '
         'ChkActi
         '
-        Me.ChkActi.Location = New System.Drawing.Point(110, 85)
+        Me.ChkActi.Location = New System.Drawing.Point(110, 111)
         Me.ChkActi.TabIndex = 10
         '
         'GroupBoxLine
         '
-        Me.GroupBoxLine.Location = New System.Drawing.Point(2, 65)
+        Me.GroupBoxLine.Location = New System.Drawing.Point(2, 91)
         Me.GroupBoxLine.Size = New System.Drawing.Size(469, 9)
         '
         'TxtMa_Doi
@@ -85,7 +89,7 @@ Partial Class DMDOIXE
         '
         'Labten_Kho2
         '
-        Me.Labten_Kho2.Location = New System.Drawing.Point(5, 30)
+        Me.Labten_Kho2.Location = New System.Drawing.Point(5, 28)
         Me.Labten_Kho2.Name = "Labten_Kho2"
         Me.Labten_Kho2.Size = New System.Drawing.Size(100, 18)
         Me.Labten_Kho2.TabIndex = 14
@@ -94,7 +98,7 @@ Partial Class DMDOIXE
         '
         'LabMa_Nh1
         '
-        Me.LabMa_Nh1.Location = New System.Drawing.Point(5, 48)
+        Me.LabMa_Nh1.Location = New System.Drawing.Point(5, 71)
         Me.LabMa_Nh1.Name = "LabMa_Nh1"
         Me.LabMa_Nh1.Size = New System.Drawing.Size(100, 18)
         Me.LabMa_Nh1.TabIndex = 24
@@ -108,7 +112,7 @@ Partial Class DMDOIXE
         Me.TxtTen_TTCP.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TxtTen_TTCP.Enabled = False
         Me.TxtTen_TTCP.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTen_TTCP.Location = New System.Drawing.Point(212, 51)
+        Me.TxtTen_TTCP.Location = New System.Drawing.Point(212, 74)
         Me.TxtTen_TTCP.Name = "TxtTen_TTCP"
         Me.TxtTen_TTCP.ReadOnly = True
         Me.TxtTen_TTCP.Size = New System.Drawing.Size(259, 14)
@@ -124,7 +128,7 @@ Partial Class DMDOIXE
         Me.TxtMa_TTCP.Dv_Master = Nothing
         Me.TxtMa_TTCP.FilterClient = ""
         Me.TxtMa_TTCP.FilterSQL = ""
-        Me.TxtMa_TTCP.Location = New System.Drawing.Point(110, 48)
+        Me.TxtMa_TTCP.Location = New System.Drawing.Point(110, 71)
         Me.TxtMa_TTCP.Name = "TxtMa_TTCP"
         Me.TxtMa_TTCP.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.TxtMa_TTCP.Properties.Appearance.Options.UseForeColor = True
@@ -134,11 +138,53 @@ Partial Class DMDOIXE
         Me.TxtMa_TTCP.Table_Name = ""
         Me.TxtMa_TTCP.Visible = False
         '
+        'Label1
+        '
+        Me.Label1.Location = New System.Drawing.Point(5, 50)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(100, 18)
+        Me.Label1.TabIndex = 27
+        Me.Label1.Tag = "Group 1"
+        Me.Label1.Text = "Mã khách hàng"
+        '
+        'TxtTen_KH
+        '
+        Me.TxtTen_KH.BackColor = System.Drawing.Color.White
+        Me.TxtTen_KH.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtTen_KH.Enabled = False
+        Me.TxtTen_KH.ForeColor = System.Drawing.Color.Navy
+        Me.TxtTen_KH.Location = New System.Drawing.Point(212, 52)
+        Me.TxtTen_KH.Name = "TxtTen_KH"
+        Me.TxtTen_KH.ReadOnly = True
+        Me.TxtTen_KH.Size = New System.Drawing.Size(259, 14)
+        Me.TxtTen_KH.TabIndex = 26
+        Me.TxtTen_KH.TabStop = False
+        '
+        'TxtMa_KH
+        '
+        Me.TxtMa_KH._ActilookupPopup = False
+        Me.TxtMa_KH.CyberActilookupPopup = True
+        Me.TxtMa_KH.Dv_ListDetail = Nothing
+        Me.TxtMa_KH.Dv_Master = Nothing
+        Me.TxtMa_KH.FilterClient = ""
+        Me.TxtMa_KH.FilterSQL = ""
+        Me.TxtMa_KH.Location = New System.Drawing.Point(110, 49)
+        Me.TxtMa_KH.Name = "TxtMa_KH"
+        Me.TxtMa_KH.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.TxtMa_KH.Properties.Appearance.Options.UseForeColor = True
+        Me.TxtMa_KH.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.TxtMa_KH.Size = New System.Drawing.Size(96, 20)
+        Me.TxtMa_KH.TabIndex = 25
+        Me.TxtMa_KH.Table_Name = ""
+        '
         'DMDOIXE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(473, 108)
+        Me.ClientSize = New System.Drawing.Size(473, 134)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.TxtTen_KH)
+        Me.Controls.Add(Me.TxtMa_KH)
         Me.Controls.Add(Me.LabMa_Nh1)
         Me.Controls.Add(Me.TxtTen_TTCP)
         Me.Controls.Add(Me.TxtMa_TTCP)
@@ -150,11 +196,6 @@ Partial Class DMDOIXE
         Me.MinimumSize = New System.Drawing.Size(400, 90)
         Me.Name = "DMDOIXE"
         Me.Text = "Danh mục đội xe"
-        Me.Controls.SetChildIndex(Me.GroupBoxLine, 0)
-        Me.Controls.SetChildIndex(Me.TxtMa_Dvcs, 0)
-        Me.Controls.SetChildIndex(Me.ChkActi, 0)
-        Me.Controls.SetChildIndex(Me.ButtExit, 0)
-        Me.Controls.SetChildIndex(Me.ButtOK, 0)
         Me.Controls.SetChildIndex(Me.LabTen_kho, 0)
         Me.Controls.SetChildIndex(Me.TxtMa_Doi, 0)
         Me.Controls.SetChildIndex(Me.Labten_Kho2, 0)
@@ -162,7 +203,16 @@ Partial Class DMDOIXE
         Me.Controls.SetChildIndex(Me.TxtMa_TTCP, 0)
         Me.Controls.SetChildIndex(Me.TxtTen_TTCP, 0)
         Me.Controls.SetChildIndex(Me.LabMa_Nh1, 0)
+        Me.Controls.SetChildIndex(Me.GroupBoxLine, 0)
+        Me.Controls.SetChildIndex(Me.TxtMa_Dvcs, 0)
+        Me.Controls.SetChildIndex(Me.ChkActi, 0)
+        Me.Controls.SetChildIndex(Me.ButtExit, 0)
+        Me.Controls.SetChildIndex(Me.ButtOK, 0)
+        Me.Controls.SetChildIndex(Me.TxtMa_KH, 0)
+        Me.Controls.SetChildIndex(Me.TxtTen_KH, 0)
+        Me.Controls.SetChildIndex(Me.Label1, 0)
         CType(Me.TxtMa_TTCP.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtMa_KH.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -174,5 +224,7 @@ Partial Class DMDOIXE
     Friend WithEvents LabMa_Nh1 As System.Windows.Forms.Label
     Friend WithEvents TxtTen_TTCP As System.Windows.Forms.TextBox
     Friend WithEvents TxtMa_TTCP As Cyber.SmLists.TxtLookup
-
+    Friend WithEvents Label1 As Windows.Forms.Label
+    Friend WithEvents TxtTen_KH As Windows.Forms.TextBox
+    Friend WithEvents TxtMa_KH As SmLists.TxtLookup
 End Class

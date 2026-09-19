@@ -14,6 +14,7 @@
         MyBase.V_Load()
 
         TxtTen_TTCP.Text = CyberSmodb.SQLGetvalue(Appconn, "Ten_TTCP", "DMTTCP", "(Ma_TTCP = N'" + TxtMa_TTCP.Text.Trim + "')", CyberSmlib)
+        TxtTen_KH.Text = CyberSmodb.SQLGetvalue(Appconn, "Ten_KH", "DMKH", "(Ma_KH = N'" + TxtMa_KH.Text.Trim + "')", CyberSmlib)
         If Me.Mode = "M" Then TxtMa_Dvcs.Text = M_Ma_Dvcs
 
     End Sub
@@ -25,6 +26,11 @@
         AddHandler TxtMa_TTCP.CyberValiting, AddressOf V_Ma_TTCP
         AddHandler TxtMa_TTCP.CyberLeave, AddressOf L_Ma_TTCP
 
+        RemoveHandler TxtMa_KH.CyberValiting, AddressOf V_Ma_KH
+        RemoveHandler TxtMa_KH.CyberLeave, AddressOf L_Ma_KH
+        AddHandler TxtMa_KH.CyberValiting, AddressOf V_Ma_KH
+        AddHandler TxtMa_KH.CyberLeave, AddressOf L_Ma_KH
+
     End Sub
     Protected Overrides Sub V_GetValueParameter()
         MyBase.V_GetValueParameter()
@@ -32,7 +38,7 @@
     End Sub
 #End Region
 #Region "Valid"
-#Region "Vali --- NH_Kho1"
+#Region "Vali --- Ma_TTCP"
     Private Sub V_Ma_TTCP(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TxtMa_TTCP.V_LookUp(M_LAN, M_Para, oSysvar, Appconn, DsLookup, "Ma_TTCP", "DMTTCP", "1=1", "1=1")
     End Sub
@@ -44,6 +50,21 @@
         Else
             TxtMa_TTCP.Text = ""
             TxtTen_TTCP.Text = ""
+        End If
+    End Sub
+#End Region
+#Region "Vali --- Ma_KH"
+    Private Sub V_Ma_KH(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        TxtMa_KH.V_LookUp(M_LAN, M_Para, oSysvar, Appconn, DsLookup, "Ma_KH", "DMKH", "1=1", "1=1")
+    End Sub
+    Private Sub L_Ma_KH(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        DrReturn = TxtMa_KH.GetRowsSelectData(True)
+        If Not DrReturn Is Nothing Then
+            TxtMa_KH.Text = DrReturn.Item("Ma_KH")
+            TxtTen_KH.Text = DrReturn.Item("Ten_KH")
+        Else
+            TxtMa_KH.Text = ""
+            TxtTen_KH.Text = ""
         End If
     End Sub
 #End Region

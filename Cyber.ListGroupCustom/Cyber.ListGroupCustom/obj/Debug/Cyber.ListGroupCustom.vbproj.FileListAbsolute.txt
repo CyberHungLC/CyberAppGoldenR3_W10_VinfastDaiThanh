@@ -126,3 +126,4 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.DMHS.resources
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.FrmDmHs.resources
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.DMDOIXE.resources
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ListGroupCustom\Cyber.ListGroupCustom\obj\Debug\Cyber.ListGroupCustom.DMSC.resources

@@ -1257,12 +1257,29 @@
         If Not DrReturn Is Nothing Then
             TxtMa_Doi.Text = DrReturn.Item("Ma_Doi")
             TxtTen_Doi.Text = DrReturn.Item("Ten_Doi")
+            V_Get_TT_DoiXe()
         Else
             TxtMa_Doi.Text = ""
             TxtTen_Doi.Text = ""
         End If
     End Sub
+    Private Sub V_Get_TT_DoiXe()
+        Dim _Ngay_Ct As Date = TxtNgay_Ct.Value
+        Dim _Ma_GD As String = CbbMa_GD.SelectedValue.ToString.Trim
+        Dim _Ma_Post As String = CbbMa_Post.SelectedValue.ToString.Trim
+        Dim DsTmp As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_GetTT_DoiXe", TxtMa_Kx.Text.Trim & "#" & TxtMa_Xe.Text & "#" & _Ma_GD & "#" & _Ma_Post & "#" & TxtMa_Doi.Text.Trim & "#" & _Ngay_Ct.ToString("yyyyMMdd") & "#" & M_Stt_Rec & "#" & M_Ma_CT & "#" & M_Mode & "#" & M_Ma_Dvcs & "#" & M_User_Name)
+        For i As Integer = 0 To DsTmp.Tables.Count - 1
+            CyberSmodb.SetNotNullTable(DsTmp.Tables(i))
+        Next
+        If Not CyberSupport.V_MsgChk(DsTmp.Tables(0), SysVar, M_LAN) Or DsTmp.Tables.Count < 1 Then
+            DsTmp.Dispose()
+            Exit Sub
+        End If
 
+        CyberSmodb.SetValueTObj_1(Me, DsTmp.Tables(1).Rows(0))
+        DsTmp.Dispose()
+
+    End Sub
 #End Region
 #Region "Valid --- Ma_LhSC"
     Private Sub V_Ma_LhSC(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs)

@@ -167,6 +167,12 @@
     <Compile Include="RO\DMDOIXE.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RO\DMSC.designer.vb">
+      <DependentUpon>DMSC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RO\DMSC.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RO\DMVITRIVT.designer.vb">
       <DependentUpon>DMVITRIVT.vb</DependentUpon>
     </Compile>
@@ -225,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RO\DMDOIXE.resx">
       <DependentUpon>DMDOIXE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RO\DMSC.resx">
+      <DependentUpon>DMSC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RO\DMVITRIVT.resx">
       <DependentUpon>DMVITRIVT.vb</DependentUpon>
