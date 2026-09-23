@@ -2743,7 +2743,7 @@ _KT:
         If Not ChkVT.Checked Then
             Dv_DetailTmp.Item(iRow).BeginEdit()
             If CyberSupport.ChkFieldKey(Dv_DetailTmp.Item(iRow).Item("Ma_TT"), "I,C") Then
-                Dv_DetailTmp.Item(iRow).Item("CK_I") = IIf(Dv_DetailTmp.Item(iRow).Item("PT_Ck_I") = 0, Dv_DetailTmp.Item(iRow).Item("CK_I"), _
+                Dv_DetailTmp.Item(iRow).Item("CK_I") = IIf(Dv_DetailTmp.Item(iRow).Item("PT_Ck_I") = 0, Dv_DetailTmp.Item(iRow).Item("CK_I"),
                      CyberSupport.V_Round(Dv_DetailTmp.Item(iRow).Item("Tien2") * Dv_DetailTmp.Item(iRow).Item("PT_Ck_I") / 100, 0))
             Else
                 Dv_DetailTmp.Item(iRow).Item("PT_Ck_I") = 0

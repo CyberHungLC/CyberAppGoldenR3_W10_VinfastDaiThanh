@@ -158,6 +158,12 @@
     <Compile Include="GL\GLSO1_NTK.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RO\BCDV_002.designer.vb">
+      <DependentUpon>BCDV_002.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RO\BCDV_002.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RO\BCRO_012.designer.vb">
       <DependentUpon>BCRO_012.vb</DependentUpon>
     </Compile>
@@ -266,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GL\GLSO1_NTK.resx">
       <DependentUpon>GLSO1_NTK.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RO\BCDV_002.resx">
+      <DependentUpon>BCDV_002.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RO\BCRO_012.resx">
       <DependentUpon>BCRO_012.vb</DependentUpon>

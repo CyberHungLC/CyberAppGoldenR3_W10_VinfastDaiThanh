@@ -203,7 +203,7 @@ Partial Class BCDV_001
         Me.LabSo_Ct1.Tag = "Voucher from"
         Me.LabSo_Ct1.Text = "Số R/O"
         '
-        'BCDV_043
+        'BCDV_001
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(675, 218)
@@ -217,7 +217,7 @@ Partial Class BCDV_001
         Me.Controls.Add(Me.LabM_Ngay_Ct1)
         Me.Controls.Add(Me.TxtM_Ngay_Ct2)
         Me.Controls.Add(Me.TxtM_Ngay_Ct1)
-        Me.Name = "BCDV_043"
+        Me.Name = "BCDV_001"
         Me.Text = "Điều kiện lọc Báo cáo những khách hàng đến hạn tái tục trước 2 tháng"
         Me.Controls.SetChildIndex(Me.TxtM_Ngay_Ct1, 0)
         Me.Controls.SetChildIndex(Me.TxtM_Ngay_Ct2, 0)

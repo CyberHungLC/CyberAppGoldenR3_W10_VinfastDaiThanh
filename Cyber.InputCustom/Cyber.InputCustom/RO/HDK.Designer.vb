@@ -3826,7 +3826,7 @@ Partial Class HDK
         Me.TxtNgay_Gx.ShowDayBeforeMonth = False
         Me.TxtNgay_Gx.Size = New System.Drawing.Size(97, 22)
         Me.TxtNgay_Gx.TabIndex = 7137
-        Me.TxtNgay_Gx.Value = "18/09/2026 14:52"
+        Me.TxtNgay_Gx.Value = "22/09/2026 17:32"
         Me.TxtNgay_Gx.Visible = False
         '
         'CbbVRC

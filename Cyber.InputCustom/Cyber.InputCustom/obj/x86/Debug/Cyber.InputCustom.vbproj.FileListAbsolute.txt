@@ -262,3 +262,4 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.InputCustom\Cyber.InputCustom\obj\x86\Debug\Cyber.InputCustom.pdb
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.InputCustom.pdb
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.InputCustom.xml
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.InputCustom\Cyber.InputCustom\obj\x86\Debug\Cyber.InputCustom.ISC.resources

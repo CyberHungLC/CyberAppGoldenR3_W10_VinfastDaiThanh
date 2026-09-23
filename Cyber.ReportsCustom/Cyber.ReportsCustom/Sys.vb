@@ -21,7 +21,9 @@ Public Class Sys
         Dim _Return As Cyber.From.FilterReport = Nothing
 
         Select Case Cp_Name.ToString.Trim.ToUpper
- 
+            Case "CP_BCDV_002".ToUpper.Trim
+                _Return = New BCDV_002
+
             Case "CP_BCRO_011".ToUpper.Trim
                 _Return = New BCRO_011
 
