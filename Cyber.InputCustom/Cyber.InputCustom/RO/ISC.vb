@@ -7,8 +7,7 @@ Public Class ISC
     Dim M_Para As String() = Me.Para
     Dim M_AppConn As SqlConnection
     Dim M_DsData, M_DsHead, M_DsLookUp As DataSet
-    Dim Dt_DetailCv, Dt_DetailCvTmp As New DataTable
-    Dim Dv_DetailCv, Dv_DetailCvTmp As New DataView
+
 #End Region
 #Region "Khai bao bien Paramater----------------------"
 #End Region
@@ -18,17 +17,11 @@ Public Class ISC
     Dim CyberFrom As New Cyber.From.Sys
 #End Region
 #Region "Columns Edit"
-    Dim EditMa_Vitri, EditMa_Vt, EditMa_CVVt, EditMa_CtCVVT, EditMa_NVKD, EditTen_Vt, EditTen_Vt3, EditDVt, EditMa_kho_i, EditTon13, EditTen_kho_i, EditMa_TT,
+    Dim EditMa_Vitri, EditMa_Vt, EditMa_CV, EditMa_CVVt, EditMa_CtCVVT, EditMa_NVKD, EditTen_Vt, EditTen_Vt3, EditDVt, EditMa_kho_i, EditTon13, EditTen_kho_i, EditMa_TT,
            EditMa_Vv_i, EditMa_Hd_i, EditMa_phi_I, EditMa_Sp_i, EditMa_ku_I, EditMa_TTLN_I, EditMa_TTCP_I, EditMa_BP_I, EditMa_HS_I, EditMa_CD_I As New Cyber.Fill.CyberColumnGridView
     Dim EditSo_Luong, EditTien2, EditTien0, EditGia_TK, EditGia2, EditCk_i,
         EditPt_Ck_i, EditThue_Suat, EditThue, EditTien_BH, EditThue_BH, EditLAN, EditSl_TD_I As New Cyber.Fill.CyberColumnGridView
     Dim Editma_KTV_I, EditMa_TD1_i, EditMa_TD2_i, EditMa_TD3_i, EditMa_TD4_i, EditMa_TD5_i As New Cyber.Fill.CyberColumnGridView
-    '-------------------------------------------
-    Dim EditMa_CVCv, EditTen_CVCv, EditTIEN_CV0Cv, EditTen_CV3Cv, EditMa_TTCv, EditMa_CtcvCv, EditGia_CVCV, EditGio_TCCV, EditTien_CVCv, EditPT_Ck_ICv, EditCk_ICv, EditThue_SuatCv,
-        EditThueCV, EditTien_BHCv, EditThue_BHCv, EditLANCv As New Cyber.Fill.CyberColumnGridView
-    Dim EditMa_Hd_iCV, EditMa_Vv_iCV, EditMa_phi_iCV, EditMa_Sp_iCV, EditMa_ku_iCV, EditMa_TTLN_iCV, EditMa_TTCP_iCV, EditMa_BP_iCV, EditMa_HS_iCV, EditMa_CD_iCV As New Cyber.Fill.CyberColumnGridView
-    Dim Editma_KTV_ICV, EditMa_TD1_iCV, EditMa_TD2_iCV, EditMa_TD3_iCV, EditMa_TD4_iCV, EditMa_TD5_iCV As New Cyber.Fill.CyberColumnGridView
-    '-------------------------------------------
     '---Dieu chinh
     Dim EditDC_I, EditPT_DC_I, EditDC_ICV, EditPT_DC_ICV As New Cyber.Fill.CyberColumnGridView
     Dim EditMa_Ktv_SCV, EditMa_Ktv_SVT As New Cyber.Fill.CyberColumnGridView
@@ -105,27 +98,18 @@ Public Class ISC
         ' Vật tư
         Dt_Detail = M_DsData.Tables(0)
         Dt_DetailTmp = Dt_Detail.Clone
-        ' Công việc
-        Dt_DetailCv = M_DsData.Tables(2)
-        Dt_DetailCvTmp = Dt_DetailCv.Clone
+
         ' Ph
         Dt_Master = M_DsData.Tables(1)
         ' Vật tư
         Dv_Detail = New DataView(Dt_Detail)
         Dv_DetailTmp = New DataView(Dt_DetailTmp)
-        ' Công việc
-        Dv_DetailCv = New DataView(Dt_DetailCv)
-        Dv_DetailCvTmp = New DataView(Dt_DetailCvTmp)
         ' Ph
         Dv_Master = New DataView(Dt_Master)
         '========= FillData to Gridview Vt
         DetailVt.DataSource = Dv_DetailTmp
         Me.DetailGRVVt.GridControl = Me.DetailVt
         CyberFill.V_FillVoucher(DetailGRVVt, M_LAN, New DataView(M_DsHead.Tables(1)), Dv_DetailTmp, Me.DrDmct)
-        '========= FillData to Gridview Cv
-        DetailCv.DataSource = Dv_DetailCvTmp
-        Me.DetailGRVCv.GridControl = Me.DetailCv
-        CyberFill.V_FillVoucher(DetailGRVCv, M_LAN, New DataView(M_DsHead.Tables(2)), Dv_DetailCvTmp, Me.DrDmct)
         '=========== FillCombox
 
         V_SetProperty()
@@ -212,20 +196,12 @@ Public Class ISC
         End If
         DetailGRVVt.OptionsNavigation.EnterMoveNextColumn = True
         Me.DetailGRVVt.Appearance.SelectedRow.BackColor = System.Drawing.Color.Brown
-
-        If FixCol < DetailGRVCv.Columns.Count And FixCol > 0 Then
-            For iCol = 0 To FixCol
-                DetailGRVCv.Columns(iCol).Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
-            Next
-        End If
-        DetailGRVCv.OptionsNavigation.EnterMoveNextColumn = True
-        Me.DetailGRVCv.Appearance.SelectedRow.BackColor = System.Drawing.Color.Brown
-
     End Sub
     Private Sub V_GetColumn()
         EditMa_Vitri.GetColumn(DetailGRVVt, "Ma_vitri")
         EditMa_NVKD.GetColumn(Me.DetailGRVVt, "Ma_NVKD")
         EditMa_Vt.GetColumn(Me.DetailGRVVt, "Ma_Vt")
+        EditMa_CV.GetColumn(Me.DetailGRVVt, "Ma_CV")
         EditMa_CVVt.GetColumn(Me.DetailGRVVt, "Ma_CV")
         EditMa_CtCVVT.GetColumn(Me.DetailGRVVt, "Ma_Ctcv")
 
@@ -277,55 +253,6 @@ Public Class ISC
         EditSl_TD_I.GetColumn(Me.DetailGRVVt, "Sl_TD_I")
         EditLAN.GetColumn(Me.DetailGRVVt, "Lan")
         '---------------------------------------------------------------------------------
-        ' Cong Viec
-        EditMa_CVCv.GetColumn(Me.DetailGRVCv, "Ma_CV")
-        EditTen_CVCv.GetColumn(Me.DetailGRVCv, "Ten_Cv")
-        EditTIEN_CV0Cv.GetColumn(Me.DetailGRVCv, "Tien_Cv0")
-
-        EditTen_CV3Cv.GetColumn(Me.DetailGRVCv, "Ten_Cv3")
-        EditMa_TTCv.GetColumn(Me.DetailGRVCv, "Ma_TT")
-        EditMa_CtcvCv.GetColumn(Me.DetailGRVCv, "Ma_Ctcv")
-
-        EditGia_CVCV.GetColumn(Me.DetailGRVCv, "Gia_CV")
-        EditGio_TCCV.GetColumn(Me.DetailGRVCv, "Gio_TC")
-        EditTien_CVCv.GetColumn(Me.DetailGRVCv, "Tien_CV")
-
-        EditPT_Ck_ICv.GetColumn(Me.DetailGRVCv, "PT_Ck_I")
-        EditCk_ICv.GetColumn(Me.DetailGRVCv, "Ck_I")
-        EditThueCV.GetColumn(Me.DetailGRVCv, "Thue")
-        EditSua_ThueCV.GetColumn(Me.DetailGRVCv, "Sua_Thue")
-
-        '---Dieu chinh
-        EditDC_ICV.GetColumn(Me.DetailGRVCv, "Dc_i")
-        EditPT_DC_ICV.GetColumn(Me.DetailGRVCv, "Pt_Dc_i")
-
-        EditThue_SuatCv.GetColumn(Me.DetailGRVCv, "Thue_Suat")
-        EditThue_BHCv.GetColumn(Me.DetailGRVCv, "Thue_BH")
-        EditTien_BHCv.GetColumn(Me.DetailGRVCv, "Tien_BH")
-
-
-
-        EditLANCv.GetColumn(Me.DetailGRVCv, "LAN")
-        Editma_KTV_ICV.GetColumn(DetailGRVCv, "Ma_KTV_I")
-        EditMa_Vv_iCV.GetColumn(DetailGRVCv, "Ma_Vv_I")
-        EditMa_phi_iCV.GetColumn(DetailGRVCv, "Ma_Phi_I")
-        EditMa_Hd_iCV.GetColumn(DetailGRVCv, "Ma_HD_I")
-        EditMa_Sp_iCV.GetColumn(DetailGRVCv, "Ma_SP_I")
-        EditMa_ku_iCV.GetColumn(DetailGRVCv, "Ma_KU_I")
-        EditMa_TTLN_iCV.GetColumn(DetailGRVCv, "Ma_TTLN_I")
-        EditMa_TTCP_iCV.GetColumn(DetailGRVCv, "Ma_TTCP_I")
-        EditMa_BP_iCV.GetColumn(DetailGRVCv, "Ma_BP_I")
-        EditMa_HS_iCV.GetColumn(DetailGRVCv, "Ma_Hs_I")
-        EditMa_CD_iCV.GetColumn(DetailGRVCv, "Ma_CD_I")
-
-        EditMa_TD1_iCV.GetColumn(DetailGRVCv, "Ma_TD1_I")
-        EditMa_TD2_iCV.GetColumn(DetailGRVCv, "Ma_TD2_I")
-        EditMa_TD3_iCV.GetColumn(DetailGRVCv, "Ma_TD3_I")
-        EditMa_TD4_iCV.GetColumn(DetailGRVCv, "Ma_TD4_I")
-        EditMa_TD5_iCV.GetColumn(DetailGRVCv, "Ma_TD5_I")
-
-        EditMa_Ktv_SVT.GetColumn(Me.DetailGRVVt, "Ma_KTV_S")
-        EditMa_Ktv_SCV.GetColumn(Me.DetailGRVCv, "Ma_KTV_S")
 
     End Sub
     Private Sub V_SetFocus(ByVal _Loai As String)
@@ -374,9 +301,7 @@ Public Class ISC
         '---
         AddHandler DetailGRVVt.PopupMenuShowing, AddressOf MasterGRV_PopupMenuShowing
         AddHandler DetailGRVVt.KeyDown, AddressOf MasterGRV_KeyDown
-        '---
-        AddHandler DetailGRVCv.PopupMenuShowing, AddressOf MasterGRVCv_PopupMenuShowing
-        AddHandler DetailGRVCv.KeyDown, AddressOf MasterGRVCv_KeyDown
+
         '---
         AddHandler CbbMa_GD.SelectedValueChanged, AddressOf L_Ma_GD
     End Sub
@@ -435,6 +360,7 @@ Public Class ISC
         EditMa_Vitri.V_ActiLookUpColumn(AddressOf V_Ma_Vitri, AddressOf L_Ma_Vitri)
         EditMa_NVKD.V_ActiLookUpColumn(AddressOf V_Ma_NVKD, AddressOf L_Ma_NVKD)
         EditMa_Vt.V_ActiLookUpColumn(AddressOf V_Ma_Vt, AddressOf L_Ma_Vt)
+        EditMa_CV.V_ActiLookUpColumn(AddressOf V_Ma_CV, AddressOf L_Ma_CV)
 
         EditMa_CVVt.V_ActiLookUpColumn(AddressOf V_Ma_CvVt, AddressOf L_Ma_CvVt)
         EditMa_CtCVVT.V_ActiLookUpColumn(AddressOf V_Ma_CtCvVT, AddressOf L_Ma_CtCvVT)
@@ -461,62 +387,11 @@ Public Class ISC
         EditMa_TD4_i.V_ActiLookUpColumn(AddressOf V_Ma_TD4_i, AddressOf L_Ma_TD4_i)
         EditMa_TD5_i.V_ActiLookUpColumn(AddressOf V_Ma_TD5_i, AddressOf L_Ma_TD5_i)
 
-        '================== Coong viec
-        EditTen_CVCv.ColumnReadOnly = True
-        EditLANCv.ColumnReadOnly = True
-
-        If Not EditGia_CVCV.Column Is Nothing Then AddHandler EditGia_CVCV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditGio_TCCV.Column Is Nothing Then AddHandler EditGio_TCCV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditTien_CVCv.Column Is Nothing Then AddHandler EditTien_CVCv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditTIEN_CV0Cv.Column Is Nothing Then AddHandler EditTIEN_CV0Cv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-
-        If Not EditPT_Ck_ICv.Column Is Nothing Then AddHandler EditPT_Ck_ICv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditCk_ICv.Column Is Nothing Then AddHandler EditCk_ICv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-
-        '---Dieu chinh
-        If Not EditPT_DC_ICV.Column Is Nothing Then AddHandler EditPT_DC_ICV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditDC_ICV.Column Is Nothing Then AddHandler EditDC_ICV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-
-        If Not EditThue_SuatCv.Column Is Nothing Then AddHandler EditThue_SuatCv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditThueCV.Column Is Nothing Then AddHandler EditThueCV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditSua_ThueCV.Column Is Nothing Then AddHandler EditSua_ThueCV.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-
-        If Not EditThue_BHCv.Column Is Nothing Then AddHandler EditThue_BHCv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-        If Not EditTien_BHCv.Column Is Nothing Then AddHandler EditThue_BHCv.EditColumn.Leave, AddressOf V_Tinh_ToanCV
-
-
-
-
-        EditMa_CVCv.V_ActiLookUpColumn(AddressOf V_Ma_Cv, AddressOf L_Ma_Cv)
-        EditMa_CtcvCv.V_ActiLookUpColumn(AddressOf V_Ma_CtCv, AddressOf L_Ma_CtCv)
-        EditMa_TTCv.V_ActiLookUpColumn(AddressOf V_Ma_TTCV, AddressOf L_Ma_TTCV)
-
-        Editma_KTV_ICV.V_ActiLookUpColumn(AddressOf V_Ma_KTV_ICV, AddressOf L_Ma_KTV_ICV)
-        EditMa_Vv_iCV.V_ActiLookUpColumn(AddressOf V_Ma_Vv_iCV, AddressOf L_Ma_Vv_iCV)
-        EditMa_phi_iCV.V_ActiLookUpColumn(AddressOf V_Ma_Phi_iCV, AddressOf L_Ma_Phi_iCV)
-        EditMa_Hd_iCV.V_ActiLookUpColumn(AddressOf V_Ma_HD_iCV, AddressOf L_Ma_HD_iCV)
-        EditMa_Sp_iCV.V_ActiLookUpColumn(AddressOf V_Ma_SP_iCV, AddressOf L_Ma_SP_iCV)
-        EditMa_ku_iCV.V_ActiLookUpColumn(AddressOf V_Ma_KU_iCV, AddressOf L_Ma_KU_iCV)
-        EditMa_TTLN_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TTLN_iCV, AddressOf L_Ma_TTLN_iCV)
-        EditMa_TTCP_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TTCP_iCV, AddressOf L_Ma_TTCP_iCV)
-        EditMa_BP_iCV.V_ActiLookUpColumn(AddressOf V_Ma_Bp_iCV, AddressOf L_Ma_Bp_iCV)
-        EditMa_HS_iCV.V_ActiLookUpColumn(AddressOf V_Ma_HS_iCV, AddressOf L_Ma_HS_iCV)
-        EditMa_CD_iCV.V_ActiLookUpColumn(AddressOf V_Ma_CD_iCV, AddressOf L_Ma_CD_iCV)
-        EditMa_TD1_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TD1_iCV, AddressOf L_Ma_TD1_iCV)
-        EditMa_TD2_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TD2_iCV, AddressOf L_Ma_TD2_iCV)
-        EditMa_TD3_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TD3_iCV, AddressOf L_Ma_TD3_iCV)
-        EditMa_TD4_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TD4_iCV, AddressOf L_Ma_TD4_iCV)
-        EditMa_TD5_iCV.V_ActiLookUpColumn(AddressOf V_Ma_TD5_iCV, AddressOf L_Ma_TD5_iCV)
-
         AddHandler DetailGRVVt.RowCellStyle, AddressOf DetailGRVVT_RowCellStyle
-        AddHandler DetailGRVCv.RowCellStyle, AddressOf DetailGRVCV_RowCellStyle
     End Sub
     Dim CyberColor As New Cyber.Color.Sys
     Private Sub DetailGRVVT_RowCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
         CyberSupport.DetailGRV_RowCellStyle2(sender, e, DetailGRVVt, Dt_DetailTmp, Me.Font, "Bold", "BackColor", "BackColor2", "Forecolor", "Underline", "Italic", CyberColor)
-    End Sub
-    Private Sub DetailGRVCV_RowCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
-        CyberSupport.DetailGRV_RowCellStyle2(sender, e, DetailGRVCv, Dt_DetailCvTmp, Me.Font, "Bold", "BackColor", "BackColor2", "Forecolor", "Underline", "Italic", CyberColor)
     End Sub
 
     Private Sub VisibleColumnMa_NT()
@@ -715,26 +590,6 @@ Public Class ISC
         '----------------------------------------------------------------------------
         TxtT_SO_LUONG.Double = nT_So_Luong
         '----------------------------------------------------------------------------
-        For i = 0 To Dt_DetailCvTmp.Rows.Count - 1
-            If Dt_DetailCvTmp.Rows(i).RowState = DataRowState.Deleted Then Continue For
-
-            If Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Then
-                nT_I = nT_I + Dt_DetailCvTmp.Rows(i).Item("Tien_CV") - Dt_DetailCvTmp.Rows(i).Item("CK_I") + Dt_DetailCvTmp.Rows(i).Item("Thue") + Dt_DetailCvTmp.Rows(i).Item("Dc_I")
-            End If
-
-            If Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "W" Then
-                nT_W = nT_W + Dt_DetailCvTmp.Rows(i).Item("Tien_CV") - Dt_DetailCvTmp.Rows(i).Item("CK_I") + Dt_DetailCvTmp.Rows(i).Item("Thue") + Dt_DetailCvTmp.Rows(i).Item("Dc_I")
-            End If
-
-            If Not (Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "W" Or Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Or Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "C") Then
-                nT_N = nT_N + Dt_DetailCvTmp.Rows(i).Item("Tien_CV") - Dt_DetailCvTmp.Rows(i).Item("CK_I") + Dt_DetailCvTmp.Rows(i).Item("Thue") + Dt_DetailCvTmp.Rows(i).Item("Dc_I")
-            End If
-
-            nT_Ck_CV = nT_Ck_CV + Dt_DetailCvTmp.Rows(i).Item("Ck_I")
-            nT_CV = nT_CV + Dt_DetailCvTmp.Rows(i).Item("Tien_CV")
-            nT_Thue_CV = nT_Thue_CV + Dt_DetailCvTmp.Rows(i).Item("Thue")
-            nT_DC_CV = nT_DC_CV + Dt_DetailCvTmp.Rows(i).Item("Dc_I")
-        Next
     End Sub
     Private Sub V_Tinh_Toan(ByVal iRow As Integer)
 
@@ -867,6 +722,52 @@ Public Class ISC
         If Dv_DetailTmp.Item(iRow).Item("Ten_vt3").ToString.Trim = "" Then
             Dv_DetailTmp.Item(iRow).BeginEdit()
             Dv_DetailTmp.Item(iRow).Item("Ten_vt3") = _Ten_VT
+            Dv_DetailTmp.Item(iRow).EndEdit()
+        End If
+        '-----------------------------------------------------------------------------------------------------------
+        Tinh_Gia2(iRow)
+        Tinh_TienPT(iRow)
+        UpdateList()
+        '-----------------------------------------------------------------------------------------------------------
+        V_SetSD(iRow)
+        DetailGRVVt.UpdateCurrentRow()
+    End Sub
+
+    Private Sub V_Ma_CV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
+        CyberSupport.V_Lookup("Ma_CV", "DmCV", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
+    End Sub
+    Private Sub L_Ma_CV(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        DrReturn = Nothing
+        Dim iRow As Integer = -1
+        iRow = DetailGRVVt.GetFocusedDataSourceRowIndex
+        If iRow < 0 Then Exit Sub
+        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
+        If DrReturn Is Nothing Then
+            Dv_DetailTmp.Item(iRow).BeginEdit()
+            Dv_DetailTmp.Item(iRow)("Ma_CV") = ""
+            Dv_DetailTmp.Item(iRow).Item("Ten_CV") = ""
+            Dv_DetailTmp.Item(iRow).Item("Ten_CV3") = ""
+            Dv_DetailTmp.Item(iRow).EndEdit()
+            Exit Sub
+        End If
+        Dim _Ma_kho_i As String = "", _Ma_CV As String = "", _Ten_CV As String = "", _Thue_Suat As Decimal = 0
+        Dim _Gia2 As Decimal = 0
+        _Ma_CV = DrReturn("Ma_CV").ToString.Trim
+        _Ten_CV = DrReturn("Ten_CV").ToString.Trim
+        _Thue_Suat = DrReturn("Thue_Suat").ToString.Trim
+        '-----------------------------------------------------------------------------------------------------------
+        Dv_DetailTmp.Item(iRow).BeginEdit()
+        Dv_DetailTmp.Item(iRow).Item("Ma_CV") = _Ma_CV
+        Dv_DetailTmp.Item(iRow).Item("Ten_CV") = _Ten_CV
+        Dv_DetailTmp.Item(iRow).Item("Ma_TT") = IIf(Dv_DetailTmp.Item(iRow).Item("Ma_TT").ToString.Trim <> "", Dv_DetailTmp.Item(iRow).Item("Ma_TT"), M_Ma_TT)
+        Dv_DetailTmp.Item(iRow).Item("Ma_kho_i") = IIf(Dv_DetailTmp.Item(iRow).Item("Ma_kho_i").ToString.Trim = "", _Ma_kho_i, Dv_DetailTmp.Item(iRow).Item("Ma_kho_i"))
+        Dv_DetailTmp.Item(iRow).Item("Thue_Suat") = IIf(Dv_DetailTmp.Item(iRow).Item("Thue_Suat") = 0, _Thue_Suat, Dv_DetailTmp.Item(iRow).Item("Thue_Suat"))
+        Dv_DetailTmp.Item(iRow).EndEdit()
+        '-----------------------------------------------------------------------------------------------------------
+        If Dv_DetailTmp.Item(iRow).Item("Ten_vt3").ToString.Trim = "" Then
+            Dv_DetailTmp.Item(iRow).BeginEdit()
+            Dv_DetailTmp.Item(iRow).Item("Ten_vt3") = _Ten_CV
             Dv_DetailTmp.Item(iRow).EndEdit()
         End If
         '-----------------------------------------------------------------------------------------------------------
@@ -1024,325 +925,6 @@ Public Class ISC
         DetailGRVVt.UpdateCurrentRow()
     End Sub
 
-
-
-#Region "Tinh toan CV"
-    Private Sub V_Tinh_ToanCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode.Trim = "M" Or M_Mode.Trim = "S") Then Exit Sub
-        DetailGRVCv.PostEditor()
-        Dim iRow As Integer = -1
-        iRow = DetailGRVCv.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        Dt_DetailCvTmp.AcceptChanges()
-        Tinh_TienCV(iRow)
-    End Sub
-    Private Sub Tinh_TienCV(ByVal iRow As Integer)
-        If Not (M_Mode.Trim = "M" Or M_Mode.Trim = "S") Then Exit Sub
-        If iRow < 0 Then Exit Sub
-        Dim nTy_Gia As Decimal = 0
-        If TxtTy_Gia.Text.Trim = "0" Or TxtTy_Gia.Text.Trim = "" Or TxtMa_NT.Text.Trim = osysvar("M_Ma_Nt0").ToString.Trim Then
-            TxtTy_Gia.Text = 1
-            TxtTy_Gia.Refresh()
-        End If
-        nTy_Gia = CType(TxtTy_Gia.Text.Replace(" ", ""), Decimal)
-        nTy_Gia = 1
-        'Tinh Tiền Cong viec ---------------------------------------------------------------------------------------
-        If Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") * Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") <> 0 Then
-            Dv_DetailCvTmp.Item(iRow).BeginEdit()
-            Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") = CyberSupport.V_Round(Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") * Dv_DetailCvTmp.Item(iRow).Item("Gio_TC"), 0)
-            Dv_DetailCvTmp.Item(iRow).EndEdit()
-        End If
-        'Chiet Khau---------------------------------------------------------------------------------------
-        '--------- Tinh Chiet Khau
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        If CyberSupport.ChkFieldKey(Dv_DetailCvTmp.Item(iRow).Item("Ma_TT"), "I,C") Then
-            Dv_DetailCvTmp.Item(iRow).Item("Ck_I") = IIf(Dv_DetailCvTmp.Item(iRow).Item("PT_Ck_I") = 0, Dv_DetailCvTmp.Item(iRow).Item("Ck_I"), CyberSupport.V_Round(Dv_DetailCvTmp.Item(iRow).Item("Tien_Cv") * Dv_DetailCvTmp.Item(iRow).Item("PT_Ck_I") / 100, 0))
-        Else
-            Dv_DetailCvTmp.Item(iRow).Item("PT_Ck_I") = 0
-            Dv_DetailCvTmp.Item(iRow).Item("Ck_I") = 0
-        End If
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-
-
-        '---Dieu chinh
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        Dv_DetailCvTmp.Item(iRow).Item("DC_I") = IIf(Dv_DetailCvTmp.Item(iRow).Item("PT_DC_I") = 0, Dv_DetailCvTmp.Item(iRow).Item("DC_I"), CyberSupport.V_Round((Dv_DetailCvTmp.Item(iRow).Item("Tien_Cv") - Dv_DetailCvTmp.Item(iRow).Item("CK_I")) * Dv_DetailCvTmp.Item(iRow).Item("PT_DC_I") / 100, 0))
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-        '---------- Tinh thue
-        TinhThue_CV(iRow)
-        UpdateList()
-
-
-    End Sub
-    Private Sub TinhThue_CV(ByVal iRow As Integer)
-
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        If Dt_DetailCvTmp.Columns.Contains("Sua_Thue") Then
-            If Dv_DetailCvTmp.Item(iRow).Item("Sua_Thue").ToString.Trim <> "1" Then
-                Dv_DetailCvTmp.Item(iRow).Item("Thue") = Math.Round((Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") - Dv_DetailCvTmp.Item(iRow).Item("CK_I") + Dv_DetailCvTmp.Item(iRow).Item("DC_I")) * Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") / 100, 0, MidpointRounding.AwayFromZero)
-                'Else
-                '    Dv_DetailCvTmp.Item(iRow).Item("Thue") = Math.Round((Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") - Dv_DetailCvTmp.Item(iRow).Item("CK_I") + Dv_DetailCvTmp.Item(iRow).Item("DC_I")) * Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") / 100, 0, MidpointRounding.AwayFromZero)
-            End If
-        Else
-            Dv_DetailCvTmp.Item(iRow).Item("Thue") = Math.Round((Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") - Dv_DetailCvTmp.Item(iRow).Item("CK_I") + Dv_DetailCvTmp.Item(iRow).Item("DC_I")) * Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") / 100, 0, MidpointRounding.AwayFromZero)
-        End If
-
-
-        If Dt_DetailCvTmp.Columns.Contains("Tien_CV0") Then Dv_DetailCvTmp.Item(iRow).Item("Tien_CV0") = Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") - Dv_DetailCvTmp.Item(iRow).Item("CK_I") + Dv_DetailCvTmp.Item(iRow).Item("DC_I")
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-
-    End Sub
-#End Region
-
-
-
-#Region "Bosung"
-#Region "Ma_Cv"
-    Private Sub V_Ma_Cv(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Lookup("Ma_Cv", "Dmcv", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_Cv(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailGRVCv.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
-        If DrReturn Is Nothing Then
-            Dv_DetailCvTmp.Item(iRow).BeginEdit()
-            Dv_DetailCvTmp.Item(iRow).Item("Ma_Cv") = ""
-            Dv_DetailCvTmp.Item(iRow).Item("Ten_Cv") = ""
-            Dv_DetailCvTmp.Item(iRow).Item("Ma_TT") = ""
-            Dv_DetailCvTmp.Item(iRow).EndEdit()
-            DetailGRVVt.UpdateCurrentRow()
-            Exit Sub
-        End If
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        Dv_DetailCvTmp.Item(iRow).Item("Ma_TT") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Ma_TT").ToString.Trim <> "", Dv_DetailCvTmp.Item(iRow).Item("Ma_TT"), M_Ma_TT)
-        Dv_DetailCvTmp.Item(iRow).Item("Ma_Cv") = DrReturn("Ma_Cv").ToString.Trim
-        Dv_DetailCvTmp.Item(iRow).Item("Ten_Cv") = DrReturn("Ten_Cv" + IIf(M_LAN = "V", "", "2")).ToString.Trim
-        Dv_DetailCvTmp.Item(iRow).Item("Ten_Cv3") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Ten_Cv3").ToString.Trim <> "", Dv_DetailCvTmp.Item(iRow).Item("Ten_Cv3"), DrReturn("Ten_Cv" + IIf(M_LAN = "V", "", "2")).ToString.Trim)
-        Dv_DetailCvTmp.Item(iRow).Item("MA_KTV_I") = IIf(Dv_DetailCvTmp.Item(iRow).Item("MA_KTV_I").ToString.Trim <> "", Dv_DetailCvTmp.Item(iRow).Item("MA_KTV_I"), DrReturn("Ma_Hs").ToString.Trim)
-
-
-        Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") <> 0, Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat"), DrReturn("Thue_Suat"))
-        'If Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") = DrReturn("Gia_CV")
-        'If Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") = DrReturn("Gio_TC")
-        'If Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") = DrReturn("Tien_CV")
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-
-        If Not V_Update_Gio_TC(iRow) Then
-            Dv_DetailCvTmp.Item(iRow).BeginEdit()
-            Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") <> 0, Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat"), DrReturn("Thue_Suat"))
-            If Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Gia_CV") = DrReturn("Gia_CV")
-            If Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") = DrReturn("Gio_TC")
-            If Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") = 0 Then Dv_DetailCvTmp.Item(iRow).Item("Tien_CV") = DrReturn("Tien_CV")
-            Dv_DetailCvTmp.Item(iRow).EndEdit()
-        End If
-
-        Tinh_TienCV(iRow)
-        DetailGRVCv.UpdateCurrentRow()
-    End Sub
-    Private Function V_Update_Gio_TC(ByVal _iRow As Integer) As Boolean
-        'Dim _Return As Boolean = False
-        'If _iRow < 0 Then Return _Return
-        'If Not (M_Mode = "M" Or M_Mode = "S") Then Return _Return
-        'Dim _Ma_Xe As String = TxtMa_Xe.Text
-        'Dim _So_Khung As String = TxtSo_khung.Text
-        'Dim _So_May As String = TxtSo_May.Text
-        'Dim _ma_Kx As String = TxtMa_Kx.Text
-        'Dim _ma_Mau As String = TxtMa_Mau.Text
-        'Dim _Str As String = "INSERT CTGetCVCYBER SELECT N'" + Dv_DetailCvTmp.Item(_iRow).Item("Ma_Cv").ToString.Trim + "'"
-        '_Str = _Str + ",N'" + Dv_DetailCvTmp.Item(_iRow).Item("Ma_CTCv").ToString.Trim + "'"
-        '_Str = _Str + ",N'" + Dv_DetailCvTmp.Item(_iRow).Item("Gio_TC").ToString.Trim.Replace(" ", "").Replace(",", ".") + "'"
-        '_Str = _Str + ",N'" + Dv_DetailCvTmp.Item(_iRow).Item("Gia_CV").ToString.Trim.Replace(" ", "").Replace(",", ".") + "'"
-        '_Str = _Str + ",N'" + Dv_DetailCvTmp.Item(_iRow).Item("CK_I").ToString.Trim.Replace(" ", "").Replace(",", ".") + "'"
-        '_Str = _Str + ",N'" + Dv_DetailCvTmp.Item(_iRow).Item("Tien_CV").ToString.Trim.Replace(" ", "").Replace(",", ".") + "'"
-        'Dim _DsTmp As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_ROUpdateGioTC", _Ma_Xe + "#" + _So_Khung + "#" + _So_May + "#" + _ma_Kx + "#" + _ma_Mau + "#" + _Str + "#" + M_Ma_CT + "#" + M_Mode + "#" + M_Stt_Rec + "#" + M_Ma_Dvcs + "#" + M_User_Name)
-
-        'If _DsTmp.Tables.Count = 0 Then
-        '    _DsTmp.Dispose()
-        '    Return _Return
-        'End If
-
-        'If _DsTmp.Tables(0).Rows.Count = 0 Then
-        '    _DsTmp.Dispose()
-        '    Return _Return
-        'End If
-        'CyberSmodb.V_UpdateRowtoRow(_DsTmp.Tables(0).Rows(0), Dv_DetailCvTmp, _iRow)
-        'DetailGRVCv.UpdateCurrentRow()
-        '_DsTmp.Dispose()
-        '_Return = True
-        'Return _Return
-    End Function
-
-
-#Region "Ma_CtCv"
-    Private Sub V_Ma_CtCv(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Lookup("Ma_CtCv", "DmCtCv", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_CtCv(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailGRVCv.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
-        If DrReturn Is Nothing Then
-            Dv_DetailCvTmp.Item(iRow)("Ma_CtCv") = ""
-            Exit Sub
-        End If
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        Dv_DetailCvTmp.Item(iRow).Item("Ma_CtCv") = DrReturn("Ma_CtCv").ToString.Trim
-
-        If DrReturn.Table.Columns.Contains("Thue_Suat") Then Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat") <> 0, Dv_DetailCvTmp.Item(iRow).Item("Thue_Suat"), DrReturn("Thue_Suat"))
-        If DrReturn.Table.Columns.Contains("Gio_TC") Then Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") = IIf(Dv_DetailCvTmp.Item(iRow).Item("Gio_TC") <> 0, Dv_DetailCvTmp.Item(iRow).Item("Gio_TC"), DrReturn("Gio_TC"))
-
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-        Tinh_TienCV(iRow)
-        DetailGRVCv.UpdateCurrentRow()
-
-    End Sub
-#End Region
-#Region "Ma_TTCV"
-    Private Sub V_Ma_TTCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Lookup("Ma_TT", "DmTT", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TTCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailGRVCv.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
-        If DrReturn Is Nothing Then
-            Dv_DetailCvTmp.Item(iRow)("Ma_TT") = ""
-            Exit Sub
-        End If
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        Dv_DetailCvTmp.Item(iRow).Item("Ma_TT") = DrReturn("Ma_TT").ToString.Trim
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-        Tinh_TienCV(iRow)
-        UpdateList()
-        DetailGRVCv.UpdateCurrentRow()
-    End Sub
-#End Region
-
-#End Region
-
-
-
-
-#Region "Ma_Vv_i/Phi...TD1/Td2.../TD5 = Cua cong viec sua chua"
-    Private Sub V_Ma_KTV_ICV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Lookup("Ma_hs", "DmKTV", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_KTV_ICV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim iRow As Integer = -1
-        iRow = DetailGRVCv.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
-        If DrReturn Is Nothing Then
-            Dv_DetailCvTmp.Item(iRow)("Ma_KTV_I") = ""
-            If Dv_DetailCvTmp.Table.Columns.Contains("Ten_KTV_I") Then Dv_DetailCvTmp.Item(iRow).Item("Ten_KTV_I") = ""
-            Exit Sub
-        End If
-        Dv_DetailCvTmp.Item(iRow).BeginEdit()
-        Dv_DetailCvTmp.Item(iRow).Item("Ma_KTV_I") = DrReturn("Ma_hs").ToString.Trim
-        If Dv_DetailCvTmp.Table.Columns.Contains("Ten_KTV_I") Then Dv_DetailCvTmp.Item(iRow).Item("Ten_KTV_I") = DrReturn("Ten_hs").ToString.Trim
-        Dv_DetailCvTmp.Item(iRow).EndEdit()
-        DetailGRVCv.UpdateCurrentRow()
-    End Sub
-    Private Sub V_Ma_Vv_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Vv_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_Vv_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Vv_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_Phi_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Phi_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_Phi_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Phi_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_HD_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Hd_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_HD_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Hd_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_SP_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Sp_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_SP_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Sp_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_KU_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Ku_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_KU_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Ku_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TTLN_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TTLN_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TTLN_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TTLN_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TTCP_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TTCP_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TTCP_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TTCP_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_Bp_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Bp_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_Bp_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Bp_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_HS_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Hs_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_HS_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Hs_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_CD_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Cd_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_CD_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Cd_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TD1_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_Td1_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TD1_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Td1_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TD2_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TD2_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TD2_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD2_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TD3_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TD3_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TD3_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD3_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TD4_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TD4_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TD4_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD4_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-    Private Sub V_Ma_TD5_iCV(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Ma_TD5_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_TD5_iCV(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD5_i(M_Mode, M_Ma_CT, sender, DetailGRVCv)
-    End Sub
-#End Region
-
 #Region "L_Ma_TT"
     Private Sub V_Ma_TT(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Lookup("Ma_TT", "DmTT", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
@@ -1371,92 +953,6 @@ Public Class ISC
     End Sub
 #End Region
 
-
-#Region "Mainform Cong Viec"
-    Private Sub V_MainSystemCv()
-        Dim mnItemsMail = New ContextMenu
-        Dim mnItemsF4 As New MenuItem(If(M_LAN = "V", "Thêm dòng", "New row"), AddressOf V_ShortAddItemCv, Keys.F4)
-        Dim mnItemsF8 As New MenuItem(If(M_LAN = "V", "Xóa dòng", "Delete row"), AddressOf V_ShortDeleteItemCv, Keys.F8)
-        mnItemsMail.MenuItems.Add(mnItemsF4)
-        mnItemsMail.MenuItems.Add(mnItemsF8)
-        DetailGRVCv.GridControl.ContextMenu = mnItemsMail
-    End Sub
-    Private Sub MasterGRVCv_PopupMenuShowing(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
-        Dim rowHandle As Integer = e.HitInfo.RowHandle
-        If e.MenuType <> DevExpress.XtraGrid.Views.Grid.GridMenuType.Column Then
-            PopupMenuMasterGrid.ItemLinks.Clear()
-
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Thêm dòng", "Add item"), AddressOf V_ShortAddItemCv, Nothing, True, False))
-
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Xóa dòng", "Delete item"), AddressOf V_ShortDeleteItemCv, Nothing, True, False))
-
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Import", "Delete item"), AddressOf V_ImportCv, Nothing, True, True))
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Lưu chứng từ", "Save"), AddressOf V_ShortSAVE, Nothing, True, True))
-
-            PopupMenuMasterGrid.ShowPopup(Control.MousePosition)
-        End If
-
-    End Sub
-    Private Sub V_ShortAddItemCv(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailGRVCv.FocusedRowHandle
-        V_AddItemCv(iRow)
-        iRow = Dv_DetailCvTmp.Count - 1
-        CyberFill.V_ForcusCell(DetailGRVCv, iRow, 0)
-    End Sub
-    Private Sub V_ShortDeleteItemCv(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailGRVCv.FocusedRowHandle
-        If iRow < 0 Then Exit Sub
-        If Not CyberSupport.V_DeleteItemVoucher(osysvar, M_LAN, M_Ma_CT, iRow, Dv_DetailCvTmp, AppConn, DetailGRVCv) Then Exit Sub
-        Dv_DetailCvTmp.Delete(iRow)
-        Dv_DetailCvTmp.Table.AcceptChanges()
-        UpdateList()
-    End Sub
-#End Region
-
-
-#Region "Add Or Detete Item Cong Viec"
-    Private Sub MasterGRVCv_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iCoumnVisible As Integer = sender.VisibleColumns.Count - 1
-        Dim iRowVisible As Integer = sender.RowCount - 1
-        Dim iRowRowFocus As Integer = sender.FocusedRowHandle
-        Dim iColumnRowFocus As Integer = sender.VisibleColumns.IndexOf(sender.FocusedColumn)
-        Dim iRowOld As Integer = sender.GetFocusedDataSourceRowIndex
-        'If e.KeyCode = Keys.Enter And iRowVisible = iRowRowFocus And iCoumnVisible = iColumnRowFocus Then V_AddItem(iRowOld) '' Cot cuoi cung them dong
-        If iRowVisible <> iRowRowFocus Or iCoumnVisible <> iColumnRowFocus Then Exit Sub
-        If e.KeyCode = Keys.Enter Then
-            V_AddItemCv(iRowOld) '' Cot cuoi cung them dong
-        ElseIf e.KeyCode = Keys.End Then
-            SendKeys.Send("^{Tab}")
-        End If
-    End Sub
-    Private Sub V_AddItemCv(Optional ByVal iRow As Integer = -1)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim DrvOld As DataRowView
-        '===================================
-        Dim vTbAdd As New DataView
-        Dim TbHeader As New DataTable
-        vTbAdd = Dv_DetailCvTmp
-        TbHeader = M_DsHead.Tables(2)
-        '===================================
-        If iRow >= 0 Then DrvOld = vTbAdd.Item(iRow) Else DrvOld = Nothing
-        vTbAdd.Table.Rows.Add()
-        CyberSmodb.SetValueBlankRow(vTbAdd.Table.Rows(vTbAdd.Table.Rows.Count - 1))
-        CyberSupport.SetCarryOn(DrvOld, vTbAdd.Table.Rows(vTbAdd.Table.Rows.Count - 1), New DataView(TbHeader))
-        CarrOnCv(vTbAdd.Table.Rows(vTbAdd.Table.Rows.Count - 1))
-
-        iRow = Dv_DetailCvTmp.Count - 1
-        CyberFill.V_ForcusCell(DetailGRVCv, iRow, 0)
-        UpdateList()
-    End Sub
-    Private Sub CarrOnCv(ByVal DvNew As DataRow)
-        DvNew.Item("Stt_Rec") = M_Stt_Rec.Trim
-        DvNew.Item("Ma_Ct") = M_Ma_CT.Trim
-        DvNew.Item("Ngay_Ct") = Me.TxtNgay_Ct.Value
-    End Sub
-#End Region
 #Region "Tinhgia2"
     Private Sub Tinh_Gia2(ByVal iRow As Integer)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -1492,9 +988,6 @@ Public Class ISC
         '-----------------------------------------------------------------------------------------------------------
     End Sub
 #End Region
-
-
-
 
 #End Region
 #End Region
@@ -1714,7 +1207,6 @@ Public Class ISC
         CyberSupport.L_Ma_Cc(M_Mode, M_Ma_CT, sender, DetailGRVVt)
     End Sub
 #End Region
-#End Region
 #Region "Ngay ct, ngay lap chung tu,so chung tu"
     Private Sub V_Ngay_Ct(ByVal sender As Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -1849,9 +1341,7 @@ Public Class ISC
 #Region "Button"
     Private Sub V_Save(ByVal sender As System.Object, ByVal e As System.EventArgs)
         DetailGRVVt.PostEditor()
-        DetailGRVCv.PostEditor()
         Dv_DetailTmp.Table.AcceptChanges()
-        Dv_DetailCvTmp.Table.AcceptChanges()
 
         If M_Mode.Trim = "M" Then TxtMa_Dvcs.Text = M_Ma_Dvcs
         If M_Mode.Trim = "M" Then TxtUser_id.Text = M_User_ID
@@ -1873,7 +1363,6 @@ Public Class ISC
         If Not ChkVsave() Then Exit Sub 'Kiem tra va Update du lieu chuong tri
 
         'CyberInput.V_Save_Default_TTCP(Dt_DetailTmp, M_Is_Visible_TTCP, CbbMa_TTCP_H, M_Ma_CT, CyberSmodb)
-        'CyberInput.V_Save_Default_TTCP(Dt_DetailCvTmp, M_Is_Visible_TTCP, CbbMa_TTCP_H, M_Ma_CT, CyberSmodb)
 
         '----------------------------------------------------------------------------------------------------------------------
         Dim DrMasterOld As DataRow
@@ -1901,7 +1390,7 @@ Public Class ISC
 
         '---------------------------------------------------
         Dim DsSave As DataSet
-        If Not CyberSmodb.V_SysCheckSaveVoucher(AppConn, osysvar, {Dt_DetailTmp, CyberSmodb.V_ConvertDrToTb(drMaster), Dt_DetailCvTmp}, {M_Ct, M_Ph, "CTISCCV"}, M_Mode, CbbMa_Post.SelectedValue.ToString.Trim, CbbMa_GD.SelectedValue, M_Ma_CT, M_Stt_Rec, M_LAN, TxtMa_Dvcs.Text, M_User_Name, CyberSmlib, CyberSupport, DsSave) Then
+        If Not CyberSmodb.V_SysCheckSaveVoucher(AppConn, osysvar, {Dt_DetailTmp, CyberSmodb.V_ConvertDrToTb(drMaster)}, {M_Ct, M_Ph}, M_Mode, CbbMa_Post.SelectedValue.ToString.Trim, CbbMa_GD.SelectedValue, M_Ma_CT, M_Stt_Rec, M_LAN, TxtMa_Dvcs.Text, M_User_Name, CyberSmlib, CyberSupport, DsSave) Then
             If M_Mode = "S" And Not DrMasterOld Is Nothing Then CyberSmodb.V_UpdateRowtoRow(DrMasterOld, Dt_Master, CrrRow)
             Return
         End If
@@ -1931,19 +1420,6 @@ Public Class ISC
         If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_Detail, "Stt_Rec = '" + M_Stt_Rec + "'")
         Dt_Detail.Load(Dt_DetailTmp.CreateDataReader)
 
-        '---Update CV
-        If DsSave.Tables.Count >= 4 Then
-            For iRow As Integer = 0 To DsSave.Tables(3).Rows.Count - 1
-                Try
-                    CyberSmodb.V_UpdateRowtoRow(DsSave.Tables(3).Rows(iRow), Dt_DetailCvTmp, iRow)
-                Catch ex As Exception
-                End Try
-            Next
-        End If
-        '---------------------------------------------------
-        '---Xoa trong DetailCV
-        If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_DetailCv, "Stt_Rec = '" + M_Stt_Rec + "'")
-        Dt_DetailCv.Load(Dt_DetailCvTmp.CreateDataReader)
         '----------------------------------------------------------------------------------------------------------------------
         '----------------------------------------------------------------------------------------------------------------------
         M_Mode = "X"
@@ -2040,16 +1516,13 @@ Public Class ISC
         '-----------------------------------------------------------------------------------------------------
         '---Xoa trong Detail
         If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_Detail, "Stt_Rec = '" + M_Stt_Rec + "'")
-        If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_DetailCv, "Stt_Rec = '" + M_Stt_Rec + "'")
         '+Import To Detail 
         For i As Integer = 0 To Dt_DetailTmp.Rows.Count - 1
             Dt_Detail.ImportRow(Dt_DetailTmp.Rows(i))
         Next
-        For i As Integer = 0 To Dt_DetailCvTmp.Rows.Count - 1
-            Dt_DetailCv.ImportRow(Dt_DetailCvTmp.Rows(i))
-        Next
+
         '-----------------------------------------------------------------------------------------------------
-        Return CyberSmodb.V_Add2Database(AppConn, osysvar, {Dt_DetailTmp, CyberSmodb.V_ConvertDrToTb(drMaster), Dt_DetailCvTmp}, {M_Ct, M_Ph, "CTISCCV"}, M_Mode, CbbMa_Post.SelectedValue.ToString.Trim, M_Ma_CT, M_Stt_Rec, M_LAN, TxtMa_Dvcs.Text, M_User_Name, CyberSmlib, CyberSupport)
+        Return CyberSmodb.V_Add2Database(AppConn, osysvar, {Dt_DetailTmp, CyberSmodb.V_ConvertDrToTb(drMaster)}, {M_Ct, M_Ph}, M_Mode, CbbMa_Post.SelectedValue.ToString.Trim, M_Ma_CT, M_Stt_Rec, M_LAN, TxtMa_Dvcs.Text, M_User_Name, CyberSmlib, CyberSupport)
     End Function
     Private Sub Add2Database_Luu()
         Dim drMaster As DataRow
@@ -2077,13 +1550,9 @@ Public Class ISC
         '-----------------------------------------------------------------------------------------------------
         '---Xoa trong Detail
         If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_Detail, "Stt_Rec = '" + M_Stt_Rec + "'")
-        If M_Mode.Trim = "S" Then CyberSmodb.DeleteDatatable(Dt_DetailCv, "Stt_Rec = '" + M_Stt_Rec + "'")
         '+Import To Detail 
         For i As Integer = 0 To Dt_DetailTmp.Rows.Count - 1
             Dt_Detail.ImportRow(Dt_DetailTmp.Rows(i))
-        Next
-        For i As Integer = 0 To Dt_DetailCvTmp.Rows.Count - 1
-            Dt_DetailCv.ImportRow(Dt_DetailCvTmp.Rows(i))
         Next
         '-----------------------------------------------------------------------------------------------------
         '---Save: History
@@ -2095,10 +1564,8 @@ Public Class ISC
         'V_CyberSaveToSQL()
 
         CyberSmodb.V_CyberSaveToSQL(AppConn, osysvar, M_User_Name, Dt_DetailTmp, M_Ct, M_Mode, "Stt_Rec =N'" + M_Stt_Rec + "'")
-        CyberSmodb.V_CyberSaveToSQL(AppConn, osysvar, M_User_Name, Dt_DetailCvTmp, "CTISCCV", M_Mode, "Stt_Rec =N'" + M_Stt_Rec + "'")
 
         ' CyberSmodb.V_CyberSaveToSQL(AppConn, osysvar, M_User_Name, Dt_DetailTmp, M_Ct, M_Mode, "Stt_Rec =N'" + M_Stt_Rec + "'")
-        'CyberSmodb.V_SaveToSQL(AppConn, osysvar, M_User_Name, Dt_DetailCvTmp, "CTISCCV", M_Mode, "Stt_Rec =N'" + M_Stt_Rec + "'")
         '-----------------------------------------------------------------------------------------------------
         '---Save: Post
         CyberSupport.V_PostVoucher(M_Mode, M_Ma_CT, M_Stt_Rec, M_Ma_Dvcs, M_User_Name, AppConn, CyberSmlib)
@@ -2181,17 +1648,6 @@ Public Class ISC
             DrCurren.Item("Stt_Rec0") = "001"
             Dt_DetailTmp.Rows.Add(DrCurren)
             Dt_DetailTmp.AcceptChanges()
-        End If
-        If Dt_DetailCvTmp.Rows.Count < 1 Then
-            Dim DrCurren As DataRow
-            Dt_DetailCvTmp.NewRow()
-            DrCurren = Dt_DetailCvTmp.NewRow
-            CyberSmodb.SetValueBlankRow(DrCurren)
-            DrCurren.Item("Stt_Rec") = M_Stt_Rec.Trim
-            DrCurren.Item("Ma_Ct") = M_Ma_CT.Trim
-            DrCurren.Item("Stt_Rec0") = "001"
-            Dt_DetailCvTmp.Rows.Add(DrCurren)
-            Dt_DetailCvTmp.AcceptChanges()
         End If
     End Sub
     Private Sub V_Edit(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -2311,6 +1767,10 @@ Public Class ISC
     End Sub
 #End Region
 #Region "Sms - Import"
+
+    Private Sub V_ImportAll(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        V_Import(sender, e)
+    End Sub
     Private Sub V_Import(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim TbImport As New DataTable
         TbImport = CyberExport.V_ImportDataToGridview(AppConn, osysvar, M_Para, DetailGRVVt, Dt_DetailTmp, M_LAN)
@@ -2327,19 +1787,6 @@ Public Class ISC
         Next
         Dt_DetailTmp.AcceptChanges()
     End Sub
-    Private Sub V_ImportCv(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Dim TbImport As New DataTable
-        TbImport = CyberExport.V_ImportDataToGridview(AppConn, osysvar, M_Para, DetailGRVCv, Dt_DetailCvTmp, M_LAN)
-        If TbImport Is Nothing Then Exit Sub
-        '==================== Xu ly du lieu được Import vào
-        Dt_DetailCvTmp.Clear()
-        Dt_DetailCvTmp.AcceptChanges()
-        For i = 0 To TbImport.Rows.Count - 1
-            Dt_DetailCvTmp.ImportRow(TbImport.Rows(i))
-        Next
-        Dt_DetailCvTmp.AcceptChanges()
-    End Sub
-
     Private Sub SetTxt()
         TxtT_SO_LUONG.ReadOnly = True
         TxtT_Tien_NT.ReadOnly = True

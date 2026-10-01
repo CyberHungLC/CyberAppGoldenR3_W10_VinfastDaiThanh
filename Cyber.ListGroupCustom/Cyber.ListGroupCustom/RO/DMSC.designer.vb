@@ -63,10 +63,13 @@ Partial Class DMSC
         Me.LabTen_KH = New System.Windows.Forms.Label()
         Me.TxtModel_code = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.CmbCap_SC = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.TxtTong_Gio = New ClsTextBox.txtTien_NT()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.TxtTen_Cap_SC = New System.Windows.Forms.Label()
+        Me.TxtCap_SC = New Cyber.SmLists.TxtLookup()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtSo_km = New System.Windows.Forms.TextBox()
         CType(Me.TxtMa_kx.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabHDK.SuspendLayout()
         Me.TabCv.SuspendLayout()
@@ -81,6 +84,7 @@ Partial Class DMSC
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtCap_SC.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ButtExit
@@ -188,8 +192,8 @@ Partial Class DMSC
         'TabHDK
         '
         Me.TabHDK.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabHDK.Controls.Add(Me.TabCv)
         Me.TabHDK.Controls.Add(Me.TabVt)
         Me.TabHDK.Location = New System.Drawing.Point(1, 87)
@@ -602,9 +606,9 @@ Partial Class DMSC
         'TxtTen_SC2
         '
         Me.TxtTen_SC2.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTen_SC2.Location = New System.Drawing.Point(795, 27)
+        Me.TxtTen_SC2.Location = New System.Drawing.Point(820, 27)
         Me.TxtTen_SC2.Name = "TxtTen_SC2"
-        Me.TxtTen_SC2.Size = New System.Drawing.Size(235, 21)
+        Me.TxtTen_SC2.Size = New System.Drawing.Size(210, 21)
         Me.TxtTen_SC2.TabIndex = 1937
         '
         'LabTen_KH
@@ -633,26 +637,6 @@ Partial Class DMSC
         Me.Label5.TabIndex = 1940
         Me.Label5.Tag = "Name"
         Me.Label5.Text = "Model code"
-        '
-        'CmbCap_SC
-        '
-        Me.CmbCap_SC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.CmbCap_SC.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.CmbCap_SC.ForeColor = System.Drawing.Color.Navy
-        Me.CmbCap_SC.FormattingEnabled = True
-        Me.CmbCap_SC.Location = New System.Drawing.Point(357, 54)
-        Me.CmbCap_SC.Name = "CmbCap_SC"
-        Me.CmbCap_SC.Size = New System.Drawing.Size(343, 21)
-        Me.CmbCap_SC.TabIndex = 1945
-        '
-        'Label6
-        '
-        Me.Label6.Location = New System.Drawing.Point(272, 55)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(83, 20)
-        Me.Label6.TabIndex = 1950
-        Me.Label6.Tag = "Name"
-        Me.Label6.Text = "Cấp sửa chữa"
         '
         'TxtTong_Gio
         '
@@ -687,15 +671,72 @@ Partial Class DMSC
         Me.Label7.Tag = "Parts cash"
         Me.Label7.Text = "Thời gian"
         '
+        'TxtTen_Cap_SC
+        '
+        Me.TxtTen_Cap_SC.BackColor = System.Drawing.Color.White
+        Me.TxtTen_Cap_SC.Location = New System.Drawing.Point(461, 53)
+        Me.TxtTen_Cap_SC.Name = "TxtTen_Cap_SC"
+        Me.TxtTen_Cap_SC.Size = New System.Drawing.Size(239, 19)
+        Me.TxtTen_Cap_SC.TabIndex = 1963
+        Me.TxtTen_Cap_SC.Tag = ""
+        '
+        'TxtCap_SC
+        '
+        Me.TxtCap_SC._ActilookupPopup = False
+        Me.TxtCap_SC.CyberActilookupPopup = True
+        Me.TxtCap_SC.Dv_ListDetail = Nothing
+        Me.TxtCap_SC.Dv_Master = Nothing
+        Me.TxtCap_SC.FilterClient = ""
+        Me.TxtCap_SC.FilterSQL = ""
+        Me.TxtCap_SC.Location = New System.Drawing.Point(357, 52)
+        Me.TxtCap_SC.Name = "TxtCap_SC"
+        Me.TxtCap_SC.Properties.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.TxtCap_SC.Properties.Appearance.Options.UseForeColor = True
+        Me.TxtCap_SC.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard
+        Me.TxtCap_SC.Size = New System.Drawing.Size(100, 20)
+        Me.TxtCap_SC.TabIndex = 1961
+        Me.TxtCap_SC.Table_Name = ""
+        '
+        'Label9
+        '
+        Me.Label9.Location = New System.Drawing.Point(272, 55)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(79, 16)
+        Me.Label9.TabIndex = 1962
+        Me.Label9.Tag = "Models code"
+        Me.Label9.Text = "Cấp SC"
+        '
+        'Label8
+        '
+        Me.Label8.Location = New System.Drawing.Point(737, 55)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(74, 16)
+        Me.Label8.TabIndex = 1965
+        Me.Label8.Tag = "Km number"
+        Me.Label8.Text = "Số Km"
+        '
+        'txtSo_km
+        '
+        Me.txtSo_km.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
+        Me.txtSo_km.ForeColor = System.Drawing.Color.Navy
+        Me.txtSo_km.Location = New System.Drawing.Point(820, 52)
+        Me.txtSo_km.Name = "txtSo_km"
+        Me.txtSo_km.Size = New System.Drawing.Size(86, 21)
+        Me.txtSo_km.TabIndex = 1964
+        Me.txtSo_km.Text = "0"
+        '
         'DMSC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1072, 567)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtSo_km)
+        Me.Controls.Add(Me.TxtTen_Cap_SC)
+        Me.Controls.Add(Me.TxtCap_SC)
+        Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.TxtTong_Gio)
-        Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.CmbCap_SC)
         Me.Controls.Add(Me.TxtModel_code)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TxtTen_SC2)
@@ -749,10 +790,13 @@ Partial Class DMSC
         Me.Controls.SetChildIndex(Me.TxtTen_SC2, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.TxtModel_code, 0)
-        Me.Controls.SetChildIndex(Me.CmbCap_SC, 0)
-        Me.Controls.SetChildIndex(Me.Label6, 0)
         Me.Controls.SetChildIndex(Me.TxtTong_Gio, 0)
         Me.Controls.SetChildIndex(Me.Label7, 0)
+        Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.TxtCap_SC, 0)
+        Me.Controls.SetChildIndex(Me.TxtTen_Cap_SC, 0)
+        Me.Controls.SetChildIndex(Me.txtSo_km, 0)
+        Me.Controls.SetChildIndex(Me.Label8, 0)
         CType(Me.TxtMa_kx.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabHDK.ResumeLayout(False)
         Me.TabCv.ResumeLayout(False)
@@ -768,6 +812,7 @@ Partial Class DMSC
         CType(Me.RepositoryItemTextEdit2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtCap_SC.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -815,9 +860,11 @@ Partial Class DMSC
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents TxtTen_SC2 As System.Windows.Forms.TextBox
     Friend WithEvents LabTen_KH As System.Windows.Forms.Label
-    Friend WithEvents CmbCap_SC As System.Windows.Forms.ComboBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents TxtTong_Gio As ClsTextBox.txtTien_NT
-
+    Friend WithEvents TxtTen_Cap_SC As Windows.Forms.Label
+    Friend WithEvents TxtCap_SC As SmLists.TxtLookup
+    Friend WithEvents Label9 As Windows.Forms.Label
+    Friend WithEvents Label8 As Windows.Forms.Label
+    Friend WithEvents txtSo_km As Windows.Forms.TextBox
 End Class

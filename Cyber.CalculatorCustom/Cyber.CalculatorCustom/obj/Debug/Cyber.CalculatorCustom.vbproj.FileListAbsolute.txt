@@ -74,3 +74,4 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.CalculatorCustom.dll
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.CalculatorCustom.pdb
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Cyber.CalculatorCustom.xml
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.CalculatorCustom\Cyber.CalculatorCustom\obj\Debug\Cyber.CalculatorCustom.ROUPDL.resources

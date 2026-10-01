@@ -36,70 +36,106 @@ Public Class Sys
                 Frm = New RoImportDmvt
             Case "CP_UPDATEGIA2".ToUpper.ToString
                 Frm = New RoUpdateGia
+            Case "CP_ROUPDATE_LOAD".ToUpper.ToString
+                Frm = New ROUPDL
+                'Case "CP_Ro_Up_Hang".ToUpper.Trim
+
+                '    Frm = New Ro_Up_Hang_Loc
+                '    Frm.Lan = M_Lan
+                '    Frm.Para = M_Para
+                '    Frm.Sysvar = oSysvar
+                '    Frm.AppConn = Appconn
+                '    Frm.CyberSmlib = CyberSmlib
+                '    Frm.CyberSupport = CyberSupport
+                '    Frm.CyberFill = CyberFill
+                '    Frm.CyberSmlistSys = CyberSmlistSys
+                '    Frm.CyberSmodb = CyberSmodb
+                '    Frm.CyberExport = CyberEport
+                '    Frm.CyberVoucher = CyberVoucher
+                '    Frm.CyberLoading = CyberLoading
+                '    Frm.ShowDialog()
+
+                '    If Not Frm.Save_OK Then Return True
+                '    Dim _Ro_strParameterStore As String = Frm.Tag.ToString.Trim
+
+                '    If _Ro_strParameterStore.Trim = "" Then Return True
+
+                '    Dim DsData As DataSet =
+                '    CyberSmlib.SQLExcuteStoreProcedure(Appconn, M_CP_Name.Trim, _Ro_strParameterStore)
+
+                '    Dim Frm1 As New Ro_Up_Hang_Xem
+                '    Frm1.strLoc = _Ro_strParameterStore
+                '    Frm1.Cp_Loc = M_CP_Name
+                '    Frm1.DsDataLoc = DsData
+                '    Frm1.Lan = M_Lan
+                '    Frm1.Para = Frm.Para
+                '    Frm1.Sysvar = oSysvar
+                '    Frm1.AppConn = Appconn
+                '    Frm1.CyberSmlib = CyberSmlib
+                '    Frm1.CyberSupport = CyberSupport
+                '    Frm1.CyberFill = CyberFill
+                '    Frm1.CyberSmlistSys = CyberSmlistSys
+                '    Frm1.CyberSmodb = CyberSmodb
+                '    Frm1.CyberExport = CyberEport
+                '    Frm1.CyberVoucher = CyberVoucher
+                '    Frm1.CyberLoading = CyberLoading
+                '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
+                '    Frm1.ShowDialog()
+                '    Return True
+
+                'Case "CP_CRMQLLLLoad".ToUpper.Trim
+                '    Frm = New CRM_Loc
+                '    Frm.Lan = M_Lan
+                '    Frm.Para = M_Para
+                '    Frm.Sysvar = oSysvar
+                '    Frm.AppConn = Appconn
+                '    Frm.CyberSmlib = CyberSmlib
+                '    Frm.CyberSupport = CyberSupport
+                '    Frm.CyberFill = CyberFill
+                '    Frm.CyberSmlistSys = CyberSmlistSys
+                '    Frm.CyberSmodb = CyberSmodb
+                '    Frm.CyberExport = CyberEport
+                '    Frm.CyberVoucher = CyberVoucher
+                '    Frm.CyberLoading = CyberLoading
+
+                '    Frm.ShowDialog()
+
+                '    'CyberSmlib.FlushMemorySave()
+                '    If Not Frm.Save_OK Then Return True
+                '    'If Not Frm.Save_OK Then Return True
+                '    ''--------------
+                '    'Dim M_strParameterStore As String = Frm.Tag.ToString.Trim
+                '    'If M_strParameterStore.Trim = "" Then Exit Function
+                '    'If Not CyberLoading.IsShowWaitFrom Then CyberLoading.V_ShowWailtForm(_Title, _Title2, M_Lan)
+                '    'Dim DsCalculator As DataSet
+                '    'DsCalculator = CyberSmlib.SQLExcuteStoreProcedure(Appconn, M_CP_Name.Trim, M_strParameterStore)
+                '    'If CyberLoading.IsShowWaitFrom Then CyberLoading.V_CloseWailtForm()
+                '    Dim Frm1 As New CRM_Xem
+                '    Frm1.strLoc = Frm.Tag.ToString.Trim
+                '    '-------------
+                '    Frm1.Loai = Frm.Key_Sub3.ToString.Trim
+                '    Frm1.Ma_Loai = Frm.Key_Sub4.ToString.Trim
+                '    Frm1.Ma_Ngay = Frm.Key_Sub5.ToString.Trim
+
+                '    Frm1.Lan = M_Lan
+                '    Frm1.Para = Frm.Para 'Lấy thêm loai và mã ngày
+                '    Frm1.Sysvar = oSysvar
+                '    Frm1.AppConn = Appconn
+                '    Frm1.CyberSmlib = CyberSmlib
+                '    Frm1.CyberSupport = CyberSupport
+                '    Frm1.CyberFill = CyberFill
+                '    Frm1.CyberSmlistSys = CyberSmlistSys
+                '    Frm1.CyberSmodb = CyberSmodb
+                '    Frm1.CyberExport = CyberEport
+                '    Frm1.CyberVoucher = CyberVoucher
+                '    Frm1.CyberLoading = CyberLoading
+                '    Frm1.ShowDialog()
+                '    Return True
 
             Case Else
                 Return False
         End Select
-        '    ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        '    Dim Frm = New Ha
-        '    Frm.Lan = M_Lan
-        '    Frm.Para = M_Para
-        '    Frm.Sysvar = oSysvar
-        '    Frm.AppConn = Appconn
-        '    Frm.CyberSmlib = CyberSmlib
-        '    Frm.CyberSupport = CyberSupport
-        '    Frm.CyberFill = CyberFill
-        '    Frm.CyberSmlistSys = CyberSmlistSys
-        '    Frm.CyberSmodb = CyberSmodb
-        '    Frm.CyberExport = CyberEport
-        '    Frm.CyberVoucher = CyberVoucher
-        '    Frm.CyberLoading = CyberLoading
-        '    Return True
-        'End If
 
-        ''-------------------SM
-        'If M_CP_Name = "CP_Maintain".ToUpper.Trim Then Frm = New FrmMaintain '---Bảo trì và kiểm tra số liệu
-        ''-------------------PK3/Pk4
-        'If M_CP_Name = "CP_GLCTPK3Loc".Trim.ToUpper Then Frm = New FrmNam
-        'If M_CP_Name = "CP_GLCTPK4Loc".Trim.ToUpper Then Frm = New GLCTPK4LOC
-        'If M_CP_Name = "CP_GLCTPK8".Trim.ToUpper Then Frm = New ThangToThangTk
-        'If M_CP_Name = "CP_GLClosing".Trim.ToUpper Then Frm = New ThangToThang
-        ''-------------------Chuyen doi so du
-        'If M_CP_Name = "CP_ConvertNextYear".Trim.ToUpper Then Frm = New ConvertNextYear
-        'If M_CP_Name = "CP_ConvertNextYear".Trim.ToUpper Then M_CP_Name = M_CP_Name.Trim & M_Para(M_VT_PARA + 2).Trim
-        ''-------------------Tinh gia von
-        'If M_CP_Name = "CP_InGiaCost".ToUpper.Trim Then Frm = New InGiaCost '---
-        ''-------------------Tinh gia von cong cu dung cu
-        'If M_CP_Name = "CP_ImGiaCost".ToUpper.Trim Then Frm = New ImGiaCost '---
-        'If M_CP_Name = "CP_IMTINHPB".ToUpper.Trim Then Frm = New ImTinhPB
-        'If M_CP_Name = "CP_IMbtpbCC".ToUpper.Trim Then Frm = New IMBTPBCC '---Tao but toan khau hao
-        'If M_CP_Name = "CP_ImThoiPBLoc".ToUpper.Trim Then Frm = New IMThoiPbLoc '---Thoi phan bo cong cu dung cu
-        ''-------------------Tai san
-        'If M_CP_Name = "CP_FATINHKH".ToUpper.Trim Then Frm = New FATinhKh
-        'If M_CP_Name = "CP_Fabtpbts".ToUpper.Trim Then Frm = New FABTPBTS '---Tao but toan khau hao
-        'If M_CP_Name = "CP_FaSuaKHLoc".ToUpper.Trim Then Frm = New FaSuaKHLoc '---ĐIều chỉnh khấu hao tài sản cố định
-        'If M_CP_Name = "CP_FaThoiKHLoc".ToUpper.Trim Then Frm = New FAThoiKHLoc '---ĐIều chỉnh khấu hao tài sản cố định
-        'If M_CP_Name = "CP_FaGiamTsLoc".ToUpper.Trim Then Frm = New FAThoiKHLoc '---ĐIều chỉnh Giam tai san co dinh
-        'If M_CP_Name = "CP_FaDcTsLoc".ToUpper.Trim Then Frm = New FAThoiKHLoc '---Dieu chuyen tai san
-        'If M_CP_Name = "CP_FATgNgLoc".ToUpper.Trim Then Frm = New FATgNgLoc '---Dieu chuyen tai san
-
-        ''-------------------Gia thanh san xuat
-        'If M_CP_Name = "CP_COTINHGT".ToUpper.Trim Then Frm = New COTinhGT '---Tinh gia thanh san xuat
-        'If M_CP_Name = "CP_COTINHAPGIA".ToUpper.Trim Then Frm = New COTinhApGia '---Tinh gia thanh san xuat
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        ''-----Ket thuc phan ke toan
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_BHHDLDCLOC".ToUpper.Trim Then Frm = New BHHDLDCLOC '---Tinh gia thanh san xuat
-        ''-----Ket thuc phan phan he ban hang
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_VTTraCuuTon".ToUpper.Trim Then Frm = New VTTraCuuTon '---Tinh gia thanh san xuat
-
-        ''-----Ket thuc phan phan ton kho
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        ''----Phan hệ quản lý sửa chữa
-        'If M_CP_Name = "CP_ROTRANLOC".Trim.ToUpper Then Frm = New ROTRAN
-        'If M_CP_Name = "CP_ROCLOSE".Trim.ToUpper Then Frm = New ROCLOSE
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
         Frm.Lan = M_Lan
         Frm.Para = M_Para
         Frm.Sysvar = oSysvar
@@ -127,199 +163,8 @@ Public Class Sys
         Dim DsCalculator As DataSet = CyberSmlib.SQLExcuteStoreProcedure(Appconn, M_CP_Name.Trim, M_strParameterStore)
         If CyberLoading.IsShowWaitFrom Then CyberLoading.V_CloseWailtForm()
 
-
-
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        'Frm.Lan = M_Lan
-        'Frm.Para = M_Para
-        'Frm.Sysvar = oSysvar
-        'Frm.AppConn = Appconn
-        'Frm.CyberSmlib = CyberSmlib
-        'Frm.CyberSupport = CyberSupport
-        'Frm.CyberFill = CyberFill
-        'Frm.CyberSmlistSys = CyberSmlistSys
-        'Frm.CyberSmodb = CyberSmodb
-        'Frm.CyberExport = CyberEport
-        'Frm.CyberVoucher = CyberVoucher
-        'Frm.CyberLoading = CyberLoading
-
-        'Frm.ShowDialog()
         CyberSmlib.FlushMemorySave()
-        'If Not Frm.Save_OK Then Return True
-        ''--------------
-        'Dim M_strParameterStore As String = Frm.Tag.ToString.Trim
-        'If M_strParameterStore.Trim = "" Then Exit Function
-        'If Not CyberLoading.IsShowWaitFrom Then CyberLoading.V_ShowWailtForm(_Title, _Title2, M_Lan)
-        'Dim DsCalculator As DataSet = CyberSmlib.SQLExcuteStoreProcedure(Appconn, M_CP_Name.Trim, M_strParameterStore)
-        'If CyberLoading.IsShowWaitFrom Then CyberLoading.V_CloseWailtForm()
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_FaSuaKHLoc".ToUpper.Trim Or M_CP_Name = "CP_FaThoiKHLoc".ToUpper.Trim Or M_CP_Name = "CP_FaGiamTsLoc".ToUpper.Trim Or M_CP_Name = "CP_FaDcTsLoc".ToUpper.Trim Or M_CP_Name = "CP_ImThoiPBLoc".ToUpper.Trim Then
-        '    Dim _Dt_Master, _Dt_Head As DataTable
-        '    _Dt_Master = DsCalculator.Tables(0).Copy
-        '    _Dt_Head = DsCalculator.Tables(1).Copy
 
-        '    Dim Frm1 As FaSuaKHXem
-        '    Frm1 = New FaSuaKHXem
-        '    Dim M_CP_UPdate As String = ""
-        '    If M_CP_Name = "CP_FaSuaKHLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaSuaKhUPDATE"
-        '    If M_CP_Name = "CP_FaThoiKHLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaThoiKHUpdate"
-        '    If M_CP_Name = "CP_FaGiamTsLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaGiamTsUpdate"
-        '    If M_CP_Name = "CP_ImThoiPBLoc".ToUpper.Trim Then M_CP_UPdate = "CP_ImThoiPBUpdate"
-
-        '    Frm1.strLoc = M_strParameterStore
-        '    Frm1.Cp_Loc = M_CP_Name
-        '    Frm1.Cp_Update = M_CP_UPdate
-
-        '    Frm1.Lan = M_Lan
-        '    Frm1.Para = M_Para
-        '    Frm1.Sysvar = oSysvar
-        '    Frm1.AppConn = Appconn
-        '    Frm1.CyberSmlib = CyberSmlib
-        '    Frm1.CyberSupport = CyberSupport
-        '    Frm1.CyberFill = CyberFill
-        '    Frm1.CyberSmlistSys = CyberSmlistSys
-        '    Frm1.CyberSmodb = CyberSmodb
-        '    Frm1.CyberExport = CyberEport
-        '    Frm1.CyberVoucher = CyberVoucher
-        '    Frm1.CyberLoading = CyberLoading
-        '    Frm1.DsDataLoc = DsCalculator
-        '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
-        '    Frm1.ShowDialog()
-        '    Return True
-        'End If
-        ''------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_FATgNgLoc".ToUpper.Trim Then
-        '    Dim _Dt_Master, _Dt_Head As DataTable
-        '    _Dt_Master = DsCalculator.Tables(0).Copy
-        '    _Dt_Head = DsCalculator.Tables(1).Copy
-
-
-        '    Dim Frm1 As FATgNgXem
-        '    Frm1 = New FATgNgXem
-        '    Dim M_CP_UPdate As String = ""
-
-        '    If M_CP_Name = "CP_FATgNgLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaTgNgUpDate"
-
-        '    Frm1.strLoc = M_strParameterStore
-        '    Frm1.Cp_Loc = M_CP_Name
-        '    Frm1.Cp_Update = M_CP_UPdate
-
-        '    Frm1.Lan = M_Lan
-        '    Frm1.Para = M_Para
-        '    Frm1.Sysvar = oSysvar
-        '    Frm1.AppConn = Appconn
-        '    Frm1.CyberSmlib = CyberSmlib
-        '    Frm1.CyberSupport = CyberSupport
-        '    Frm1.CyberFill = CyberFill
-        '    Frm1.CyberSmlistSys = CyberSmlistSys
-        '    Frm1.CyberSmodb = CyberSmodb
-        '    Frm1.CyberExport = CyberEport
-        '    Frm1.CyberVoucher = CyberVoucher
-        '    Frm1.CyberLoading = CyberLoading
-        '    Frm1.DsDataLoc = DsCalculator
-        '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
-        '    Frm1.ShowDialog()
-        '    Return True
-        'End If
-
-        ''------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_GLCTPK3Loc".ToUpper.Trim Then
-        '    Dim _Dt_Master, _Dt_Head As DataTable
-        '    _Dt_Master = DsCalculator.Tables(0).Copy
-        '    _Dt_Head = DsCalculator.Tables(1).Copy
-        '    Dim Frm1 As GLCTPK3
-        '    Frm1 = New GLCTPK3
-        '    Dim M_CP_UPdate As String = ""
-        '    If M_CP_Name = "CP_FaSuaKHLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaSuaKhUPDATE"
-        '    If M_CP_Name = "CP_FaThoiKHLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaThoiKHUpdate"
-        '    If M_CP_Name = "CP_FaGiamTsLoc".ToUpper.Trim Then M_CP_UPdate = "CP_FaGiamTsUpdate"
-
-        '    Frm1.Nam = Frm.Nam
-        '    Frm1.strLoc = M_strParameterStore
-        '    Frm1.Cp_Loc = M_CP_Name
-        '    Frm1.Cp_Update = M_CP_UPdate
-
-        '    Frm1.Lan = M_Lan
-        '    Frm1.Para = M_Para
-        '    Frm1.Sysvar = oSysvar
-        '    Frm1.AppConn = Appconn
-        '    Frm1.CyberSmlib = CyberSmlib
-        '    Frm1.CyberSupport = CyberSupport
-        '    Frm1.CyberFill = CyberFill
-        '    Frm1.CyberSmlistSys = CyberSmlistSys
-        '    Frm1.CyberSmodb = CyberSmodb
-        '    Frm1.CyberExport = CyberEport
-        '    Frm1.CyberVoucher = CyberVoucher
-        '    Frm1.CyberLoading = CyberLoading
-        '    Frm1.DsDataLoc = DsCalculator
-        '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
-        '    Frm1.ShowDialog()
-        '    Return True
-        'End If
-        ''------------------------------------------------------------------------------------------------
-        'If M_CP_Name = "CP_GLCTPK4Loc".ToUpper.Trim Then
-        '    Dim _Dt_Master, _Dt_Head As DataTable
-        '    _Dt_Master = DsCalculator.Tables(0).Copy
-        '    _Dt_Head = DsCalculator.Tables(1).Copy
-        '    Dim Frm1 As GLCTPK4
-        '    Frm1 = New GLCTPK4
-        '    Dim M_CP_UPdate As String = ""
-
-        '    Frm1.Nam = Frm.Nam
-        '    Frm1.strLoc = M_strParameterStore
-        '    Frm1.Cp_Loc = M_CP_Name
-        '    Frm1.Cp_Update = M_CP_UPdate
-
-        '    Frm1.Lan = M_Lan
-        '    Frm1.Para = M_Para
-        '    Frm1.Sysvar = oSysvar
-        '    Frm1.AppConn = Appconn
-        '    Frm1.CyberSmlib = CyberSmlib
-        '    Frm1.CyberSupport = CyberSupport
-        '    Frm1.CyberFill = CyberFill
-        '    Frm1.CyberSmlistSys = CyberSmlistSys
-        '    Frm1.CyberSmodb = CyberSmodb
-        '    Frm1.CyberExport = CyberEport
-        '    Frm1.CyberVoucher = CyberVoucher
-        '    Frm1.CyberLoading = CyberLoading
-        '    Frm1.DsDataLoc = DsCalculator
-        '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
-        '    Frm1.ShowDialog()
-        '    Return True
-        'End If
-        ''--------------------------------------------------------------------------------------------------------------------------------------------------------
-        ''----Ban Hang
-        'If M_CP_Name = "CP_BHHDLDCLOC".ToUpper.Trim Then
-
-        '    Dim Frm1 As BHHDLDCLOCXEM
-        '    Frm1 = New BHHDLDCLOCXEM
-
-        '    Dim M_CP_UPdate As String = "CP_BHHDLDCUPDATE"
-
-        '    Frm1.Nam = Frm.Nam
-        '    Frm1.strLoc = M_strParameterStore
-        '    Frm1.Cp_Loc = M_CP_Name
-        '    Frm1.Cp_Update = M_CP_UPdate
-
-        '    Frm1.Lan = M_Lan
-        '    Frm1.Para = M_Para
-        '    Frm1.Sysvar = oSysvar
-        '    Frm1.AppConn = Appconn
-        '    Frm1.CyberSmlib = CyberSmlib
-        '    Frm1.CyberSupport = CyberSupport
-        '    Frm1.CyberFill = CyberFill
-        '    Frm1.CyberSmlistSys = CyberSmlistSys
-        '    Frm1.CyberSmodb = CyberSmodb
-        '    Frm1.CyberExport = CyberEport
-        '    Frm1.CyberVoucher = CyberVoucher
-        '    Frm1.CyberLoading = CyberLoading
-        '    Frm1.DsDataLoc = DsCalculator
-        '    Frm1.WindowState = Windows.Forms.FormWindowState.Maximized
-        '    Frm1.ShowDialog()
-        '    Return True
-        'End If
-        '--------------------------------------------------------------------------------------------------------------------------------------------------------
-        'CyberSupport.V_MsgChk(DsCalculator.Tables(0), oSysvar, M_Para(13).Trim)
         Return True
     End Function
     'Public Function GetFormCRM_F3(ByVal M_Loai As String, ByVal M_Ma_Loai As String, ByVal M_Ma_Ngay As String) As CRM_F3

@@ -66,20 +66,6 @@ Partial Class ISC
         Me.CbbMa_TTCP_H = New System.Windows.Forms.ComboBox()
         Me.LabMa_TTCP_H = New System.Windows.Forms.Label()
         Me.TabHDK = New System.Windows.Forms.TabControl()
-        Me.TabCv = New System.Windows.Forms.TabPage()
-        Me.DetailCv = New DevExpress.XtraGrid.GridControl()
-        Me.DetailGRVCv = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.RepositoryItemTextEdit3 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.RepositoryItemTextEdit4 = New DevExpress.XtraEditors.Repository.RepositoryItemTextEdit()
-        Me.TxtDate1 = New ClsTextBox.txtDate()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.TxtMa_Quyen = New System.Windows.Forms.TextBox()
-        Me.TxtTy_Gia1 = New ClsTextBox.txtTy_Gia()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.TabVt = New System.Windows.Forms.TabPage()
         Me.DetailVt = New DevExpress.XtraGrid.GridControl()
         Me.DetailGRVVt = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -91,11 +77,6 @@ Partial Class ISC
         CType(Me.txtMa_HS_H.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMa_Bp_H.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabHDK.SuspendLayout()
-        Me.TabCv.SuspendLayout()
-        CType(Me.DetailCv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DetailGRVCv, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabVt.SuspendLayout()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -940,211 +921,12 @@ Partial Class ISC
         Me.TabHDK.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TabHDK.Controls.Add(Me.TabCv)
         Me.TabHDK.Controls.Add(Me.TabVt)
         Me.TabHDK.Location = New System.Drawing.Point(4, 135)
         Me.TabHDK.Name = "TabHDK"
         Me.TabHDK.SelectedIndex = 0
         Me.TabHDK.Size = New System.Drawing.Size(966, 301)
         Me.TabHDK.TabIndex = 2169
-        '
-        'TabCv
-        '
-        Me.TabCv.Controls.Add(Me.DetailCv)
-        Me.TabCv.Controls.Add(Me.TxtDate1)
-        Me.TabCv.Controls.Add(Me.Label6)
-        Me.TabCv.Controls.Add(Me.TextBox1)
-        Me.TabCv.Controls.Add(Me.Label7)
-        Me.TabCv.Controls.Add(Me.Label8)
-        Me.TabCv.Controls.Add(Me.TxtMa_Quyen)
-        Me.TabCv.Controls.Add(Me.TxtTy_Gia1)
-        Me.TabCv.Controls.Add(Me.TextBox2)
-        Me.TabCv.Controls.Add(Me.Label9)
-        Me.TabCv.Location = New System.Drawing.Point(4, 22)
-        Me.TabCv.Name = "TabCv"
-        Me.TabCv.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabCv.Size = New System.Drawing.Size(958, 275)
-        Me.TabCv.TabIndex = 1
-        Me.TabCv.Text = "Công việc"
-        Me.TabCv.UseVisualStyleBackColor = True
-        '
-        'DetailCv
-        '
-        Me.DetailCv.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.DetailCv.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DetailCv.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DetailCv.Location = New System.Drawing.Point(3, 3)
-        Me.DetailCv.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.DetailCv.MainView = Me.DetailGRVCv
-        Me.DetailCv.Name = "DetailCv"
-        Me.DetailCv.RepositoryItems.AddRange(New DevExpress.XtraEditors.Repository.RepositoryItem() {Me.RepositoryItemTextEdit3, Me.RepositoryItemTextEdit4})
-        Me.DetailCv.Size = New System.Drawing.Size(952, 269)
-        Me.DetailCv.TabIndex = 0
-        Me.DetailCv.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DetailGRVCv})
-        '
-        'DetailGRVCv
-        '
-        Me.DetailGRVCv.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DetailGRVCv.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.DetailGRVCv.Appearance.SelectedRow.BackColor = System.Drawing.Color.Red
-        Me.DetailGRVCv.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.DetailGRVCv.Appearance.ViewCaption.Options.UseTextOptions = True
-        Me.DetailGRVCv.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.DetailGRVCv.Appearance.ViewCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.DetailGRVCv.Appearance.ViewCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap
-        Me.DetailGRVCv.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DetailGRVCv.AppearancePrint.EvenRow.Options.UseFont = True
-        Me.DetailGRVCv.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
-        Me.DetailGRVCv.CustomizationFormBounds = New System.Drawing.Rectangle(907, 465, 210, 172)
-        Me.DetailGRVCv.GridControl = Me.DetailCv
-        Me.DetailGRVCv.GroupRowHeight = 30
-        Me.DetailGRVCv.Name = "DetailGRVCv"
-        Me.DetailGRVCv.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.[False]
-        Me.DetailGRVCv.OptionsLayout.Columns.AddNewColumns = False
-        Me.DetailGRVCv.OptionsSelection.CheckBoxSelectorColumnWidth = 20
-        Me.DetailGRVCv.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect
-        Me.DetailGRVCv.OptionsView.ColumnAutoWidth = False
-        Me.DetailGRVCv.OptionsView.ShowGroupPanel = False
-        Me.DetailGRVCv.RowHeight = 21
-        '
-        'RepositoryItemTextEdit3
-        '
-        Me.RepositoryItemTextEdit3.AutoHeight = False
-        Me.RepositoryItemTextEdit3.Name = "RepositoryItemTextEdit3"
-        '
-        'RepositoryItemTextEdit4
-        '
-        Me.RepositoryItemTextEdit4.AutoHeight = False
-        Me.RepositoryItemTextEdit4.Name = "RepositoryItemTextEdit4"
-        '
-        'TxtDate1
-        '
-        Me.TxtDate1.BackColor = System.Drawing.Color.White
-        Me.TxtDate1.Flags = 65536
-        Me.TxtDate1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtDate1.ForeColor = System.Drawing.Color.Navy
-        Me.TxtDate1.isEmpty = True
-        Me.TxtDate1.Location = New System.Drawing.Point(602, 100)
-        Me.TxtDate1.MaskDate = "dd/MM/yyyy"
-        Me.TxtDate1.MaxLength = 10
-        Me.TxtDate1.Name = "TxtDate1"
-        Me.TxtDate1.RangeMax = New Date(9998, 12, 31, 0, 0, 0, 0)
-        Me.TxtDate1.RangeMin = New Date(1900, 1, 1, 0, 0, 0, 0)
-        Me.TxtDate1.ReadOnly = True
-        Me.TxtDate1.ShowDayBeforeMonth = False
-        Me.TxtDate1.Size = New System.Drawing.Size(131, 22)
-        Me.TxtDate1.TabIndex = 0
-        Me.TxtDate1.Text = "18/09/2011"
-        Me.TxtDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.TxtDate1.Value = New Date(2011, 9, 18, 0, 0, 0, 0)
-        '
-        'Label6
-        '
-        Me.Label6.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label6.BackColor = System.Drawing.Color.Transparent
-        Me.Label6.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.Navy
-        Me.Label6.Location = New System.Drawing.Point(283, 41)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(64, 18)
-        Me.Label6.TabIndex = 134
-        Me.Label6.Tag = "E.Rate"
-        Me.Label6.Text = "Ngoại tệ"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.BackColor = System.Drawing.Color.White
-        Me.TextBox1.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.ForeColor = System.Drawing.Color.Navy
-        Me.TextBox1.Location = New System.Drawing.Point(579, 93)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(182, 22)
-        Me.TextBox1.TabIndex = 2
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label7
-        '
-        Me.Label7.BackColor = System.Drawing.Color.Transparent
-        Me.Label7.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.Navy
-        Me.Label7.Location = New System.Drawing.Point(518, 98)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(83, 14)
-        Me.Label7.TabIndex = 135
-        Me.Label7.Tag = "Voucher no."
-        Me.Label7.Text = "Số phiếu"
-        '
-        'Label8
-        '
-        Me.Label8.BackColor = System.Drawing.Color.Transparent
-        Me.Label8.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.Navy
-        Me.Label8.Location = New System.Drawing.Point(524, 107)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(91, 14)
-        Me.Label8.TabIndex = 143
-        Me.Label8.Tag = "Voucher date"
-        Me.Label8.Text = "Ngày c.l.từ"
-        '
-        'TxtMa_Quyen
-        '
-        Me.TxtMa_Quyen.BackColor = System.Drawing.Color.White
-        Me.TxtMa_Quyen.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TxtMa_Quyen.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TxtMa_Quyen.ForeColor = System.Drawing.Color.Navy
-        Me.TxtMa_Quyen.Location = New System.Drawing.Point(579, 121)
-        Me.TxtMa_Quyen.Name = "TxtMa_Quyen"
-        Me.TxtMa_Quyen.Size = New System.Drawing.Size(125, 21)
-        Me.TxtMa_Quyen.TabIndex = 22
-        Me.TxtMa_Quyen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        Me.TxtMa_Quyen.Visible = False
-        '
-        'TxtTy_Gia1
-        '
-        Me.TxtTy_Gia1.AllowNegative = True
-        Me.TxtTy_Gia1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TxtTy_Gia1.BackColor = System.Drawing.Color.White
-        Me.TxtTy_Gia1.Flags = 7680
-        Me.TxtTy_Gia1.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TxtTy_Gia1.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTy_Gia1.InputMask = "## ### ###.##"
-        Me.TxtTy_Gia1.Location = New System.Drawing.Point(354, 60)
-        Me.TxtTy_Gia1.MaxWholeDigits = 10
-        Me.TxtTy_Gia1.Name = "TxtTy_Gia1"
-        Me.TxtTy_Gia1.RangeMax = 1.7976931348623157E+308R
-        Me.TxtTy_Gia1.RangeMin = -1.7976931348623157E+308R
-        Me.TxtTy_Gia1.ReadOnly = True
-        Me.TxtTy_Gia1.Size = New System.Drawing.Size(102, 22)
-        Me.TxtTy_Gia1.TabIndex = 20
-        Me.TxtTy_Gia1.Text = "22 500.01"
-        Me.TxtTy_Gia1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.BackColor = System.Drawing.Color.White
-        Me.TextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
-        Me.TextBox2.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.ForeColor = System.Drawing.Color.Navy
-        Me.TextBox2.Location = New System.Drawing.Point(354, 36)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(102, 22)
-        Me.TextBox2.TabIndex = 19
-        Me.TextBox2.TabStop = False
-        '
-        'Label9
-        '
-        Me.Label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label9.BackColor = System.Drawing.Color.Transparent
-        Me.Label9.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.Navy
-        Me.Label9.Location = New System.Drawing.Point(283, 62)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(64, 18)
-        Me.Label9.TabIndex = 153
-        Me.Label9.Tag = "E.Rate"
-        Me.Label9.Text = "Tỷ giá"
         '
         'TabVt
         '
@@ -1154,7 +936,7 @@ Partial Class ISC
         Me.TabVt.Padding = New System.Windows.Forms.Padding(3)
         Me.TabVt.Size = New System.Drawing.Size(958, 275)
         Me.TabVt.TabIndex = 0
-        Me.TabVt.Text = "Vật tư/phụ tùng"
+        Me.TabVt.Text = "Vật tư/Công việc"
         Me.TabVt.UseVisualStyleBackColor = True
         '
         'DetailVt
@@ -1322,12 +1104,6 @@ Partial Class ISC
         CType(Me.txtMa_HS_H.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMa_Bp_H.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabHDK.ResumeLayout(False)
-        Me.TabCv.ResumeLayout(False)
-        Me.TabCv.PerformLayout()
-        CType(Me.DetailCv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DetailGRVCv, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.RepositoryItemTextEdit4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabVt.ResumeLayout(False)
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1383,20 +1159,6 @@ Partial Class ISC
     Friend WithEvents CbbMa_TTCP_H As System.Windows.Forms.ComboBox
     Friend WithEvents LabMa_TTCP_H As System.Windows.Forms.Label
     Friend WithEvents TabHDK As TabControl
-    Friend WithEvents TabCv As TabPage
-    Friend WithEvents DetailCv As DevExpress.XtraGrid.GridControl
-    Friend WithEvents DetailGRVCv As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents RepositoryItemTextEdit3 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents RepositoryItemTextEdit4 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-    Friend WithEvents TxtDate1 As ClsTextBox.txtDate
-    Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Label7 As Label
-    Friend WithEvents Label8 As Label
-    Friend WithEvents TxtMa_Quyen As TextBox
-    Friend WithEvents TxtTy_Gia1 As ClsTextBox.txtTy_Gia
-    Friend WithEvents TextBox2 As TextBox
-    Friend WithEvents Label9 As Label
     Friend WithEvents TabVt As TabPage
     Friend WithEvents DetailVt As DevExpress.XtraGrid.GridControl
     Friend WithEvents DetailGRVVt As DevExpress.XtraGrid.Views.Grid.GridView

@@ -188,6 +188,12 @@
     <Compile Include="RO\BCRO_011.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="RO\RODTDVNGAY.designer.vb">
+      <DependentUpon>RODTDVNGAY.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RO\RODTDVNGAY.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="RO\RO_HD10.designer.vb">
       <DependentUpon>RO_HD10.vb</DependentUpon>
     </Compile>
@@ -287,6 +293,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RO\BCRO_011.resx">
       <DependentUpon>BCRO_011.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RO\RODTDVNGAY.resx">
+      <DependentUpon>RODTDVNGAY.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RO\RO_HD10.resx">
       <DependentUpon>RO_HD10.vb</DependentUpon>

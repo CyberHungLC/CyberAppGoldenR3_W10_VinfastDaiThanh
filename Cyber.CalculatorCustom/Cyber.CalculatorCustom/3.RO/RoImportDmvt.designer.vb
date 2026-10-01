@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class RoImportDmvt
     Inherits Cyber.From.FrmCalculator
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class RoImportDmvt
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.CmdSelectFile = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -35,8 +35,8 @@ Partial Class RoImportDmvt
         'GroupBoxLine
         '
         Me.GroupBoxLine.Location = New System.Drawing.Point(2, 492)
-        Me.GroupBoxLine.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.GroupBoxLine.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBoxLine.Margin = New System.Windows.Forms.Padding(4)
+        Me.GroupBoxLine.Padding = New System.Windows.Forms.Padding(4)
         Me.GroupBoxLine.Size = New System.Drawing.Size(978, 8)
         '
         'ButtOK
@@ -44,7 +44,7 @@ Partial Class RoImportDmvt
         Me.ButtOK.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.ButtOK.Appearance.Options.UseForeColor = True
         Me.ButtOK.Location = New System.Drawing.Point(778, 502)
-        Me.ButtOK.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtOK.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtOK.TabIndex = 10
         Me.ButtOK.Tag = "&OK"
         Me.ButtOK.Text = "&Chấp nhận"
@@ -54,7 +54,7 @@ Partial Class RoImportDmvt
         Me.ButtExit.Appearance.ForeColor = System.Drawing.Color.Navy
         Me.ButtExit.Appearance.Options.UseForeColor = True
         Me.ButtExit.Location = New System.Drawing.Point(880, 502)
-        Me.ButtExit.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.ButtExit.Margin = New System.Windows.Forms.Padding(4)
         Me.ButtExit.TabIndex = 11
         '
         'CmdSelectFile
@@ -136,7 +136,7 @@ Partial Class RoImportDmvt
         Me.RepositoryItemTextEdit2.AutoHeight = False
         Me.RepositoryItemTextEdit2.Name = "RepositoryItemTextEdit2"
         '
-        'RoUpdateGia
+        'RoImportDmvt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(982, 556)
@@ -144,8 +144,8 @@ Partial Class RoImportDmvt
         Me.Controls.Add(Me.TxtFileName)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CmdSelectFile)
-        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.Name = "RoUpdateGia"
+        Me.Margin = New System.Windows.Forms.Padding(4)
+        Me.Name = "RoImportDmvt"
         Me.Controls.SetChildIndex(Me.CmdSelectFile, 0)
         Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.Controls.SetChildIndex(Me.TxtFileName, 0)
@@ -160,7 +160,7 @@ Partial Class RoImportDmvt
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents CmdSelectFile As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents TxtFileName As System.Windows.Forms.TextBox
@@ -168,5 +168,4 @@ End Sub
     Friend WithEvents Master1GRV As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents RepositoryItemTextEdit1 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
-
 End Class

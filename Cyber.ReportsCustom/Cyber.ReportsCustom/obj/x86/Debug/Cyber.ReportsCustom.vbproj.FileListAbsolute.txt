@@ -183,3 +183,4 @@ D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThan
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ReportsCustom\Cyber.ReportsCustom\obj\x86\Debug\Cyber.ReportsCustom.ARSO1T_NTK.resources
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ReportsCustom\Cyber.ReportsCustom\obj\x86\Debug\Cyber.ReportsCustom.BCRO_012.resources
 D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ReportsCustom\Cyber.ReportsCustom\obj\x86\Debug\Cyber.ReportsCustom.BCDV_002.resources
+D:\CyberSoft\Win\CyberAppGoldenR3_W10_DaiThanh\CyberAppgolden_R3_VinFast_DaiThanh\Sm\Cyber.ReportsCustom\Cyber.ReportsCustom\obj\x86\Debug\Cyber.ReportsCustom.RODTDVNGAY.resources

@@ -69,8 +69,8 @@ Public Class DMSC
         Me.DetailGRVCv.GridControl = Me.DetailCv
         CyberFill.V_FillVoucher(DetailGRVCv, M_LAN, Dv_HeadCV, Dv_DetailCVTmp, Dt_DmCt.Rows(0))
 
-        If Me.Mode = "M" Then CmbCap_SC.SelectedValue = "0"
-        If CmbCap_SC.Text.Trim = "" Then CmbCap_SC.SelectedValue = "0"
+        'If Me.Mode = "M" Then CmbCap_SC.SelectedValue = "0"
+        'If CmbCap_SC.Text.Trim = "" Then CmbCap_SC.SelectedValue = "0"
     End Sub
     Private Sub V_MainSystem()
         Dim mnItemsMail = New Windows.Forms.ContextMenu
@@ -114,17 +114,17 @@ Public Class DMSC
 
     End Sub
     Private Sub CreateTabe()
-       
-        Dim DtTCap_SC As New DataTable
 
-        DtTCap_SC.Columns.Add("Cap_SC", GetType(String))
-        DtTCap_SC.Columns.Add("Ten", GetType(String))
-        DtTCap_SC.Rows.Add("1", IIf(M_LAN = "V", "Bảo dưỡng 1K", "Account is correct warehouse"))
-        DtTCap_SC.Rows.Add("2", IIf(M_LAN = "V", "Bảo dưỡng cấp nhỏ", "Account is correct warehouse"))
-        DtTCap_SC.Rows.Add("3", IIf(M_LAN = "V", "Bảo dưỡng cấp trung bình", "Account is correct warehouse"))
-        DtTCap_SC.Rows.Add("4", IIf(M_LAN = "V", "Bảo dưỡng cấp trung bình nhỏ", "Account is correct warehouse"))
-        DtTCap_SC.Rows.Add("5", IIf(M_LAN = "V", "Bảo dưỡng cấp lớn", "Account is correct warehouse"))
-        CyberFill.V_FillComBoxDefaul(Me.CmbCap_SC, DtTCap_SC, "Cap_sc", "Ten")
+        'Dim DtTCap_SC As New DataTable
+
+        'DtTCap_SC.Columns.Add("Cap_SC", GetType(String))
+        'DtTCap_SC.Columns.Add("Ten", GetType(String))
+        'DtTCap_SC.Rows.Add("1", IIf(M_LAN = "V", "Bảo dưỡng 1K", "Account is correct warehouse"))
+        'DtTCap_SC.Rows.Add("2", IIf(M_LAN = "V", "Bảo dưỡng cấp nhỏ", "Account is correct warehouse"))
+        'DtTCap_SC.Rows.Add("3", IIf(M_LAN = "V", "Bảo dưỡng cấp trung bình", "Account is correct warehouse"))
+        'DtTCap_SC.Rows.Add("4", IIf(M_LAN = "V", "Bảo dưỡng cấp trung bình nhỏ", "Account is correct warehouse"))
+        'DtTCap_SC.Rows.Add("5", IIf(M_LAN = "V", "Bảo dưỡng cấp lớn", "Account is correct warehouse"))
+        'CyberFill.V_FillComBoxDefaul(Me.CmbCap_SC, DtTCap_SC, "Cap_sc", "Ten")
 
     End Sub
     Private Sub V_GetColumn()
@@ -190,6 +190,9 @@ Public Class DMSC
 
         AddHandler TxtMa_kx.CyberValiting, AddressOf V_Ma_kx
         AddHandler TxtMa_kx.CyberLeave, AddressOf L_Ma_kx
+
+        AddHandler TxtCap_SC.CyberValiting, AddressOf V_Cap_SC
+        AddHandler TxtCap_SC.CyberLeave, AddressOf L_Cap_SC
     End Sub
     Private Sub V_AddHandler_Detail()
         EditTen_Vt.ColumnReadOnly = True
@@ -536,6 +539,19 @@ Public Class DMSC
         Else
             TxtMa_kx.Text = ""
             TxtTen_kx.Text = ""
+        End If
+    End Sub
+    Private Sub V_Cap_SC(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        sender.V_LookUp(M_LAN, M_Para, oSysvar, Appconn, DsLookup, "Cap_SC", "DmCapBD", "1=1", "1=1")
+    End Sub
+    Private Sub L_Cap_SC(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        DrReturn = sender.GetRowsSelectData(True)
+        If Not DrReturn Is Nothing Then
+            TxtCap_SC.Text = DrReturn.Item("Cap_SC")
+            TxtTen_Cap_SC.Text = DrReturn.Item("Ten_Cap_SC")
+        Else
+            TxtCap_SC.Text = ""
+            TxtTen_Cap_SC.Text = ""
         End If
     End Sub
 

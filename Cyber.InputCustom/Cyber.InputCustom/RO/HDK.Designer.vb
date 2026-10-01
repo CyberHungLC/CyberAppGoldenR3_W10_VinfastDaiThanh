@@ -231,7 +231,6 @@ Partial Class HDK
         Me.ChkEM60 = New System.Windows.Forms.CheckBox()
         Me.ChkKH_KS = New System.Windows.Forms.CheckBox()
         Me.ChkIs_3D = New System.Windows.Forms.CheckBox()
-        Me.ChkLenh_DH = New System.Windows.Forms.CheckBox()
         Me.ChkSCL = New System.Windows.Forms.CheckBox()
         Me.Label54 = New System.Windows.Forms.Label()
         Me.TxtDai_Ly = New System.Windows.Forms.TextBox()
@@ -259,6 +258,9 @@ Partial Class HDK
         Me.TxtMa_Doi = New Cyber.SmLists.TxtLookup()
         Me.TxtTen_Doi = New System.Windows.Forms.TextBox()
         Me.Label55 = New System.Windows.Forms.Label()
+        Me.ChkLenh_DH = New System.Windows.Forms.CheckBox()
+        Me.ChkIs_Thieu_HoSo = New System.Windows.Forms.CheckBox()
+        Me.TxtGhi_Chu_HoSo = New System.Windows.Forms.TextBox()
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -2993,7 +2995,7 @@ Partial Class HDK
         Me.TxtTen_Bp_H.BackColor = System.Drawing.Color.White
         Me.TxtTen_Bp_H.Enabled = False
         Me.TxtTen_Bp_H.ForeColor = System.Drawing.Color.Navy
-        Me.TxtTen_Bp_H.Location = New System.Drawing.Point(574, 653)
+        Me.TxtTen_Bp_H.Location = New System.Drawing.Point(976, 674)
         Me.TxtTen_Bp_H.Name = "TxtTen_Bp_H"
         Me.TxtTen_Bp_H.ReadOnly = True
         Me.TxtTen_Bp_H.Size = New System.Drawing.Size(59, 22)
@@ -3537,22 +3539,6 @@ Partial Class HDK
         Me.ChkIs_3D.Text = "3 ngày"
         Me.ChkIs_3D.UseVisualStyleBackColor = False
         '
-        'ChkLenh_DH
-        '
-        Me.ChkLenh_DH.AutoSize = True
-        Me.ChkLenh_DH.Enabled = False
-        Me.ChkLenh_DH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ChkLenh_DH.ForeColor = System.Drawing.Color.Navy
-        Me.ChkLenh_DH.Location = New System.Drawing.Point(601, 125)
-        Me.ChkLenh_DH.Name = "ChkLenh_DH"
-        Me.ChkLenh_DH.Size = New System.Drawing.Size(70, 17)
-        Me.ChkLenh_DH.TabIndex = 2114
-        Me.ChkLenh_DH.TabStop = False
-        Me.ChkLenh_DH.Tag = "Parts order"
-        Me.ChkLenh_DH.Text = "Đặt hàng"
-        Me.ChkLenh_DH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ChkLenh_DH.UseVisualStyleBackColor = True
-        '
         'ChkSCL
         '
         Me.ChkSCL.AutoSize = True
@@ -3826,7 +3812,7 @@ Partial Class HDK
         Me.TxtNgay_Gx.ShowDayBeforeMonth = False
         Me.TxtNgay_Gx.Size = New System.Drawing.Size(97, 22)
         Me.TxtNgay_Gx.TabIndex = 7137
-        Me.TxtNgay_Gx.Value = "22/09/2026 17:32"
+        Me.TxtNgay_Gx.Value = "30/09/2026 16:14"
         Me.TxtNgay_Gx.Visible = False
         '
         'CbbVRC
@@ -3949,11 +3935,59 @@ Partial Class HDK
         Me.Label55.Tag = "insurrance"
         Me.Label55.Text = "Đội xe"
         '
+        'ChkLenh_DH
+        '
+        Me.ChkLenh_DH.AutoSize = True
+        Me.ChkLenh_DH.Enabled = False
+        Me.ChkLenh_DH.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkLenh_DH.ForeColor = System.Drawing.Color.Navy
+        Me.ChkLenh_DH.Location = New System.Drawing.Point(601, 125)
+        Me.ChkLenh_DH.Name = "ChkLenh_DH"
+        Me.ChkLenh_DH.Size = New System.Drawing.Size(70, 17)
+        Me.ChkLenh_DH.TabIndex = 2114
+        Me.ChkLenh_DH.TabStop = False
+        Me.ChkLenh_DH.Tag = "Parts order"
+        Me.ChkLenh_DH.Text = "Đặt hàng"
+        Me.ChkLenh_DH.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ChkLenh_DH.UseVisualStyleBackColor = True
+        '
+        'ChkIs_Thieu_HoSo
+        '
+        Me.ChkIs_Thieu_HoSo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ChkIs_Thieu_HoSo.AutoSize = True
+        Me.ChkIs_Thieu_HoSo.Enabled = False
+        Me.ChkIs_Thieu_HoSo.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ChkIs_Thieu_HoSo.ForeColor = System.Drawing.Color.Navy
+        Me.ChkIs_Thieu_HoSo.Location = New System.Drawing.Point(515, 648)
+        Me.ChkIs_Thieu_HoSo.Name = "ChkIs_Thieu_HoSo"
+        Me.ChkIs_Thieu_HoSo.Size = New System.Drawing.Size(141, 17)
+        Me.ChkIs_Thieu_HoSo.TabIndex = 100015
+        Me.ChkIs_Thieu_HoSo.TabStop = False
+        Me.ChkIs_Thieu_HoSo.Tag = "Parts order"
+        Me.ChkIs_Thieu_HoSo.Text = "PT/Chưa hoàn thiện HS"
+        Me.ChkIs_Thieu_HoSo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ChkIs_Thieu_HoSo.UseVisualStyleBackColor = True
+        '
+        'TxtGhi_Chu_HoSo
+        '
+        Me.TxtGhi_Chu_HoSo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TxtGhi_Chu_HoSo.BackColor = System.Drawing.Color.White
+        Me.TxtGhi_Chu_HoSo.ForeColor = System.Drawing.Color.Navy
+        Me.TxtGhi_Chu_HoSo.Location = New System.Drawing.Point(655, 645)
+        Me.TxtGhi_Chu_HoSo.Name = "TxtGhi_Chu_HoSo"
+        Me.TxtGhi_Chu_HoSo.Size = New System.Drawing.Size(150, 22)
+        Me.TxtGhi_Chu_HoSo.TabIndex = 100016
+        Me.TxtGhi_Chu_HoSo.Tag = ""
+        '
         'HDK
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1353, 742)
+        Me.Controls.Add(Me.TxtGhi_Chu_HoSo)
+        Me.Controls.Add(Me.ChkIs_Thieu_HoSo)
         Me.Controls.Add(Me.TxtMa_Doi)
         Me.Controls.Add(Me.TxtTen_Doi)
         Me.Controls.Add(Me.Label55)
@@ -4358,22 +4392,6 @@ Partial Class HDK
         Me.Controls.SetChildIndex(Me.Label47, 0)
         Me.Controls.SetChildIndex(Me.ChkWH, 0)
         Me.Controls.SetChildIndex(Me.ChkNB, 0)
-        Me.Controls.SetChildIndex(Me.TxtUser_id, 0)
-        Me.Controls.SetChildIndex(Me.CmdPhan_Bo, 0)
-        Me.Controls.SetChildIndex(Me.CmdNew, 0)
-        Me.Controls.SetChildIndex(Me.CmdSave, 0)
-        Me.Controls.SetChildIndex(Me.CmdPrint, 0)
-        Me.Controls.SetChildIndex(Me.CmdEdit, 0)
-        Me.Controls.SetChildIndex(Me.CmdCancel, 0)
-        Me.Controls.SetChildIndex(Me.CmdDelete, 0)
-        Me.Controls.SetChildIndex(Me.CmdCopy, 0)
-        Me.Controls.SetChildIndex(Me.CmdSearch, 0)
-        Me.Controls.SetChildIndex(Me.CbbMa_Post, 0)
-        Me.Controls.SetChildIndex(Me.CmdImport, 0)
-        Me.Controls.SetChildIndex(Me.CmdSms, 0)
-        Me.Controls.SetChildIndex(Me.LabMa_Post, 0)
-        Me.Controls.SetChildIndex(Me.CmdView, 0)
-        Me.Controls.SetChildIndex(Me.CmdExit, 0)
         Me.Controls.SetChildIndex(Me.ChkIs_NonFir, 0)
         Me.Controls.SetChildIndex(Me.ChkEM60, 0)
         Me.Controls.SetChildIndex(Me.Chkfirst_visit, 0)
@@ -4410,6 +4428,24 @@ Partial Class HDK
         Me.Controls.SetChildIndex(Me.Label55, 0)
         Me.Controls.SetChildIndex(Me.TxtTen_Doi, 0)
         Me.Controls.SetChildIndex(Me.TxtMa_Doi, 0)
+        Me.Controls.SetChildIndex(Me.TxtUser_id, 0)
+        Me.Controls.SetChildIndex(Me.CmdPhan_Bo, 0)
+        Me.Controls.SetChildIndex(Me.CmdNew, 0)
+        Me.Controls.SetChildIndex(Me.CmdSave, 0)
+        Me.Controls.SetChildIndex(Me.CmdPrint, 0)
+        Me.Controls.SetChildIndex(Me.CmdEdit, 0)
+        Me.Controls.SetChildIndex(Me.CmdCancel, 0)
+        Me.Controls.SetChildIndex(Me.CmdDelete, 0)
+        Me.Controls.SetChildIndex(Me.CmdCopy, 0)
+        Me.Controls.SetChildIndex(Me.CmdSearch, 0)
+        Me.Controls.SetChildIndex(Me.CbbMa_Post, 0)
+        Me.Controls.SetChildIndex(Me.CmdImport, 0)
+        Me.Controls.SetChildIndex(Me.CmdSms, 0)
+        Me.Controls.SetChildIndex(Me.LabMa_Post, 0)
+        Me.Controls.SetChildIndex(Me.CmdView, 0)
+        Me.Controls.SetChildIndex(Me.CmdExit, 0)
+        Me.Controls.SetChildIndex(Me.ChkIs_Thieu_HoSo, 0)
+        Me.Controls.SetChildIndex(Me.TxtGhi_Chu_HoSo, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).EndInit()
@@ -4652,7 +4688,6 @@ Partial Class HDK
     Friend WithEvents ChkEM60 As System.Windows.Forms.CheckBox
     Friend WithEvents ChkKH_KS As System.Windows.Forms.CheckBox
     Friend WithEvents ChkIs_3D As System.Windows.Forms.CheckBox
-    Friend WithEvents ChkLenh_DH As System.Windows.Forms.CheckBox
     Friend WithEvents ChkSCL As System.Windows.Forms.CheckBox
     Friend WithEvents Label54 As System.Windows.Forms.Label
     Friend WithEvents TxtDai_Ly As System.Windows.Forms.TextBox
@@ -4680,4 +4715,7 @@ Partial Class HDK
     Friend WithEvents TxtMa_Doi As SmLists.TxtLookup
     Friend WithEvents TxtTen_Doi As TextBox
     Friend WithEvents Label55 As Label
+    Friend WithEvents ChkLenh_DH As CheckBox
+    Friend WithEvents ChkIs_Thieu_HoSo As CheckBox
+    Friend WithEvents TxtGhi_Chu_HoSo As TextBox
 End Class
