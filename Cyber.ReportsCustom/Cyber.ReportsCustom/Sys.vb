@@ -27,6 +27,9 @@ Public Class Sys
             Case "CP_BCDV_002".ToUpper.Trim
                 _Return = New BCDV_002
 
+            Case "CP_BCDV_003".ToUpper.Trim
+                _Return = New BCDV_003
+
             Case "CP_BCRO_011".ToUpper.Trim
                 _Return = New BCRO_011
 
