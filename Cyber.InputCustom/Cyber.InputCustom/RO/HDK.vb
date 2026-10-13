@@ -1243,6 +1243,9 @@
             TxtMa_BH.Text = ""
             Txtten_BH.Text = ""
         End If
+        V_PT_HH_BH_MG()
+        V_PT_HH_BH(New System.Object, New System.EventArgs)
+
     End Sub
 
 #End Region
@@ -1547,13 +1550,33 @@ _KT:
     Private Sub V_PT_Moi_Gioi(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
         If TxtPT_Moi_Gioi.Double = 0 Then Return
-        TxtMoi_Gioi.Double = CyberSupport.V_Round(TxtT_C.Double * TxtPT_Moi_Gioi.Double / 110, 0)
+        TxtMoi_Gioi.Double = CyberSupport.V_Round(TxtT_C.Double * TxtPT_Moi_Gioi.Double / 108, 0)
+    End Sub
+    Private Sub V_PT_HH_BH_MG()
+        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        Dim _Dt As Date = TxtNgay_Ct.Value
+        Dim _ncount As Integer = 0
+        Dim DsKM As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_ROHHBH_HDK", M_Mode.Trim & "#" & TxtMa_Kx.Text & "#" & TxtMa_BH.Text & "#" & TxtT_I.Double & "#" & _Dt.ToString("yyyyMMdd") & "#" & M_Stt_Rec & "#" & M_Ma_CT & "#" & M_Ma_Dvcs & "#" & M_User_Name)
 
+        _ncount = DsKM.Tables.Count
+
+        If _ncount <= 0 Then
+            DsKM.Dispose()
+            Exit Sub
+        End If
+
+        If DsKM.Tables(0).Rows.Count <= 0 Then
+            DsKM.Dispose()
+            Exit Sub
+        End If
+
+        If DsKM.Tables(0).Columns.Contains("PT_HH_BH") And TxtMa_BH.Text <> "" Then TxtPT_HH_BH.Double = DsKM.Tables(0).Rows(0).Item("PT_HH_BH")
+        DsKM.Dispose()
     End Sub
     Private Sub V_PT_HH_BH(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
         If TxtPT_HH_BH.Double = 0 Then Return
-        TxtHH_BH.Double = CyberSupport.V_Round(TxtT_I.Double * TxtPT_HH_BH.Double / 110, 0)
+        TxtHH_BH.Double = CyberSupport.V_Round(TxtT_I.Double * TxtPT_HH_BH.Double / 108, 0)
     End Sub
     Private Sub V_PT_Dat_Coc(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -2647,8 +2670,9 @@ _KT:
         TxtT_TT.Double = TxtT_I.Double + TxtT_W.Double + TxtT_N.Double + TxtT_C.Double
         '------------------------------------------------------------------------------------
         V_PT_Moi_Gioi(New System.Object, New System.EventArgs)
-        V_PT_HH_BH(New System.Object, New System.EventArgs)
         V_PT_Dat_Coc(New System.Object, New System.EventArgs)
+        V_PT_HH_BH_MG()
+        V_PT_HH_BH(New System.Object, New System.EventArgs)
     End Sub
     Private Sub Tinh_Gia2(ByVal iRow As Integer)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub

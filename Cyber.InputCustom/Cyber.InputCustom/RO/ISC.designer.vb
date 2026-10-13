@@ -291,6 +291,7 @@ Partial Class ISC
         Me.LabDia_Chi.TabIndex = 146
         Me.LabDia_Chi.Tag = "Address"
         Me.LabDia_Chi.Text = "Địa chỉ"
+        Me.LabDia_Chi.Visible = False
         '
         'TxtTen_SC
         '
@@ -304,6 +305,7 @@ Partial Class ISC
         Me.TxtTen_SC.Size = New System.Drawing.Size(337, 20)
         Me.TxtTen_SC.TabIndex = 6
         Me.TxtTen_SC.TabStop = False
+        Me.TxtTen_SC.Visible = False
         '
         'LabNgay_LCt
         '

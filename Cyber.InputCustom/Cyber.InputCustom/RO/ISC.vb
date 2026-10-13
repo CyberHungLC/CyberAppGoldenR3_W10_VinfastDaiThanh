@@ -17,7 +17,7 @@ Public Class ISC
     Dim CyberFrom As New Cyber.From.Sys
 #End Region
 #Region "Columns Edit"
-    Dim EditMa_Vitri, EditMa_Vt, EditMa_CV, EditMa_CVVt, EditMa_CtCVVT, EditMa_NVKD, EditTen_Vt, EditTen_Vt3, EditDVt, EditMa_kho_i, EditTon13, EditTen_kho_i, EditMa_TT,
+    Dim EditMa_Vitri, EditMa_Vt, EditMa_CV, EditMa_KX, EditMa_CTCV, EditMa_NVKD, EditTen_Vt, EditTen_Vt3, EditDVt, EditMa_kho_i, EditTon13, EditTen_kho_i, EditMa_TT,
            EditMa_Vv_i, EditMa_Hd_i, EditMa_phi_I, EditMa_Sp_i, EditMa_ku_I, EditMa_TTLN_I, EditMa_TTCP_I, EditMa_BP_I, EditMa_HS_I, EditMa_CD_I As New Cyber.Fill.CyberColumnGridView
     Dim EditSo_Luong, EditTien2, EditTien0, EditGia_TK, EditGia2, EditCk_i,
         EditPt_Ck_i, EditThue_Suat, EditThue, EditTien_BH, EditThue_BH, EditLAN, EditSl_TD_I As New Cyber.Fill.CyberColumnGridView
@@ -202,8 +202,8 @@ Public Class ISC
         EditMa_NVKD.GetColumn(Me.DetailGRVVt, "Ma_NVKD")
         EditMa_Vt.GetColumn(Me.DetailGRVVt, "Ma_Vt")
         EditMa_CV.GetColumn(Me.DetailGRVVt, "Ma_CV")
-        EditMa_CVVt.GetColumn(Me.DetailGRVVt, "Ma_CV")
-        EditMa_CtCVVT.GetColumn(Me.DetailGRVVt, "Ma_Ctcv")
+        EditMa_KX.GetColumn(Me.DetailGRVVt, "Ma_KX")
+        EditMa_CTCV.GetColumn(Me.DetailGRVVt, "Ma_CTCV")
 
         EditTen_Vt.GetColumn(Me.DetailGRVVt, "Ten_Vt")
         EditTen_Vt3.GetColumn(Me.DetailGRVVt, "Ten_Vt3")
@@ -361,9 +361,10 @@ Public Class ISC
         EditMa_NVKD.V_ActiLookUpColumn(AddressOf V_Ma_NVKD, AddressOf L_Ma_NVKD)
         EditMa_Vt.V_ActiLookUpColumn(AddressOf V_Ma_Vt, AddressOf L_Ma_Vt)
         EditMa_CV.V_ActiLookUpColumn(AddressOf V_Ma_CV, AddressOf L_Ma_CV)
+        EditMa_KX.V_ActiLookUpColumn(AddressOf V_Ma_Kx, AddressOf L_Ma_Kx)
 
-        EditMa_CVVt.V_ActiLookUpColumn(AddressOf V_Ma_CvVt, AddressOf L_Ma_CvVt)
-        EditMa_CtCVVT.V_ActiLookUpColumn(AddressOf V_Ma_CtCvVT, AddressOf L_Ma_CtCvVT)
+
+        EditMa_CTCV.V_ActiLookUpColumn(AddressOf V_Ma_CtCvVT, AddressOf L_Ma_CtCvVT)
         EditMa_TT.V_ActiLookUpColumn(AddressOf V_Ma_TT, AddressOf L_Ma_TT)
 
         EditMa_kho_i.V_ActiLookUpColumn(AddressOf V_Ma_Kho_i, AddressOf L_Ma_Kho_i)
@@ -650,27 +651,6 @@ Public Class ISC
     End Sub
 #End Region
 
-#Region "Ma_CvVt"
-    Private Sub V_Ma_CvVt(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        CyberSupport.V_Lookup("Ma_Cv", "DmCv", "1=1", "1=1", M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_Ma_CvVt(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailGRVVt.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DrReturn = CyberSupport.L_Lookup(M_Mode, M_Ma_CT, sender, True)
-        If DrReturn Is Nothing Then
-            Dv_DetailTmp.Item(iRow)("Ma_Cv") = ""
-            Exit Sub
-        End If
-        Dv_DetailTmp.Item(iRow).BeginEdit()
-        Dv_DetailTmp.Item(iRow).Item("Ma_Cv") = DrReturn("Ma_Cv").ToString.Trim
-        Dv_DetailTmp.Item(iRow).EndEdit()
-        DetailGRVVt.UpdateCurrentRow()
-    End Sub
-#End Region
-
 
 #Region "Vat tu kho/Vitri - "
     Private Sub V_Ma_Lo(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
@@ -760,14 +740,15 @@ Public Class ISC
         Dv_DetailTmp.Item(iRow).BeginEdit()
         Dv_DetailTmp.Item(iRow).Item("Ma_CV") = _Ma_CV
         Dv_DetailTmp.Item(iRow).Item("Ten_CV") = _Ten_CV
+        Dv_DetailTmp.Item(iRow).Item("Ten_CV3") = _Ten_CV
         Dv_DetailTmp.Item(iRow).Item("Ma_TT") = IIf(Dv_DetailTmp.Item(iRow).Item("Ma_TT").ToString.Trim <> "", Dv_DetailTmp.Item(iRow).Item("Ma_TT"), M_Ma_TT)
         Dv_DetailTmp.Item(iRow).Item("Ma_kho_i") = IIf(Dv_DetailTmp.Item(iRow).Item("Ma_kho_i").ToString.Trim = "", _Ma_kho_i, Dv_DetailTmp.Item(iRow).Item("Ma_kho_i"))
         Dv_DetailTmp.Item(iRow).Item("Thue_Suat") = IIf(Dv_DetailTmp.Item(iRow).Item("Thue_Suat") = 0, _Thue_Suat, Dv_DetailTmp.Item(iRow).Item("Thue_Suat"))
         Dv_DetailTmp.Item(iRow).EndEdit()
         '-----------------------------------------------------------------------------------------------------------
-        If Dv_DetailTmp.Item(iRow).Item("Ten_vt3").ToString.Trim = "" Then
+        If Dv_DetailTmp.Item(iRow).Item("Ten_CV3").ToString.Trim = "" Then
             Dv_DetailTmp.Item(iRow).BeginEdit()
-            Dv_DetailTmp.Item(iRow).Item("Ten_vt3") = _Ten_CV
+            Dv_DetailTmp.Item(iRow).Item("Ten_CV3") = _Ten_CV
             Dv_DetailTmp.Item(iRow).EndEdit()
         End If
         '-----------------------------------------------------------------------------------------------------------
@@ -778,6 +759,7 @@ Public Class ISC
         V_SetSD(iRow)
         DetailGRVVt.UpdateCurrentRow()
     End Sub
+
     Private Sub V_Ma_Kho_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Kho_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
@@ -1159,7 +1141,9 @@ Public Class ISC
             Exit Sub
         End If
         Dt_DetailTmp.Rows(iRows)("Ma_kx") = drReturn("Ma_kx").ToString.Trim
-        Dt_DetailTmp.Rows(iRows)("Ten_kx") = drReturn("Ten_kx").ToString.Trim
+        If Dt_DetailTmp.Columns.Contains("Ten_kx") Then
+            Dt_DetailTmp.Rows(iRows)("Ten_kx") = drReturn("Ten_kx").ToString().Trim()
+        End If
         Dt_DetailTmp.AcceptChanges()
         DetailGRVVt.UpdateCurrentRow()
     End Sub
