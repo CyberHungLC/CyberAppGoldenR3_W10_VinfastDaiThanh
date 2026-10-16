@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class HDK
     Inherits Cyber.From.Frmvoucher
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
@@ -17,7 +17,7 @@ Partial Class HDK
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.TxtMa_Quyen = New System.Windows.Forms.TextBox()
@@ -3812,7 +3812,7 @@ Partial Class HDK
         Me.TxtNgay_Gx.ShowDayBeforeMonth = False
         Me.TxtNgay_Gx.Size = New System.Drawing.Size(97, 22)
         Me.TxtNgay_Gx.TabIndex = 7137
-        Me.TxtNgay_Gx.Value = "30/09/2026 16:14"
+        Me.TxtNgay_Gx.Value = "13/10/2026 16:06"
         Me.TxtNgay_Gx.Visible = False
         '
         'CbbVRC
@@ -4428,6 +4428,8 @@ Partial Class HDK
         Me.Controls.SetChildIndex(Me.Label55, 0)
         Me.Controls.SetChildIndex(Me.TxtTen_Doi, 0)
         Me.Controls.SetChildIndex(Me.TxtMa_Doi, 0)
+        Me.Controls.SetChildIndex(Me.ChkIs_Thieu_HoSo, 0)
+        Me.Controls.SetChildIndex(Me.TxtGhi_Chu_HoSo, 0)
         Me.Controls.SetChildIndex(Me.TxtUser_id, 0)
         Me.Controls.SetChildIndex(Me.CmdPhan_Bo, 0)
         Me.Controls.SetChildIndex(Me.CmdNew, 0)
@@ -4444,8 +4446,6 @@ Partial Class HDK
         Me.Controls.SetChildIndex(Me.LabMa_Post, 0)
         Me.Controls.SetChildIndex(Me.CmdView, 0)
         Me.Controls.SetChildIndex(Me.CmdExit, 0)
-        Me.Controls.SetChildIndex(Me.ChkIs_Thieu_HoSo, 0)
-        Me.Controls.SetChildIndex(Me.TxtGhi_Chu_HoSo, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailVt, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailGRVVt, System.ComponentModel.ISupportInitialize).EndInit()

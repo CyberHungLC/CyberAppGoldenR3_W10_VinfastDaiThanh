@@ -1576,7 +1576,10 @@ _KT:
     Private Sub V_PT_HH_BH(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
         If TxtPT_HH_BH.Double = 0 Then Return
-        TxtHH_BH.Double = CyberSupport.V_Round(TxtT_I.Double * TxtPT_HH_BH.Double / 108, 0)
+        'TxtHH_BH.Double = CyberSupport.V_Round(TxtT_I.Double * TxtPT_HH_BH.Double / 100, 0)
+
+        'TxtHH_BH.Double = CyberSupport.V_Round(TxtT_I_TrcV.Double * TxtPT_HH_BH.Double / 100, 0)
+        UpdateList()
     End Sub
     Private Sub V_PT_Dat_Coc(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -2593,12 +2596,22 @@ _KT:
         Dim nT_N As Decimal = 0
         Dim nT_C As Decimal = 0
 
+        Dim nT_I_TrcV As Decimal = 0
+
         For i = 0 To Dt_DetailTmp.Rows.Count - 1
             If Dt_DetailTmp.Rows(i).RowState = DataRowState.Deleted Then
                 Continue For
             End If
 
+            If Dt_DetailTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Then
+                nT_I_TrcV = nT_I_TrcV + Dt_DetailTmp.Rows(i).Item("Tien2") - Dt_DetailTmp.Rows(i).Item("CK_I") + Dt_DetailTmp.Rows(i).Item("Dc_I")
 
+                Dt_DetailTmp.Rows(i).Item("PT_HH_BH_I") = TxtPT_HH_BH.Double
+                Dt_DetailTmp.Rows(i).Item("HH_BH_I") = (Dt_DetailTmp.Rows(i).Item("Tien2") - Dt_DetailTmp.Rows(i).Item("CK_I") + Dt_DetailTmp.Rows(i).Item("Dc_I")) * TxtPT_HH_BH.Double / 100
+            Else
+                Dt_DetailTmp.Rows(i).Item("PT_HH_BH_I") = 0
+                Dt_DetailTmp.Rows(i).Item("HH_BH_I") = 0
+            End If
 
             If Dt_DetailTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Then
                 nT_I = nT_I + Dt_DetailTmp.Rows(i).Item("Tien2") - Dt_DetailTmp.Rows(i).Item("CK_I") + Dt_DetailTmp.Rows(i).Item("Thue") + Dt_DetailTmp.Rows(i).Item("Dc_I")
@@ -2623,6 +2636,15 @@ _KT:
         For i = 0 To Dt_DetailCvTmp.Rows.Count - 1
             If Dt_DetailCvTmp.Rows(i).RowState = DataRowState.Deleted Then Continue For
 
+            If Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Then
+                nT_I_TrcV = nT_I_TrcV + Dt_DetailCvTmp.Rows(i).Item("Tien_CV") - Dt_DetailCvTmp.Rows(i).Item("CK_I") + Dt_DetailCvTmp.Rows(i).Item("Dc_I")
+                Dt_DetailCvTmp.Rows(i).Item("PT_HH_BH_I") = TxtPT_HH_BH.Double
+                Dt_DetailCvTmp.Rows(i).Item("HH_BH_I") = (Dt_DetailCvTmp.Rows(i).Item("Tien_CV") - Dt_DetailCvTmp.Rows(i).Item("CK_I") + Dt_DetailCvTmp.Rows(i).Item("Dc_I")) * TxtPT_HH_BH.Double / 100
+
+            Else
+                Dt_DetailCvTmp.Rows(i).Item("PT_HH_BH_I") = 0
+                Dt_DetailCvTmp.Rows(i).Item("HH_BH_I") = 0
+            End If
 
 
             If Dt_DetailCvTmp.Rows(i).Item("Ma_TT").ToString.Trim.ToUpper = "I" Then
@@ -2668,11 +2690,14 @@ _KT:
         '------------------------------------------
         TxtT_C.Double = nT_Tien2 + nT_Thue_VT + nT_CV + nT_Thue_CV - nT_Ck_VT - nT_Ck_CV - nT_I - nT_W - nT_N + nT_DC_VT + nT_DC_CV
         TxtT_TT.Double = TxtT_I.Double + TxtT_W.Double + TxtT_N.Double + TxtT_C.Double
+
         '------------------------------------------------------------------------------------
         V_PT_Moi_Gioi(New System.Object, New System.EventArgs)
         V_PT_Dat_Coc(New System.Object, New System.EventArgs)
         V_PT_HH_BH_MG()
-        V_PT_HH_BH(New System.Object, New System.EventArgs)
+
+        TxtHH_BH.Double = CyberSupport.V_Round(nT_I_TrcV * TxtPT_HH_BH.Double / 100, 0)
+
     End Sub
     Private Sub Tinh_Gia2(ByVal iRow As Integer)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -2783,6 +2808,7 @@ _KT:
         Dv_DetailTmp.Item(iRow).Item("DC_I") = IIf(Dv_DetailTmp.Item(iRow).Item("PT_DC_I") = 0, Dv_DetailTmp.Item(iRow).Item("DC_I"), CyberSupport.V_Round((Dv_DetailTmp.Item(iRow).Item("Tien2") - Dv_DetailTmp.Item(iRow).Item("CK_I")) * Dv_DetailTmp.Item(iRow).Item("PT_DC_I") / 100, 0))
         Dv_DetailTmp.Item(iRow).EndEdit()
         '----------------------------- Thue,Tien0
+
         TinhThue_VT(iRow)
         '-----------------------------
         UpdateList()
