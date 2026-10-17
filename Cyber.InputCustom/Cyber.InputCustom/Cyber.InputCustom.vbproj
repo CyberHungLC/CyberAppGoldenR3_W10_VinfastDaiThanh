@@ -288,10 +288,28 @@
     <Compile Include="GL\PNA.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GL\PND.designer.vb">
+      <DependentUpon>PND.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GL\PND.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\PNG.Designer.vb">
+      <DependentUpon>PNG.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GL\PNG.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GL\PT1.designer.vb">
       <DependentUpon>PT1.vb</DependentUpon>
     </Compile>
     <Compile Include="GL\PT1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GL\PXD.Designer.vb">
+      <DependentUpon>PXD.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GL\PXD.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GL\TKT.designer.vb">
@@ -480,8 +498,17 @@
     <EmbeddedResource Include="GL\PNA.resx">
       <DependentUpon>PNA.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GL\PND.resx">
+      <DependentUpon>PND.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\PNG.resx">
+      <DependentUpon>PNG.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GL\PT1.resx">
       <DependentUpon>PT1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GL\PXD.resx">
+      <DependentUpon>PXD.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GL\TKT.resx">
       <DependentUpon>TKT.vb</DependentUpon>
