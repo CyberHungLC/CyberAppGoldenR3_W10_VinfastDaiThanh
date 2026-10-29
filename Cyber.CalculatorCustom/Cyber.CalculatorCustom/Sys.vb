@@ -38,6 +38,11 @@ Public Class Sys
                 Frm = New RoUpdateGia
             Case "CP_ROUPDATE_LOAD".ToUpper.ToString
                 Frm = New ROUPDL
+            Case "CP_RO_HDSGuiHoSo_Load".ToUpper.ToString
+                Frm = New ROHDSGuiHoSo
+
+
+
                 'Case "CP_Ro_Up_Hang".ToUpper.Trim
 
                 '    Frm = New Ro_Up_Hang_Loc

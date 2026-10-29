@@ -158,6 +158,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="3.RO\ROHDSGuiHoSo.designer.vb">
+      <DependentUpon>ROHDSGuiHoSo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="3.RO\ROHDSGuiHoSo.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="3.RO\ROHDSUPDL.designer.vb">
       <DependentUpon>ROHDSUPDL.vb</DependentUpon>
     </Compile>
@@ -231,6 +237,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="3.RO\ROHDSGuiHoSo.resx">
+      <DependentUpon>ROHDSGuiHoSo.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="3.RO\ROHDSUPDL.resx">
       <DependentUpon>ROHDSUPDL.vb</DependentUpon>
     </EmbeddedResource>
