@@ -13,6 +13,7 @@ Public Class HD3
 #Region "Khai bao bien Paramater----------------------"
     '-----
     Dim M_HT_TT, M_Ma_THue As String
+    Dim M_Ky_Hieu_Invoice As String = ""
 #End Region
 #Region "Khai bao bien Dll"
     Dim CyberInput As New Cyber.Input.Sys
@@ -53,7 +54,6 @@ Public Class HD3
         CyberMe.V_SetEnabled(Me, M_Mode, Dt_Master)
         V_Setstatus()
         V_MainSystem()
-        V_MainSystemKHAC()
         GetRound()
         CmdNew.Select()
     End Sub
@@ -77,10 +77,6 @@ Public Class HD3
         Detail.DataSource = Dv_DetailTmp
         Me.DetailGRV.GridControl = Me.Detail
         CyberFill.V_FillVoucher(DetailGRV, M_LAN, New DataView(M_DsHead.Tables(1)), Dv_DetailTmp, Me.DrDmct)
-
-        DetailKhac.DataSource = Dv_DetailtmpKhac
-        Me.DetailKhacGRV.GridControl = Me.DetailKhac
-        CyberFill.V_FillVoucher(DetailKhacGRV, M_LAN, New DataView(M_DsHead.Tables(2)), Dv_DetailtmpKhac, Me.DrDmct)
 
         V_SetProperty()
         CyberSupport.Translaste(Me, M_LAN, True)
@@ -182,21 +178,6 @@ Public Class HD3
         DetailGRV.OptionsNavigation.EnterMoveNextColumn = True
         Me.DetailGRV.Appearance.SelectedRow.BackColor = System.Drawing.Color.Brown
 
-        '---
-        If FixCol < DetailKhacGRV.Columns.Count And FixCol > 0 Then
-            For iCol = 0 To FixCol
-                DetailKhacGRV.Columns(iCol).Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left
-            Next
-        End If
-        For i As Integer = 0 To DetailKhacGRV.Columns.Count - 1
-            DetailKhacGRV.Columns(i).OptionsFilter.AllowAutoFilter = True
-            DetailKhacGRV.Columns(i).OptionsFilter.AllowFilter = True
-            DetailKhacGRV.Columns(i).OptionsFilter.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.Contains
-        Next
-
-        DetailKhacGRV.OptionsNavigation.EnterMoveNextColumn = True
-        Me.DetailKhacGRV.Appearance.SelectedRow.BackColor = System.Drawing.Color.Brown
-
     End Sub
     Private Sub V_GetColumn()
         EditDVT.GetColumn(DetailGRV, "DVT")
@@ -248,27 +229,6 @@ Public Class HD3
         EditMa_Ts.GetColumn(DetailGRV, "Ma_Ts")
         EditMa_Cc.GetColumn(DetailGRV, "Ma_Cc")
 
-        EditKhacMa_Vv_I.GetColumn(DetailKhacGRV, "Ma_Vv_I")
-        EditKhacMa_Phi_i.GetColumn(DetailKhacGRV, "Ma_Phi_I")
-        EditKhacMa_HD_I.GetColumn(DetailKhacGRV, "Ma_HD_I")
-        EditKhacMa_SP_I.GetColumn(DetailKhacGRV, "Ma_SP_I")
-        EditKhacMa_Ku_I.GetColumn(DetailKhacGRV, "Ma_Ku_I")
-        EditKhacMa_TTLN_i.GetColumn(DetailKhacGRV, "Ma_TTLN_I")
-        EditKhacMa_TTCP_i.GetColumn(DetailKhacGRV, "Ma_TTCP_I")
-        EditKhacMa_BP_I.GetColumn(DetailKhacGRV, "Ma_BP_I")
-        EditKhacMa_HS_I.GetColumn(DetailKhacGRV, "Ma_Hs_I")
-        EditKhacMa_CD_I.GetColumn(DetailKhacGRV, "Ma_CD_I")
-
-        EditKhacMa_TD1_I.GetColumn(DetailKhacGRV, "Ma_TD1_I")
-        EditKhacMa_TD2_I.GetColumn(DetailKhacGRV, "Ma_TD2_I")
-        EditKhacMa_TD3_I.GetColumn(DetailKhacGRV, "Ma_TD3_I")
-        EditKhacMa_TD4_I.GetColumn(DetailKhacGRV, "Ma_TD4_I")
-        EditKhacMa_TD5_I.GetColumn(DetailKhacGRV, "Ma_TD5_I")
-
-        EditKhacSo_So.GetColumn(DetailKhacGRV, "SO_SO")
-        EditKhacSo_Po.GetColumn(DetailKhacGRV, "SO_PO")
-        EditKhacSo_Ro.GetColumn(DetailKhacGRV, "SO_RO")
-        EditKhacSo_VT.GetColumn(DetailKhacGRV, "SO_VT")
 
     End Sub ' MINHDC
     Private Sub V_SetFocus(ByVal _Loai As String)
@@ -298,7 +258,6 @@ Public Class HD3
         V_AddHandler_System()
         V_AddHandler_Master()
         V_AddHandler_Detail()
-        V_AddHandler_DetailKhac()
     End Sub
     Private Sub V_AddHandler_System()
         AddHandler Me.KeyDown, AddressOf FrmMain_KeyDown
@@ -317,8 +276,6 @@ Public Class HD3
         AddHandler CmdCopy.Click, AddressOf V_Copy
         '---
         AddHandler DetailGRV.KeyDown, AddressOf MasterGRV_KeyDown
-
-        AddHandler DetailKhacGRV.KeyDown, AddressOf MasterKhacGRV_KeyDown
         '---
         AddHandler CbbMa_GD.SelectedValueChanged, AddressOf L_Ma_GD
     End Sub
@@ -378,6 +335,15 @@ Public Class HD3
 
         ' So_BG
         AddHandler TxtSo_BG.Leave, AddressOf L_So_BG
+
+        'Tạo hóa đơn nháp
+        AddHandler CmdTaoHD.Click, AddressOf V_Tao_Invoice
+        ''Phát hành hóa đơn
+        AddHandler CmdPH_HoaDon.Click, AddressOf V_PhatHanh_Invoice
+        'Update hóa đơn
+        AddHandler CmdUpdate_HoaDon.Click, AddressOf V_Update_Invoice
+        'Tải PDF
+        AddHandler CmdTai_PDF.Click, AddressOf V_PDF_Invoice
 
         'Hoa don dien tu
         'AddHandler BtnTaoHDDT.Click, AddressOf V_TaoHD0
@@ -531,40 +497,11 @@ Public Class HD3
         If Not EditSo_VT.Column Is Nothing Then AddHandler EditSo_VT.EditColumn.Leave, AddressOf L_So_VT
         AddHandler DetailGRV.RowCellStyle, AddressOf DetailGRV_RowCellStyle
     End Sub
-    Private Sub V_AddHandler_DetailKhac()
-
-
-        EditKhacMa_Vitri.V_ActiLookUpColumn(AddressOf V_khac_Ma_Vitri, AddressOf L_khac_Ma_Vitri)
-        EditKhacMa_Vv_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_Vv_i, AddressOf L_khac_Ma_Vv_i)
-        EditKhacMa_Phi_i.V_ActiLookUpColumn(AddressOf V_khac_Ma_Phi_i, AddressOf L_khac_Ma_Phi_i)
-        EditKhacMa_HD_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_HD_i, AddressOf L_khac_Ma_HD_i)
-        EditKhacMa_SP_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_SP_i, AddressOf L_khac_Ma_SP_i)
-        EditKhacMa_Ku_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_Ku_i, AddressOf L_khac_Ma_Ku_i)
-        EditKhacMa_TTLN_i.V_ActiLookUpColumn(AddressOf V_khac_Ma_TTLN_i, AddressOf L_khac_Ma_TTLN_i)
-        EditKhacMa_TTCP_i.V_ActiLookUpColumn(AddressOf V_khac_Ma_TTCP_i, AddressOf L_khac_Ma_TTCP_i)
-        EditKhacMa_BP_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_BP_i, AddressOf L_khac_Ma_BP_i)
-        EditKhacMa_HS_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_HS_i, AddressOf L_khac_Ma_HS_i)
-        EditKhacMa_CD_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_CD_i, AddressOf L_khac_Ma_CD_i)
-        EditKhacMa_TD1_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_TD1_i, AddressOf L_khac_Ma_TD1_i)
-        EditKhacMa_TD2_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_TD2_i, AddressOf L_khac_Ma_TD2_i)
-        EditKhacMa_TD3_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_TD3_i, AddressOf L_khac_Ma_TD3_i)
-        EditKhacMa_TD4_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_TD4_i, AddressOf L_khac_Ma_TD4_i)
-        EditKhacMa_TD5_I.V_ActiLookUpColumn(AddressOf V_khac_Ma_TD5_i, AddressOf L_khac_Ma_TD5_i)
-
-        If Not EditKhacSo_So.Column Is Nothing Then AddHandler EditKhacSo_So.EditColumn.Leave, AddressOf L_khac_So_So
-        If Not EditKhacSo_Po.Column Is Nothing Then AddHandler EditKhacSo_Po.EditColumn.Leave, AddressOf L_khac_So_Po
-        If Not EditKhacSo_Ro.Column Is Nothing Then AddHandler EditKhacSo_Ro.EditColumn.Leave, AddressOf L_khac_So_Ro
-        If Not EditKhacSo_VT.Column Is Nothing Then AddHandler EditKhacSo_VT.EditColumn.Leave, AddressOf L_khac_So_VT
-
-        AddHandler DetailGRV.RowCellStyle, AddressOf DetailGRV_RowCellStyle
-        AddHandler DetailKhacGRV.RowCellStyle, AddressOf DetailKhacGRV_RowCellStyle
-    End Sub
     Dim CyberColor As New Cyber.Color.Sys
     Private Sub DetailGRV_RowCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
         CyberSupport.DetailGRV_RowCellStyle2(sender, e, DetailGRV, Dt_DetailTmp, Me.Font, "Bold", "BackColor", "BackColor2", "Forecolor", "Underline", "Italic", CyberColor)
     End Sub
     Private Sub DetailKhacGRV_RowCellStyle(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs)
-        CyberSupport.DetailGRV_RowCellStyle2(sender, e, DetailKhacGRV, Dt_DetailtmpKhac, Me.Font, "Bold", "BackColor", "BackColor2", "Forecolor", "Underline", "Italic", CyberColor)
     End Sub
     Private Sub VisibleColumnMa_NT()
         If TxtMa_NT.Text.Trim = "" Or TxtMa_NT.Text.Trim.ToUpper = osysvar("M_Ma_NT0").ToString.Trim.ToUpper Then
@@ -1462,56 +1399,16 @@ Public Class HD3
         Dim nTy_Gia As Decimal = V_GetTyGia()
     End Sub
 
-    Private Sub L_khac_Tinh_Toan(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        DetailKhacGRV.PostEditor()
-        Dim drvCurren As DataRowView
-        drvCurren = DetailKhacGRV.GetFocusedRow
-        CyberSupport.V_UpdateGRV(DetailKhacGRV)
-        V_khac_Tinh_Toan(iRow)
-        UpdateList()
-    End Sub
     Private Sub V_khac_Ma_kh_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_kh_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_kh_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_kh_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
-    Private Sub E_khac_Dien_Giaii(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M") Then Exit Sub
-        'If Not (M_Mode = "M" Or M_Mode = "S") And (M_Is_Delete = "X") Then Exit Sub
-        Dim iRow As Integer = DetailKhacGRV.FocusedRowHandle
-        If iRow < 0 Then Exit Sub
-        If Dv_DetailtmpKhac.Item(iRow).Item("Dien_Giaii").ToString.Trim = "" Then
-            Dv_DetailtmpKhac.Item(iRow).BeginEdit()
-            Dv_DetailtmpKhac.Item(iRow).Item("Dien_Giaii") = txtDien_giai.Text
-            Dv_DetailtmpKhac.Item(iRow).EndEdit()
-        End If
-        DetailKhacGRV.ShowEditor()
     End Sub
 #End Region
 #Region "Vat tu kho/Vitri - "
     Private Sub V_khac_Ma_Lo(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Lo(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Lo(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Lo(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-    End Sub
-
     Private Sub V_khac_Ma_Vitri(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Vitri(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_Vitri(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Vitri(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
     End Sub
 #End Region
 
@@ -1519,169 +1416,69 @@ Public Class HD3
     Private Sub V_khac_Ma_Vv_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Vv_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Vv_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Vv_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_Phi_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Phi_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_Phi_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Phi_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_HD_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Hd_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_HD_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Hd_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_SP_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Sp_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_SP_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Sp_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_Ku_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Ku_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Ku_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Ku_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_TTLN_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TTLN_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_TTLN_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TTLN_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_TTCP_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TTCP_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_TTCP_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TTCP_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_BP_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Bp_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_BP_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Bp_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_HS_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Hs_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_HS_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Hs_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_CD_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Cd_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_CD_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Cd_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_TD1_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Td1_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_TD1_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Td1_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_TD2_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TD2_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_TD2_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD2_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_TD3_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TD3_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_TD3_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD3_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_TD4_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TD4_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_TD4_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD4_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_TD5_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_TD5_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_TD5_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_TD5_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_Db_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Db_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_Db_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Db_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_Xe_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Xe_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Xe_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Xe_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_Kx_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Kx_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_Kx_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Kx_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_Tuyen_i(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Tuyen_i(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Tuyen_i(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Tuyen_i(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
     Private Sub V_khac_Ma_Ts(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Ts(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
-    End Sub
-    Private Sub L_khac_Ma_Ts(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Ts(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
     End Sub
     Private Sub V_khac_Ma_Cc(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
         CyberSupport.V_Ma_Cc(M_Mode, M_Ma_CT, M_LAN, M_Para, osysvar, AppConn, DsLookup, sender)
     End Sub
-    Private Sub L_khac_Ma_Cc(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        CyberSupport.L_Ma_Cc(M_Mode, M_Ma_CT, sender, DetailKhacGRV)
-    End Sub
 #End Region
 #Region "So_So/So_PO/So_RO/So_VT"
-    Private Sub L_khac_So_So(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        Dim _Ngay_Ct As Date = TxtNgay_Ct.Value
-
-        CyberVoucher.V_FormatSo_So(Dv_DetailtmpKhac, iRow, AppConn, SysVar, M_Ma_CT, CbbMa_GD.SelectedValue, M_Mode, _Ngay_Ct, CbbMa_TTCP_H, M_Ma_Dvcs, M_User_Name, CyberSmlib)
-    End Sub
-    Private Sub L_khac_So_Po(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        Dim _Ngay_Ct As Date = TxtNgay_Ct.Value
-        CyberVoucher.V_FormatSo_PO(Dv_DetailtmpKhac, iRow, AppConn, SysVar, M_Ma_CT, CbbMa_GD.SelectedValue, M_Mode, _Ngay_Ct, CbbMa_TTCP_H, M_Ma_Dvcs, M_User_Name, CyberSmlib)
-
-    End Sub
-    Private Sub L_khac_So_Ro(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        Dim _Ngay_Ct As Date = TxtNgay_Ct.Value
-        CyberVoucher.V_FormatSo_Ro(Dv_DetailtmpKhac, iRow, AppConn, osysvar, M_Ma_CT, "S", M_Mode, _Ngay_Ct, CbbMa_TTCP_H, TxtMa_Dvcs.Text, M_User_Name, CyberSmlib)
-
-    End Sub
-    Private Sub L_khac_So_VT(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = -1
-        iRow = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRow < 0 Then Exit Sub
-        Dim _Ngay_Ct As Date = TxtNgay_Ct.Value
-
-        CyberVoucher.V_FormatSo_VT(Dv_DetailtmpKhac, iRow, AppConn, SysVar, M_Ma_CT, CbbMa_GD.SelectedValue, M_Mode, _Ngay_Ct, CbbMa_TTCP_H, M_Ma_Dvcs, M_User_Name, CyberSmlib)
-    End Sub
 #End Region
-
 #End Region
 #Region "Ngay ct, ngay lap chung tu,so chung tu"
     Private Sub V_Ngay_Ct(ByVal sender As Object, ByVal e As System.EventArgs)
@@ -1775,52 +1572,13 @@ Public Class HD3
         Dv_DetailTmp.Table.AcceptChanges()
         UpdateList()
     End Sub
-    Private Sub V_MainSystemKHAC()
-        Dim mnItemsMail = New ContextMenu
-        Dim mnItemsF4 As New MenuItem(If(M_LAN = "V", "Thêm dòng", "New row"), AddressOf V_ShortAddItemKHAC, Keys.F4)
-        Dim mnItemsF8 As New MenuItem(If(M_LAN = "V", "Xóa dòng", "Delete row"), AddressOf V_ShortDeleteItemKHAC, Keys.F8)
-        mnItemsMail.MenuItems.Add(mnItemsF4)
-        mnItemsMail.MenuItems.Add(mnItemsF8)
-        DetailKhacGRV.GridControl.ContextMenu = mnItemsMail
-    End Sub
-    Private Sub V_Khac_ShortAddItem(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailKhacGRV.FocusedRowHandle
-        V_AddItemKHAC(iRow)
-    End Sub
-    Private Sub V_Khac_ShortDeleteItem(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailKhacGRV.FocusedRowHandle
-        If iRow < 0 Then Exit Sub
-        If Not CyberSupport.V_DeleteItemVoucher(osysvar, M_LAN, M_Ma_CT, iRow, Dv_DetailtmpKhac, AppConn, DetailKhacGRV) Then Exit Sub
-        Dv_DetailtmpKhac.Delete(iRow)
-        Dv_DetailtmpKhac.Table.AcceptChanges()
-    End Sub
     Private Sub MasterKhacGRV_PopupMenuShowing(ByVal sender As System.Object, ByVal e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
         Dim rowHandle As Integer = e.HitInfo.RowHandle
         If e.MenuType <> DevExpress.XtraGrid.Views.Grid.GridMenuType.Column Then
             PopupMenuMasterGrid.ItemLinks.Clear()
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Thêm dòng", "Add item"), AddressOf V_Khac_ShortAddItem, Nothing, True, False))
-            PopupMenuMasterGrid.ItemLinks.Add(New Cyber.SmLib.CyberMenuPopup(sender, rowHandle, IIf(Lan = "V", "Xóa dòng", "Delete item"), AddressOf V_Khac_ShortDeleteItem, Nothing, True, False))
 
             PopupMenuMasterGrid.ShowPopup(Control.MousePosition)
         End If
-    End Sub
-    Private Sub V_ShortAddItemKHAC(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailKhacGRV.FocusedRowHandle
-        V_AddItemKHAC(iRow)
-        iRow = Dv_DetailtmpKhac.Count - 1
-        CyberFill.V_ForcusCell(Dv_DetailtmpKhac, iRow, 0)
-    End Sub
-    Private Sub V_ShortDeleteItemKHAC(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iRow As Integer = DetailKhacGRV.FocusedRowHandle
-        If iRow < 0 Then Exit Sub
-        If Not CyberSupport.V_DeleteItemVoucher(osysvar, M_LAN, M_Ma_CT, iRow, Dv_DetailtmpKhac, AppConn) Then Exit Sub
-        Dv_DetailtmpKhac.Delete(iRow)
-        Dv_DetailtmpKhac.Table.AcceptChanges()
-        UpdateList()
     End Sub
     Private Sub V_ShortSAVE(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
@@ -2384,21 +2142,6 @@ Public Class HD3
         DvNew.Item("Ngay_Ct") = Me.TxtNgay_Ct.Value
     End Sub
 #End Region
-    Private Sub MasterKhacGRV_KeyDown(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs)
-        If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
-        Dim iCoumnVisible As Integer = DetailKhacGRV.VisibleColumns.Count - 1
-        Dim iRowVisible As Integer = DetailKhacGRV.RowCount - 1
-        Dim iRowRowFocus As Integer = DetailKhacGRV.FocusedRowHandle
-        Dim iColumnRowFocus As Integer = DetailKhacGRV.VisibleColumns.IndexOf(DetailGRV.FocusedColumn)
-        Dim iRowOld As Integer = DetailKhacGRV.GetFocusedDataSourceRowIndex
-        If iRowVisible <> iRowRowFocus Or iCoumnVisible <> iColumnRowFocus Then Exit Sub
-
-        If e.KeyCode = Keys.Enter Then
-            V_AddItemKHAC(iRowOld) '' Cot cuoi cung them dong
-        ElseIf e.KeyCode = Keys.End Then
-            SendKeys.Send("^{Tab}")
-        End If
-    End Sub
     Private Sub V_AddItemKHAC(Optional ByVal iRow As Integer = -1)
         If Not (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
         Dim DrvOld As DataRowView
@@ -2409,7 +2152,6 @@ Public Class HD3
         Khac_CarrOn(Dv_DetailtmpKhac.Table.Rows(Dv_DetailtmpKhac.Table.Rows.Count - 1))
         Khac_UpdateList()
         iRow = Dv_DetailtmpKhac.Count - 1
-        CyberFill.V_ForcusCell(DetailKhacGRV, iRow, 0)
     End Sub
     Private Sub Khac_CarrOn(ByVal DvNew As DataRow)
         DvNew.Item("Stt_Rec") = M_Stt_Rec.Trim
@@ -2545,7 +2287,6 @@ Public Class HD3
 
         _DsDetail.Dispose()
     End Sub
-#Region "Hóa đơn điện tử"
     '#Region "Tạo hóa đơn điện tử"
     '    Private Sub V_TaoHD(ByVal _Loai_HD As String, ByVal _Stt_Rec_TT As String)
     '        Dim api As New InvoiceMisa.MisaInvoice
@@ -2643,6 +2384,86 @@ Public Class HD3
     '        V_ShortRefresh(sender, e)
     '    End Sub
     '#End Region
+#Region "Hóa đơn điện tử"
+    Private Function V_ChkHDDT(ByVal _loai As String) As Boolean
+        Dim _result As Boolean = True
+        'Check phân quyền
+        Dim dsCheck As New DataSet
+        dsCheck = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_Chk_HDDT ", M_Ma_CT.Trim + "#" + M_Stt_Rec.Trim + "#" + _loai.Trim + "#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+        If dsCheck.Tables(0).Rows(0).Item("Msg").ToString.Trim = "Y" Then
+            MsgBox(dsCheck.Tables(0).Rows(0).Item("Note").ToString.Trim, MsgBoxStyle.Information + MsgBoxStyle.OkOnly, osysvar("M_Cyber_Ver"))
+            If dsCheck.Tables(0).Rows(0).Item("Status").ToString.Trim = "N" Then
+                dsCheck.Dispose()
+                _result = False
+            End If
+        End If
+        Return _result
+    End Function
+    Private Sub V_GetAPI(ByVal _ky_hieu_vendor As String, ByVal _loai_hd As String)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+
+        Dim _postapi As New Cyber.PostAPIInvoiceVNPT.supportInvoiceVNPT
+        Dim dtvb As Date = TxtNgay_Ct.Value
+
+        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceTAO", _loai_hd & "#" + dtvb.ToString("yyyyMMdd") + "###" + M_Stt_Rec.Trim + "##" + M_Ma_CT.Trim + "#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+
+        Dim nCount As Integer = DsData.Tables.Count
+        If Not CyberSupport.V_MsgChk(DsData.Tables(nCount - 1), osysvar, M_LAN) Then
+            DsData.Dispose()
+            Exit Sub
+        End If
+
+        Dim _dsReturn As DataSet = _postapi.V_TaoHoaDon(DsData)
+        If _dsReturn Is Nothing Or _dsReturn.Tables.Count = 0 Then
+            MsgBox("Tạo lỗi")
+            Return
+        End If
+
+        If _loai_hd = "P" Then
+            Dim dts As New List(Of DataTable)
+            Dim names As New List(Of String)
+
+            For Each dtReturn As DataTable In _dsReturn.Tables
+                dts.Add(dtReturn.Copy())
+                names.Add(dtReturn.TableName)
+            Next
+
+            ''===============thực thi cập nhật dữ liệu vào bảng khi kết quả trả về thành công
+            Dim So_hoadon As String = ""
+            Dim Serri_hoadon As String = ""
+            Dim mauso_hoadon As String = ""
+            Dim note_HDDT As String = ""
+            '--================== Viet thu tuc Update lai du lieu
+            Dim dt As Date = TxtNgay_Ct.Value
+
+            Dim _strXMLResponse As String = CyberSmodb.V_ConvertDataToXML(names.ToArray(), dts.ToArray())
+
+            Dim DsData_l As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIInvoice_UPDATE_VNPT", _loai_hd & "#" & M_Ma_CT & "#" & M_Stt_Rec & "#" & dt.ToString("yyyyMMdd") & "#" & CyberSmodb.GetvalueFromCombox(CbbMa_TTCP_H) & "#" & _strXMLResponse & "#" & M_Ma_Dvcs & "#" & M_User_Name)
+
+            Dim _nCount As Integer = DsData_l.Tables.Count
+
+            If _nCount < 1 Then Exit Sub
+
+            If Not CyberSupport.V_MsgChk(DsData_l.Tables(_nCount - 1), osysvar, M_LAN) Then
+                DsData_l.Dispose()
+                Exit Sub
+            End If
+
+            If _nCount > 1 Then
+                If DsData_l.Tables(0).Rows.Count > 0 Then
+                    So_hoadon = DsData_l.Tables(0).Rows(0).Item("So_HDDT")
+                    Serri_hoadon = DsData_l.Tables(0).Rows(0).Item("So_SeriHD")
+                    mauso_hoadon = DsData_l.Tables(0).Rows(0).Item("Mau_VATHD")
+                    note_HDDT = DsData_l.Tables(0).Rows(0).Item("NoteHDDT")
+                End If
+            End If
+            TxtSo_HDDT.Text = So_hoadon
+            TxtSo_seriHD.Text = Serri_hoadon
+            TxtMau_VATHD.Text = mauso_hoadon
+            TxtnoteHDDT.Text = note_HDDT
+            'End If 
+        End If
+    End Sub
 #Region "Xem hóa đơn điện tử"
     'Private Sub V_XemHD(ByVal sender As System.Object, ByVal e As System.EventArgs)
     '    Dim strErr As String = "", _Loai_HD As String = "V"
@@ -2723,7 +2544,226 @@ Public Class HD3
         DsTempRefresh.Dispose()
     End Sub
 #End Region
+    'Private Sub V_GetUpdateHDDT(ByVal _ky_hieu_vendor As String, ByVal _loai_hd As String)
+    '    If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+
+    '    Dim _postapi As New Cyber.PostAPIInvoiceVNPT.supportInvoiceVNPT
+    '    Dim dtvb As Date = TxtNgay_Ct.Value
+
+    '    '==================================================
+    '    ' Lấy dữ liệu phục vụ tra cứu hóa đơn
+    '    '==================================================
+    '    Dim DsData As DataSet =
+    '    CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceUPDATE", _loai_hd & "#" + dtvb.ToString("yyyyMMdd") + "###" + M_Stt_Rec.Trim + "##" + M_Ma_CT.Trim + "#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+
+    '    '==================================================
+    '    ' Kiểm tra kết quả SQL
+    '    '==================================================
+    '    Dim nCount As Integer = DsData.Tables.Count
+    '    If Not CyberSupport.V_MsgChk(DsData.Tables(nCount - 1), osysvar, M_LAN) Then
+    '        DsData.Dispose()
+    '        Exit Sub
+    '    End If
+
+    '    '==================================================
+    '    ' Gọi API VNPT tra cứu hóa đơn
+    '    '==================================================
+    '    Dim dsResp As DataSet = _postapi.V_UpdateHoaDon(DsData)
+
+    '    DsData.Dispose()
+
+    '    '==================================================
+    '    ' Thông báo kết quả
+    '    '==================================================
+    '    If dsResp IsNot Nothing AndAlso dsResp.Tables.Count > 0 Then
+    '        ' Ví dụ lấy số hóa đơn và ngày hóa đơn từ bảng trả về
+    '        Dim tb As DataTable = dsResp.Tables(0)
+    '        If tb.Columns.Contains("invoiceNo") AndAlso tb.Columns.Contains("invoiceDate") Then
+    '            Dim so_hd As String = tb.Rows(0)("invoiceNo").ToString()
+    '            Dim ngay_hd As String = tb.Rows(0)("invoiceDate").ToString()
+    '            MsgBox("Tra cứu thành công: Số HĐ = " & so_hd & ", Ngày HĐ = " & ngay_hd)
+    '            MsgBox(so_hd)
+    '        Else
+    '            MsgBox("Tra cứu thành công nhưng không thấy số hóa đơn/ngày hóa đơn trong response.")
+    '        End If
+    '    Else
+    '        MsgBox("Tra cứu hóa đơn thất bại.")
+    '    End If
+    'End Sub
+    Private Sub V_GetUpdateHDDT(ByVal _ky_hieu_vendor As String, ByVal _loai_hd As String)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+
+        Dim _postapi As New Cyber.PostAPIInvoiceVNPT.supportInvoiceVNPT
+        Dim dtvb As Date = TxtNgay_Ct.Value
+
+        '==================================================
+        ' Lấy dữ liệu phục vụ tra cứu hóa đơn
+        '==================================================
+        Dim DsData As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIGetDataToInvoiceUPDATE", _loai_hd & "#" + dtvb.ToString("yyyyMMdd") + "###" + M_Stt_Rec.Trim + "##" + M_Ma_CT.Trim + "#" + M_Ma_Dvcs.Trim + "#" + M_User_Name.Trim)
+
+        '==================================================
+        ' Kiểm tra kết quả SQL
+        '==================================================
+        Dim nCount As Integer = DsData.Tables.Count
+        If Not CyberSupport.V_MsgChk(DsData.Tables(nCount - 1), osysvar, M_LAN) Then
+            DsData.Dispose()
+            Exit Sub
+        End If
+
+        '==================================================
+        ' Gọi API VNPT tra cứu hóa đơn
+        '==================================================
+        Dim dsResp As DataSet = _postapi.V_UpdateHoaDon(DsData)
+
+        DsData.Dispose()
+
+        '==================================================
+        ' UPDATE 
+        '==================================================
+
+        Dim dts As New List(Of DataTable)
+        Dim names As New List(Of String)
+
+        For Each dtReturn As DataTable In dsResp.Tables
+            dts.Add(dtReturn.Copy())
+            names.Add(dtReturn.TableName)
+        Next
+
+        ''===============thực thi cập nhật dữ liệu vào bảng khi kết quả trả về thành công
+        Dim So_hoadon As String = ""
+        Dim Serri_hoadon As String = ""
+        Dim mauso_hoadon As String = ""
+        Dim note_HDDT As String = ""
+        Dim Ma_Tra_Cuu As String = ""
+        '--================== Viet thu tuc Update lai du lieu
+        Dim dt As Date = TxtNgay_Ct.Value
+
+        Dim _strXMLResponse As String = CyberSmodb.V_ConvertDataToXML(names.ToArray(), dts.ToArray())
+
+        Dim DsData_l As DataSet = CyberSmlib.SQLExcuteStoreProcedure(AppConn, "CP_APIInvoice_UPDATEHDDT_VNPT", _loai_hd & "#" & M_Ma_CT & "#" & M_Stt_Rec & "#" & dt.ToString("yyyyMMdd") & "#" & CyberSmodb.GetvalueFromCombox(CbbMa_TTCP_H) & "#" & _strXMLResponse & "#" & M_Ma_Dvcs & "#" & M_User_Name)
+
+        Dim _nCount As Integer = DsData_l.Tables.Count
+
+        If _nCount < 1 Then Exit Sub
+
+        If Not CyberSupport.V_MsgChk(DsData_l.Tables(_nCount - 1), osysvar, M_LAN) Then
+            DsData_l.Dispose()
+            Exit Sub
+        End If
+
+        If _nCount > 1 Then
+            If DsData_l.Tables(0).Rows.Count > 0 Then
+                So_hoadon = DsData_l.Tables(0).Rows(0).Item("So_HDDT")
+                Serri_hoadon = DsData_l.Tables(0).Rows(0).Item("So_SeriHD")
+                mauso_hoadon = DsData_l.Tables(0).Rows(0).Item("Mau_VATHD")
+                note_HDDT = DsData_l.Tables(0).Rows(0).Item("NoteHDDT")
+                Ma_Tra_Cuu = DsData_l.Tables(0).Rows(0).Item("Ma_Tra_Cuu")
+            End If
+        End If
+
+
+        TxtSo_HDDT.Text = So_hoadon
+        TxtSo_seriHD.Text = Serri_hoadon
+        TxtMau_VATHD.Text = mauso_hoadon
+        TxtnoteHDDT.Text = note_HDDT
+        Txtma_tra_cuu.Text = Ma_Tra_Cuu
+
+    End Sub
+
+    'Tải hoá đơn
+    Private Sub V_GetPDF(ByVal _ky_hieu_vendor As String, ByVal _loai_hd As String)
+
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+
+        Dim _postapi As New Cyber.PostAPIInvoiceVNPT.supportInvoiceVNPT
+
+        Dim dtvb As Date = TxtNgay_Ct.Value
+
+        '==================================================
+        ' Lấy dữ liệu phục vụ tải PDF
+        '==================================================
+        Dim DsData As DataSet =
+        CyberSmlib.SQLExcuteStoreProcedure(
+            AppConn,
+            "CP_APIGetDataToInvoiceDownPDF",
+            _loai_hd & "#" +
+            dtvb.ToString("yyyyMMdd") + "###" +
+            M_Stt_Rec.Trim + "##" +
+            M_Ma_CT.Trim + "#" +
+            M_Ma_Dvcs.Trim + "#" +
+            M_User_Name.Trim
+        )
+
+        '==================================================
+        ' Kiểm tra kết quả SQL
+        '==================================================
+        Dim nCount As Integer = DsData.Tables.Count
+
+        If Not CyberSupport.V_MsgChk(
+        DsData.Tables(nCount - 1),
+        osysvar,
+        M_LAN
+    ) Then
+
+            DsData.Dispose()
+            Exit Sub
+
+        End If
+
+        '==================================================
+        ' Gọi API VNPT tải PDF
+        '==================================================
+
+        Dim _filePath As String = DsData.Tables(0).Rows(0).Item("filePath").ToString()
+
+        If Not _postapi.V_TaiPDFHoaDon(DsData, _filePath) Then
+            DsData.Dispose()
+            MsgBox("Tải PDF hóa đơn thất bại.")
+            Return
+        End If
+
+        DsData.Dispose()
+
+        '==================================================
+        ' Thông báo kết quả
+        '==================================================
+        If Not String.IsNullOrEmpty(_filePath) Then
+            MsgBox("Tải PDF hóa đơn thành công." & vbCrLf & _filePath)
+        End If
+
+    End Sub
+
 #End Region
+
+    Private Sub V_Tao_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("T") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn tạo hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+
+        V_GetAPI(M_Ky_Hieu_Invoice, "T")
+    End Sub
+
+    Private Sub V_PhatHanh_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("P") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn tạo & phát hành hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+
+        V_GetAPI(M_Ky_Hieu_Invoice, "P")
+    End Sub
+    Private Sub V_Update_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("U") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn update hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+        'V_GetAPI(M_Ky_Hieu_Invoice, "U")
+        V_GetUpdateHDDT(M_Ky_Hieu_Invoice, "U")
+    End Sub
+    Private Sub V_PDF_Invoice(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        If (M_Mode = "M" Or M_Mode = "S") Then Exit Sub
+        If Not V_ChkHDDT("X") Then Exit Sub
+        If MsgBox("Bạn chắc chắn muốn tải PDF hóa đơn điện tử?", MsgBoxStyle.YesNo, osysvar("M_CYBER_VER")) <> MsgBoxResult.Yes Then Return
+
+        V_GetPDF(M_Ky_Hieu_Invoice, "X")
+    End Sub
 #Region "TTCP Default and New/Save _TTCP"
     Dim M_Is_Visible_TTCP As Boolean = False
     Dim DtTTCP As DataTable

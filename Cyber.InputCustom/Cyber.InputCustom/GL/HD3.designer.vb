@@ -20,6 +20,7 @@ Partial Class HD3
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HD3))
         Me.CbbMa_GD = New System.Windows.Forms.ComboBox()
         Me.LabDia_Chi = New System.Windows.Forms.Label()
         Me.TxtDia_Chi = New System.Windows.Forms.TextBox()
@@ -129,15 +130,9 @@ Partial Class HD3
         Me.LabMa_TTCP_H = New System.Windows.Forms.Label()
         Me.TxtSo_BG = New System.Windows.Forms.TextBox()
         Me.LabSo_BG = New System.Windows.Forms.Label()
-        Me.BtnDCHD = New System.Windows.Forms.Button()
-        Me.BtnTTHD = New System.Windows.Forms.Button()
-        Me.BtnViewNhap = New System.Windows.Forms.Button()
-        Me.BtnXemHDDT = New System.Windows.Forms.Button()
-        Me.BtnTaoHDDT = New System.Windows.Forms.Button()
         Me.TxtStt_Rec_TT = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.TxtLenh_Vt = New System.Windows.Forms.TextBox()
-        Me.BtnChuyenDoiHDDT = New System.Windows.Forms.Button()
         Me.CbbMa_TT = New System.Windows.Forms.ComboBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.ChkIs_TT = New System.Windows.Forms.CheckBox()
@@ -146,10 +141,6 @@ Partial Class HD3
         Me.TxtSo_Ct_TT = New System.Windows.Forms.TextBox()
         Me.Label52 = New System.Windows.Forms.Label()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.DetailKhac = New DevExpress.XtraGrid.GridControl()
-        Me.DetailKhacGRV = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.GridView6 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridView3 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.Detail = New DevExpress.XtraGrid.GridControl()
         Me.DetailGRV = New DevExpress.XtraGrid.Views.Grid.GridView()
@@ -158,10 +149,13 @@ Partial Class HD3
         Me.GridView7 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridView4 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.GridView5 = New DevExpress.XtraGrid.Views.Grid.GridView()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.GridView8 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.CmdUpdate_HoaDon = New DevExpress.XtraEditors.SimpleButton()
+        Me.CmdTai_PDF = New DevExpress.XtraEditors.SimpleButton()
+        Me.CmdPH_HoaDon = New DevExpress.XtraEditors.SimpleButton()
+        Me.CmdTaoHD = New DevExpress.XtraEditors.SimpleButton()
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -172,10 +166,6 @@ Partial Class HD3
         CType(Me.TxtTk_Thue_No.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DetailKhac, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DetailKhacGRV, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Detail, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DetailGRV, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -184,7 +174,6 @@ Partial Class HD3
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage2.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.GridView8, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
@@ -458,7 +447,7 @@ Partial Class HD3
         'txtDien_giai
         '
         Me.txtDien_giai.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDien_giai.BackColor = System.Drawing.Color.White
         Me.txtDien_giai.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txtDien_giai.ForeColor = System.Drawing.Color.Navy
@@ -690,7 +679,7 @@ Partial Class HD3
         'GroupBoxLine
         '
         Me.GroupBoxLine.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBoxLine.Location = New System.Drawing.Point(10, 141)
         Me.GroupBoxLine.Name = "GroupBoxLine"
         Me.GroupBoxLine.Size = New System.Drawing.Size(1039, 8)
@@ -896,7 +885,7 @@ Partial Class HD3
         'TxtTen_KhVAT
         '
         Me.TxtTen_KhVAT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtTen_KhVAT.BackColor = System.Drawing.Color.White
         Me.TxtTen_KhVAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.TxtTen_KhVAT.ForeColor = System.Drawing.Color.Navy
@@ -921,7 +910,7 @@ Partial Class HD3
         'TxtDia_ChiVAT
         '
         Me.TxtDia_ChiVAT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtDia_ChiVAT.BackColor = System.Drawing.Color.White
         Me.TxtDia_ChiVAT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.TxtDia_ChiVAT.ForeColor = System.Drawing.Color.Navy
@@ -969,7 +958,7 @@ Partial Class HD3
         'txtTen_BP_H
         '
         Me.txtTen_BP_H.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTen_BP_H.BackColor = System.Drawing.Color.White
         Me.txtTen_BP_H.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txtTen_BP_H.ForeColor = System.Drawing.Color.Navy
@@ -1017,7 +1006,7 @@ Partial Class HD3
         'txtTen_HS_H
         '
         Me.txtTen_HS_H.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtTen_HS_H.BackColor = System.Drawing.Color.White
         Me.txtTen_HS_H.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.txtTen_HS_H.ForeColor = System.Drawing.Color.Navy
@@ -1665,7 +1654,7 @@ Partial Class HD3
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox2.Location = New System.Drawing.Point(2, 85)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(1039, 8)
@@ -1725,7 +1714,7 @@ Partial Class HD3
         'TxtSo_HDDT
         '
         Me.TxtSo_HDDT.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtSo_HDDT.BackColor = System.Drawing.Color.White
         Me.TxtSo_HDDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.TxtSo_HDDT.ForeColor = System.Drawing.Color.Navy
@@ -1750,7 +1739,7 @@ Partial Class HD3
         'TxtMau_VATHD
         '
         Me.TxtMau_VATHD.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TxtMau_VATHD.BackColor = System.Drawing.Color.White
         Me.TxtMau_VATHD.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.TxtMau_VATHD.ForeColor = System.Drawing.Color.Navy
@@ -1919,61 +1908,6 @@ Partial Class HD3
         Me.LabSo_BG.Tag = "S/O"
         Me.LabSo_BG.Text = "Số Báo Giá"
         '
-        'BtnDCHD
-        '
-        Me.BtnDCHD.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnDCHD.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnDCHD.Location = New System.Drawing.Point(367, 152)
-        Me.BtnDCHD.Name = "BtnDCHD"
-        Me.BtnDCHD.Size = New System.Drawing.Size(95, 26)
-        Me.BtnDCHD.TabIndex = 7358
-        Me.BtnDCHD.Text = "Điều chỉnh HĐ"
-        Me.BtnDCHD.UseVisualStyleBackColor = False
-        '
-        'BtnTTHD
-        '
-        Me.BtnTTHD.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnTTHD.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnTTHD.Location = New System.Drawing.Point(463, 152)
-        Me.BtnTTHD.Name = "BtnTTHD"
-        Me.BtnTTHD.Size = New System.Drawing.Size(95, 26)
-        Me.BtnTTHD.TabIndex = 7357
-        Me.BtnTTHD.Text = "Thay thế HĐ"
-        Me.BtnTTHD.UseVisualStyleBackColor = False
-        '
-        'BtnViewNhap
-        '
-        Me.BtnViewNhap.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnViewNhap.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnViewNhap.Location = New System.Drawing.Point(7, 152)
-        Me.BtnViewNhap.Name = "BtnViewNhap"
-        Me.BtnViewNhap.Size = New System.Drawing.Size(70, 26)
-        Me.BtnViewNhap.TabIndex = 7356
-        Me.BtnViewNhap.Text = "HĐ Nháp"
-        Me.BtnViewNhap.UseVisualStyleBackColor = False
-        '
-        'BtnXemHDDT
-        '
-        Me.BtnXemHDDT.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnXemHDDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnXemHDDT.Location = New System.Drawing.Point(164, 152)
-        Me.BtnXemHDDT.Name = "BtnXemHDDT"
-        Me.BtnXemHDDT.Size = New System.Drawing.Size(90, 26)
-        Me.BtnXemHDDT.TabIndex = 7355
-        Me.BtnXemHDDT.Text = "Xem hóa đơn ĐT"
-        Me.BtnXemHDDT.UseVisualStyleBackColor = False
-        '
-        'BtnTaoHDDT
-        '
-        Me.BtnTaoHDDT.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnTaoHDDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnTaoHDDT.Location = New System.Drawing.Point(78, 152)
-        Me.BtnTaoHDDT.Name = "BtnTaoHDDT"
-        Me.BtnTaoHDDT.Size = New System.Drawing.Size(85, 26)
-        Me.BtnTaoHDDT.TabIndex = 7354
-        Me.BtnTaoHDDT.Text = "Tạo hóa đơn ĐT"
-        Me.BtnTaoHDDT.UseVisualStyleBackColor = False
-        '
         'TxtStt_Rec_TT
         '
         Me.TxtStt_Rec_TT.BackColor = System.Drawing.Color.White
@@ -2011,17 +1945,6 @@ Partial Class HD3
         Me.TxtLenh_Vt.TabIndex = 243
         Me.TxtLenh_Vt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.TxtLenh_Vt.Visible = False
-        '
-        'BtnChuyenDoiHDDT
-        '
-        Me.BtnChuyenDoiHDDT.BackColor = System.Drawing.SystemColors.Control
-        Me.BtnChuyenDoiHDDT.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.3!)
-        Me.BtnChuyenDoiHDDT.Location = New System.Drawing.Point(255, 152)
-        Me.BtnChuyenDoiHDDT.Name = "BtnChuyenDoiHDDT"
-        Me.BtnChuyenDoiHDDT.Size = New System.Drawing.Size(113, 26)
-        Me.BtnChuyenDoiHDDT.TabIndex = 7378
-        Me.BtnChuyenDoiHDDT.Text = "Chuyển đổi HD Giấy"
-        Me.BtnChuyenDoiHDDT.UseVisualStyleBackColor = False
         '
         'CbbMa_TT
         '
@@ -2111,54 +2034,6 @@ Partial Class HD3
         '
         Me.GridView1.Name = "GridView1"
         '
-        'GridView2
-        '
-        Me.GridView2.GridControl = Me.DetailKhac
-        Me.GridView2.Name = "GridView2"
-        '
-        'DetailKhac
-        '
-        Me.DetailKhac.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.DetailKhac.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.DetailKhac.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DetailKhac.Location = New System.Drawing.Point(3, 3)
-        Me.DetailKhac.LookAndFeel.SkinName = "Office 2010 Blue"
-        Me.DetailKhac.MainView = Me.DetailKhacGRV
-        Me.DetailKhac.Name = "DetailKhac"
-        Me.DetailKhac.Size = New System.Drawing.Size(1045, 132)
-        Me.DetailKhac.TabIndex = 49
-        Me.DetailKhac.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.DetailKhacGRV, Me.GridView6, Me.GridView2})
-        '
-        'DetailKhacGRV
-        '
-        Me.DetailKhacGRV.Appearance.FocusedRow.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.DetailKhacGRV.Appearance.FocusedRow.Options.UseBackColor = True
-        Me.DetailKhacGRV.Appearance.SelectedRow.BackColor = System.Drawing.Color.Red
-        Me.DetailKhacGRV.Appearance.SelectedRow.Options.UseBackColor = True
-        Me.DetailKhacGRV.Appearance.ViewCaption.Options.UseTextOptions = True
-        Me.DetailKhacGRV.Appearance.ViewCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center
-        Me.DetailKhacGRV.Appearance.ViewCaption.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center
-        Me.DetailKhacGRV.Appearance.ViewCaption.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap
-        Me.DetailKhacGRV.AppearancePrint.EvenRow.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DetailKhacGRV.AppearancePrint.EvenRow.Options.UseFont = True
-        Me.DetailKhacGRV.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Style3D
-        Me.DetailKhacGRV.CustomizationFormBounds = New System.Drawing.Rectangle(907, 465, 210, 172)
-        Me.DetailKhacGRV.GridControl = Me.DetailKhac
-        Me.DetailKhacGRV.GroupRowHeight = 30
-        Me.DetailKhacGRV.Name = "DetailKhacGRV"
-        Me.DetailKhacGRV.OptionsClipboard.CopyColumnHeaders = DevExpress.Utils.DefaultBoolean.[False]
-        Me.DetailKhacGRV.OptionsLayout.Columns.AddNewColumns = False
-        Me.DetailKhacGRV.OptionsSelection.CheckBoxSelectorColumnWidth = 20
-        Me.DetailKhacGRV.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect
-        Me.DetailKhacGRV.OptionsView.ColumnAutoWidth = False
-        Me.DetailKhacGRV.OptionsView.ShowGroupPanel = False
-        Me.DetailKhacGRV.RowHeight = 21
-        '
-        'GridView6
-        '
-        Me.GridView6.GridControl = Me.DetailKhac
-        Me.GridView6.Name = "GridView6"
-        '
         'GridView3
         '
         Me.GridView3.GridControl = Me.Detail
@@ -2226,18 +2101,6 @@ Partial Class HD3
         '
         Me.GridView5.Name = "GridView5"
         '
-        'TabPage2
-        '
-        Me.TabPage2.Controls.Add(Me.DetailKhac)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(1051, 138)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Tag = "Insurance"
-        Me.TabPage2.Text = "Danh sách Lệnh"
-        Me.TabPage2.UseVisualStyleBackColor = True
-        '
         'TabPage1
         '
         Me.TabPage1.Controls.Add(Me.Detail)
@@ -2257,10 +2120,9 @@ Partial Class HD3
         'TabControl1
         '
         Me.TabControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TabControl1.Controls.Add(Me.TabPage1)
-        Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Location = New System.Drawing.Point(-1, 292)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
@@ -2268,10 +2130,58 @@ Partial Class HD3
         Me.TabControl1.TabIndex = 7386
         Me.TabControl1.Tag = ""
         '
+        'CmdUpdate_HoaDon
+        '
+        Me.CmdUpdate_HoaDon.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdUpdate_HoaDon.Appearance.Options.UseForeColor = True
+        Me.CmdUpdate_HoaDon.Image = Global.Cyber.InputCustom.My.Resources.Resources.addfooter_16x16
+        Me.CmdUpdate_HoaDon.Location = New System.Drawing.Point(292, 148)
+        Me.CmdUpdate_HoaDon.Name = "CmdUpdate_HoaDon"
+        Me.CmdUpdate_HoaDon.Size = New System.Drawing.Size(133, 28)
+        Me.CmdUpdate_HoaDon.TabIndex = 7390
+        Me.CmdUpdate_HoaDon.Text = "Update hoá đơn"
+        '
+        'CmdTai_PDF
+        '
+        Me.CmdTai_PDF.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdTai_PDF.Appearance.Options.UseForeColor = True
+        Me.CmdTai_PDF.Image = CType(resources.GetObject("CmdTai_PDF.Image"), System.Drawing.Image)
+        Me.CmdTai_PDF.Location = New System.Drawing.Point(428, 148)
+        Me.CmdTai_PDF.Name = "CmdTai_PDF"
+        Me.CmdTai_PDF.Size = New System.Drawing.Size(130, 28)
+        Me.CmdTai_PDF.TabIndex = 7389
+        Me.CmdTai_PDF.Text = "Xem hóa đơn"
+        '
+        'CmdPH_HoaDon
+        '
+        Me.CmdPH_HoaDon.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdPH_HoaDon.Appearance.Options.UseForeColor = True
+        Me.CmdPH_HoaDon.Image = CType(resources.GetObject("CmdPH_HoaDon.Image"), System.Drawing.Image)
+        Me.CmdPH_HoaDon.Location = New System.Drawing.Point(159, 148)
+        Me.CmdPH_HoaDon.Name = "CmdPH_HoaDon"
+        Me.CmdPH_HoaDon.Size = New System.Drawing.Size(130, 28)
+        Me.CmdPH_HoaDon.TabIndex = 7388
+        Me.CmdPH_HoaDon.Text = "Tạo và phát hành HĐ"
+        '
+        'CmdTaoHD
+        '
+        Me.CmdTaoHD.Appearance.ForeColor = System.Drawing.Color.Navy
+        Me.CmdTaoHD.Appearance.Options.UseForeColor = True
+        Me.CmdTaoHD.Image = CType(resources.GetObject("CmdTaoHD.Image"), System.Drawing.Image)
+        Me.CmdTaoHD.Location = New System.Drawing.Point(26, 148)
+        Me.CmdTaoHD.Name = "CmdTaoHD"
+        Me.CmdTaoHD.Size = New System.Drawing.Size(130, 28)
+        Me.CmdTaoHD.TabIndex = 7387
+        Me.CmdTaoHD.Text = "Tạo HĐ nháp"
+        '
         'HD3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1058, 621)
+        Me.Controls.Add(Me.CmdUpdate_HoaDon)
+        Me.Controls.Add(Me.CmdTai_PDF)
+        Me.Controls.Add(Me.CmdPH_HoaDon)
+        Me.Controls.Add(Me.CmdTaoHD)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.ChkIs_TT)
         Me.Controls.Add(Me.TxtSo_Seri_TT)
@@ -2280,14 +2190,8 @@ Partial Class HD3
         Me.Controls.Add(Me.Label52)
         Me.Controls.Add(Me.CbbMa_TT)
         Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.BtnChuyenDoiHDDT)
         Me.Controls.Add(Me.Label24)
         Me.Controls.Add(Me.TxtStt_Rec_TT)
-        Me.Controls.Add(Me.BtnDCHD)
-        Me.Controls.Add(Me.BtnTTHD)
-        Me.Controls.Add(Me.BtnViewNhap)
-        Me.Controls.Add(Me.BtnXemHDDT)
-        Me.Controls.Add(Me.BtnTaoHDDT)
         Me.Controls.Add(Me.TxtSo_BG)
         Me.Controls.Add(Me.LabSo_BG)
         Me.Controls.Add(Me.LabMa_TTCP_H)
@@ -2504,14 +2408,8 @@ Partial Class HD3
         Me.Controls.SetChildIndex(Me.LabMa_TTCP_H, 0)
         Me.Controls.SetChildIndex(Me.LabSo_BG, 0)
         Me.Controls.SetChildIndex(Me.TxtSo_BG, 0)
-        Me.Controls.SetChildIndex(Me.BtnTaoHDDT, 0)
-        Me.Controls.SetChildIndex(Me.BtnXemHDDT, 0)
-        Me.Controls.SetChildIndex(Me.BtnViewNhap, 0)
-        Me.Controls.SetChildIndex(Me.BtnTTHD, 0)
-        Me.Controls.SetChildIndex(Me.BtnDCHD, 0)
         Me.Controls.SetChildIndex(Me.TxtStt_Rec_TT, 0)
         Me.Controls.SetChildIndex(Me.Label24, 0)
-        Me.Controls.SetChildIndex(Me.BtnChuyenDoiHDDT, 0)
         Me.Controls.SetChildIndex(Me.Label25, 0)
         Me.Controls.SetChildIndex(Me.CbbMa_TT, 0)
         Me.Controls.SetChildIndex(Me.Label52, 0)
@@ -2536,6 +2434,10 @@ Partial Class HD3
         Me.Controls.SetChildIndex(Me.CmdSms, 0)
         Me.Controls.SetChildIndex(Me.LabMa_Post, 0)
         Me.Controls.SetChildIndex(Me.CmdView, 0)
+        Me.Controls.SetChildIndex(Me.CmdTaoHD, 0)
+        Me.Controls.SetChildIndex(Me.CmdPH_HoaDon, 0)
+        Me.Controls.SetChildIndex(Me.CmdTai_PDF, 0)
+        Me.Controls.SetChildIndex(Me.CmdUpdate_HoaDon, 0)
         CType(Me.PopupMenuMaster, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TxtMa_Kh.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PopupMenuMasterGrid, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2546,10 +2448,6 @@ Partial Class HD3
         CType(Me.TxtTk_Thue_No.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DetailKhac, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DetailKhacGRV, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GridView6, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Detail, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DetailGRV, System.ComponentModel.ISupportInitialize).EndInit()
@@ -2558,7 +2456,6 @@ Partial Class HD3
         CType(Me.GridView7, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView5, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TabPage2.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.GridView8, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
@@ -2675,15 +2572,9 @@ Partial Class HD3
     Friend WithEvents LabMa_TTCP_H As System.Windows.Forms.Label
     Friend WithEvents TxtSo_BG As System.Windows.Forms.TextBox
     Friend WithEvents LabSo_BG As System.Windows.Forms.Label
-    Friend WithEvents BtnDCHD As System.Windows.Forms.Button
-    Friend WithEvents BtnTTHD As System.Windows.Forms.Button
-    Friend WithEvents BtnViewNhap As System.Windows.Forms.Button
-    Friend WithEvents BtnXemHDDT As System.Windows.Forms.Button
-    Friend WithEvents BtnTaoHDDT As System.Windows.Forms.Button
     Friend WithEvents TxtStt_Rec_TT As System.Windows.Forms.TextBox
     Friend WithEvents Label24 As System.Windows.Forms.Label
     Friend WithEvents TxtLenh_Vt As System.Windows.Forms.TextBox
-    Friend WithEvents BtnChuyenDoiHDDT As System.Windows.Forms.Button
     Friend WithEvents CbbMa_TT As System.Windows.Forms.ComboBox
     Friend WithEvents Label25 As System.Windows.Forms.Label
     Friend WithEvents ChkIs_TT As System.Windows.Forms.CheckBox
@@ -2692,9 +2583,6 @@ Partial Class HD3
     Friend WithEvents TxtSo_Ct_TT As System.Windows.Forms.TextBox
     Friend WithEvents Label52 As System.Windows.Forms.Label
     Friend WithEvents GridView1 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents GridView2 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents DetailKhac As DevExpress.XtraGrid.GridControl
-    Friend WithEvents DetailKhacGRV As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView3 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents Detail As DevExpress.XtraGrid.GridControl
     Friend WithEvents DetailGRV As DevExpress.XtraGrid.Views.Grid.GridView
@@ -2702,10 +2590,12 @@ Partial Class HD3
     Friend WithEvents RepositoryItemTextEdit2 As DevExpress.XtraEditors.Repository.RepositoryItemTextEdit
     Friend WithEvents GridView4 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView5 As DevExpress.XtraGrid.Views.Grid.GridView
-    Friend WithEvents TabPage2 As TabPage
-    Friend WithEvents GridView6 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents GridView7 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents GridView8 As DevExpress.XtraGrid.Views.Grid.GridView
     Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents CmdUpdate_HoaDon As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CmdTai_PDF As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CmdPH_HoaDon As DevExpress.XtraEditors.SimpleButton
+    Friend WithEvents CmdTaoHD As DevExpress.XtraEditors.SimpleButton
 End Class
